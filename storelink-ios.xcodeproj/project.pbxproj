@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		6290E699A4368ED45BCEE497 /* Pods_storelink_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */; };
+		D718FF7D2513C74D007D0E30 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* LaunchViewController.swift */; };
 		D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A951251215B700C7E0C9 /* AppDelegate.swift */; };
 		D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */; };
-		D7E6A956251215B700C7E0C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A955251215B700C7E0C9 /* ViewController.swift */; };
 		D7E6A95B251215B700C7E0C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E6A95A251215B700C7E0C9 /* Assets.xcassets */; };
 		D7E6A95E251215B700C7E0C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E6A95C251215B700C7E0C9 /* LaunchScreen.storyboard */; };
 		D7E6A969251215B700C7E0C9 /* storelink_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A968251215B700C7E0C9 /* storelink_iosTests.swift */; };
@@ -38,10 +38,10 @@
 		0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_storelink_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.debug.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.release.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.release.xcconfig"; sourceTree = "<group>"; };
+		D718FF7C2513C74D007D0E30 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		D7E6A94E251215B700C7E0C9 /* storelink-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "storelink-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A951251215B700C7E0C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D7E6A955251215B700C7E0C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D7E6A95A251215B700C7E0C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7E6A95D251215B700C7E0C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7E6A95F251215B700C7E0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 			children = (
 				D7E6A951251215B700C7E0C9 /* AppDelegate.swift */,
 				D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */,
-				D7E6A955251215B700C7E0C9 /* ViewController.swift */,
+				D718FF7C2513C74D007D0E30 /* LaunchViewController.swift */,
 				D7E6A95A251215B700C7E0C9 /* Assets.xcassets */,
 				D7E6A95C251215B700C7E0C9 /* LaunchScreen.storyboard */,
 				D7E6A95F251215B700C7E0C9 /* Info.plist */,
@@ -323,9 +323,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7E6A956251215B700C7E0C9 /* ViewController.swift in Sources */,
 				D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */,
 				D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */,
+				D718FF7D2513C74D007D0E30 /* LaunchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
