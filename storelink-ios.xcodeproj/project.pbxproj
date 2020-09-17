@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6290E699A4368ED45BCEE497 /* Pods_storelink_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */; };
 		D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A951251215B700C7E0C9 /* AppDelegate.swift */; };
 		D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */; };
 		D7E6A956251215B700C7E0C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A955251215B700C7E0C9 /* ViewController.swift */; };
@@ -35,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_storelink_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.debug.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.release.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.release.xcconfig"; sourceTree = "<group>"; };
 		D7E6A94E251215B700C7E0C9 /* storelink-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "storelink-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A951251215B700C7E0C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6290E699A4368ED45BCEE497 /* Pods_storelink_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F5CE3F19B94203314ED9DCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */,
+				B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D7E6A945251215B700C7E0C9 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +98,8 @@
 				D7E6A967251215B700C7E0C9 /* storelink-iosTests */,
 				D7E6A972251215B700C7E0C9 /* storelink-iosUITests */,
 				D7E6A94F251215B700C7E0C9 /* Products */,
+				0F5CE3F19B94203314ED9DCC /* Pods */,
+				F55AD9F6E81B14EF726DC74F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +145,14 @@
 			path = "storelink-iosUITests";
 			sourceTree = "<group>";
 		};
+		F55AD9F6E81B14EF726DC74F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7E6A978251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-ios" */;
 			buildPhases = (
+				19CDD3F988B5C0830F41B695 /* [CP] Check Pods Manifest.lock */,
 				D7E6A94A251215B700C7E0C9 /* Sources */,
 				D7E6A94B251215B700C7E0C9 /* Frameworks */,
 				D7E6A94C251215B700C7E0C9 /* Resources */,
+				37A5F2452BFF69DB21DC5C17 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,6 +280,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19CDD3F988B5C0830F41B695 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-storelink-ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37A5F2452BFF69DB21DC5C17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D7E6A94A251215B700C7E0C9 /* Sources */ = {
@@ -432,6 +501,7 @@
 		};
 		D7E6A979251215B700C7E0C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +520,7 @@
 		};
 		D7E6A97A251215B700C7E0C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
