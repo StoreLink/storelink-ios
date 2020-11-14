@@ -161,6 +161,7 @@
 				D7E6A94B251215B700C7E0C9 /* Frameworks */,
 				D7E6A94C251215B700C7E0C9 /* Resources */,
 				37A5F2452BFF69DB21DC5C17 /* [CP] Embed Pods Frameworks */,
+				D7E5B8E3255FFD5E003D37B9 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -315,6 +316,24 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		D7E5B8E3255FFD5E003D37B9 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

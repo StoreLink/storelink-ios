@@ -8,6 +8,7 @@ target 'storelink-ios' do
   # Pods for storelink-ios
   pod 'SnapKit', '~> 5.0.0'   # https://github.com/SnapKit/SnapKit
   pod 'SwiftGen'    # https://github.com/SwiftGen/SwiftGen
+  pod 'SwiftLint'   # https://github.com/realm/SwiftLint
   pod 'RxSwift', '~> 5'   # https://github.com/ReactiveX/RxSwift   
   pod 'RxCocoa', '~> 5'   # https://github.com/ReactiveX/RxSwift 
 
