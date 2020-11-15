@@ -102,6 +102,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D7949A8D25619B6200035D59 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D7949A8E25619B7B00035D59 /* MainTabBar */,
+				D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		D7949A8E25619B7B00035D59 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D7E5B8E625601604003D37B9 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
 		D7E5B8ED25605240003D37B9 /* SwiftGen */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,13 +172,12 @@
 			children = (
 				D7E6A951251215B700C7E0C9 /* AppDelegate.swift */,
 				D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */,
-				D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */,
-				D7E6A95C251215B700C7E0C9 /* LaunchScreen.storyboard */,
-				D7E6A95F251215B700C7E0C9 /* Info.plist */,
-				D7E5B8E625601604003D37B9 /* MainTabBarController.swift */,
+				D7949A8D25619B6200035D59 /* Sources */,
 				D7E5B8ED25605240003D37B9 /* SwiftGen */,
 				D7E5B902256198A0003D37B9 /* ru.lproj */,
 				D7E5B903256198AD003D37B9 /* en.lproj */,
+				D7E6A95C251215B700C7E0C9 /* LaunchScreen.storyboard */,
+				D7E6A95F251215B700C7E0C9 /* Info.plist */,
 				D7E6A95A251215B700C7E0C9 /* Assets.xcassets */,
 				D7E5B8E82560411B003D37B9 /* Colors.xcassets */,
 			);
