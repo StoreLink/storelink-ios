@@ -36,15 +36,15 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setupViewControllers() {
-        vc1.title = "Объвления"
-        vc1.tabBarItem.image = Assets.tabSearch.image
-        vc2.title = "Избранное"
+        vc1.title = Strings.main
+        vc1.tabBarItem.image = Assets.tabMain.image
+        vc2.title = Strings.favorites
         vc2.tabBarItem.image = Assets.tabFavorite.image
-        vc3.title = "Хранилище"
+        vc3.title = Strings.storage
         vc3.tabBarItem.image = Assets.tabStorage.image
-        vc4.title = "Сообщения"
+        vc4.title = Strings.messages
         vc4.tabBarItem.image = Assets.tabInbox.image
-        vc5.title = "Профиль"
+        vc5.title = Strings.profile
         vc5.tabBarItem.image = Assets.tabProfile.image
     }
 

@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  storelink-ios
+
+  Created by Акан Акиш on 11/15/20.
+  Copyright © 2020 Акан Акиш. All rights reserved.
+*/
+
+"main" = "Main";
+"favorites" = "Favorites";
+"storage" = "Storage";
+"messages" = "Messages";
+"profile" = "Profile";

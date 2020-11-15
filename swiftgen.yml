@@ -1,5 +1,13 @@
 input_dir: storelink-ios/
 output_dir: storelink-ios/SwiftGen/
+strings:
+  inputs: ru.lproj/Localizable.strings
+  filter: .+\.strings$
+  outputs:
+    - templateName: structured-swift5
+      output: Strings.swift
+      params:
+        enumName: Strings
 xcassets:
 - inputs: Colors.xcassets
   outputs:
