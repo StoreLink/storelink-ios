@@ -10,7 +10,9 @@
 		6290E699A4368ED45BCEE497 /* Pods_storelink_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */; };
 		D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */; };
 		D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5B8E625601604003D37B9 /* MainTabBarController.swift */; };
-		D7E5B8E92560411B003D37B9 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E5B8E82560411B003D37B9 /* Color.xcassets */; };
+		D7E5B8E92560411B003D37B9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E5B8E82560411B003D37B9 /* Colors.xcassets */; };
+		D7E5B8F02560565A003D37B9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5B8EE2560565A003D37B9 /* Colors.swift */; };
+		D7E5B8F12560565A003D37B9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5B8EF2560565A003D37B9 /* Assets.swift */; };
 		D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A951251215B700C7E0C9 /* AppDelegate.swift */; };
 		D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */; };
 		D7E6A95B251215B700C7E0C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E6A95A251215B700C7E0C9 /* Assets.xcassets */; };
@@ -42,7 +44,9 @@
 		B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.release.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.release.xcconfig"; sourceTree = "<group>"; };
 		D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniitialViewController.swift; sourceTree = "<group>"; };
 		D7E5B8E625601604003D37B9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		D7E5B8E82560411B003D37B9 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		D7E5B8E82560411B003D37B9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		D7E5B8EE2560565A003D37B9 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D7E5B8EF2560565A003D37B9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		D7E6A94E251215B700C7E0C9 /* storelink-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "storelink-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A951251215B700C7E0C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D7E5B8ED25605240003D37B9 /* SwiftGen */ = {
+			isa = PBXGroup;
+			children = (
+				D7E5B8EF2560565A003D37B9 /* Assets.swift */,
+				D7E5B8EE2560565A003D37B9 /* Colors.swift */,
+			);
+			path = SwiftGen;
+			sourceTree = "<group>";
+		};
 		D7E6A945251215B700C7E0C9 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +130,7 @@
 		D7E6A950251215B700C7E0C9 /* storelink-ios */ = {
 			isa = PBXGroup;
 			children = (
+				D7E5B8ED25605240003D37B9 /* SwiftGen */,
 				D7E6A951251215B700C7E0C9 /* AppDelegate.swift */,
 				D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */,
 				D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */,
@@ -124,7 +138,7 @@
 				D7E6A95F251215B700C7E0C9 /* Info.plist */,
 				D7E5B8E625601604003D37B9 /* MainTabBarController.swift */,
 				D7E6A95A251215B700C7E0C9 /* Assets.xcassets */,
-				D7E5B8E82560411B003D37B9 /* Color.xcassets */,
+				D7E5B8E82560411B003D37B9 /* Colors.xcassets */,
 			);
 			path = "storelink-ios";
 			sourceTree = "<group>";
@@ -167,7 +181,8 @@
 				D7E6A94B251215B700C7E0C9 /* Frameworks */,
 				D7E6A94C251215B700C7E0C9 /* Resources */,
 				37A5F2452BFF69DB21DC5C17 /* [CP] Embed Pods Frameworks */,
-				D7E5B8E3255FFD5E003D37B9 /* SwiftLint */,
+				D7E5B8E3255FFD5E003D37B9 /* ⚙️SwiftLint */,
+				D7E5B8EC25604DC9003D37B9 /* ⚙️SwiftGen */,
 			);
 			buildRules = (
 			);
@@ -264,7 +279,7 @@
 			files = (
 				D7E6A95E251215B700C7E0C9 /* LaunchScreen.storyboard in Resources */,
 				D7E6A95B251215B700C7E0C9 /* Assets.xcassets in Resources */,
-				D7E5B8E92560411B003D37B9 /* Color.xcassets in Resources */,
+				D7E5B8E92560411B003D37B9 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +339,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D7E5B8E3255FFD5E003D37B9 /* SwiftLint */ = {
+		D7E5B8E3255FFD5E003D37B9 /* ⚙️SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -333,7 +348,7 @@
 			);
 			inputPaths = (
 			);
-			name = SwiftLint;
+			name = "⚙️SwiftLint";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -341,6 +356,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+		D7E5B8EC25604DC9003D37B9 /* ⚙️SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "⚙️SwiftGen";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftgen >/dev/null; then\n  swiftgen\nelse\n  echo \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -350,6 +383,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */,
+				D7E5B8F02560565A003D37B9 /* Colors.swift in Sources */,
+				D7E5B8F12560565A003D37B9 /* Assets.swift in Sources */,
 				D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */,
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */,

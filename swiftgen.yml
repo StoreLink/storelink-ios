@@ -1,0 +1,15 @@
+input_dir: storelink-ios/
+output_dir: storelink-ios/SwiftGen/
+xcassets:
+- inputs: Colors.xcassets
+  outputs:
+    - templateName: swift4
+      output: Colors.swift
+      params:
+        enumName: Colors
+- inputs: Assets.xcassets
+  outputs:
+    - templateName: swift4
+      output: Assets.swift
+      params:
+        enumName: Assets

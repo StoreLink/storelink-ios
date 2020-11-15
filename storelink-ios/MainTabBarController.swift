@@ -21,7 +21,7 @@ final class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         setupViewControllers()
-        tabBar.tintColor = UIColor(named: "teal")
+        tabBar.tintColor = Colors.teal.color
         viewControllers = [vc1, vc2, vc3, vc4, vc5]
     }
     
@@ -37,15 +37,15 @@ final class MainTabBarController: UITabBarController {
     
     private func setupViewControllers() {
         vc1.title = "Объвления"
-        vc1.tabBarItem.image = UIImage(named: "tab_search")
+        vc1.tabBarItem.image = Assets.tabSearch.image
         vc2.title = "Избранное"
-        vc2.tabBarItem.image = UIImage(named: "tab_favorite")
+        vc2.tabBarItem.image = Assets.tabFavorite.image
         vc3.title = "Хранилище"
-        vc3.tabBarItem.image = UIImage(named: "tab_storage")
+        vc3.tabBarItem.image = Assets.tabStorage.image
         vc4.title = "Сообщения"
-        vc4.tabBarItem.image = UIImage(named: "tab_inbox")
+        vc4.tabBarItem.image = Assets.tabInbox.image
         vc5.title = "Профиль"
-        vc5.tabBarItem.image = UIImage(named: "tab_profile")
+        vc5.tabBarItem.image = Assets.tabProfile.image
     }
 
 }
