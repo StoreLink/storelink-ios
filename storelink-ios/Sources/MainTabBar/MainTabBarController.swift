@@ -15,7 +15,7 @@ final class MainTabBarController: UITabBarController {
     private let vc2 = UINavigationController(rootViewController: InitialViewController())
     private let vc3 = UINavigationController(rootViewController: InitialViewController())
     private let vc4 = UINavigationController(rootViewController: InitialViewController())
-    private let vc5 = UINavigationController(rootViewController: InitialViewController())
+    private let vc5 = UINavigationController(rootViewController: ProfileViewController())
 
     override func viewDidLoad() {
         super.viewDidLoad()
