@@ -43,7 +43,7 @@ final class MainTabBarController: UITabBarController {
         vc3.title = Strings.storage
         vc3.tabBarItem.image = Assets.tabStorage.image
         vc4.title = Strings.messages
-        vc4.tabBarItem.image = Assets.tabInbox.image
+        vc4.tabBarItem.image = Assets.tabMessage.image
         vc5.title = Strings.profile
         vc5.tabBarItem.image = Assets.tabProfile.image
     }

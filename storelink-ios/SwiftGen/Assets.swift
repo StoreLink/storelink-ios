@@ -20,8 +20,8 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Assets {
   internal static let tabFavorite = ImageAsset(name: "tab_favorite")
-  internal static let tabInbox = ImageAsset(name: "tab_inbox")
   internal static let tabMain = ImageAsset(name: "tab_main")
+  internal static let tabMessage = ImageAsset(name: "tab_message")
   internal static let tabProfile = ImageAsset(name: "tab_profile")
   internal static let tabStorage = ImageAsset(name: "tab_storage")
 }
