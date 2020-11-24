@@ -37,6 +37,9 @@ class ScrollViewController: InitialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func setupUI() {
         setupScrollView()
         setupContentView()
         setupContentStackView()

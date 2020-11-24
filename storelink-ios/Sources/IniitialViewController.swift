@@ -9,11 +9,30 @@
 import UIKit
 
 class InitialViewController: UIViewController {
-
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        self.init()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        
+        setupUI()
+        bind()
+    }
+    
+    func setupUI() {
+        
+    }
+    
+    func bind() {
+        
     }
 
 }
