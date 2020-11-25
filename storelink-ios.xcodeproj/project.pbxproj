@@ -14,6 +14,8 @@
 		D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F9256CD40500E618B4 /* ProfileViewModel.swift */; };
 		D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642FE256CD91000E618B4 /* ProfileCellModel.swift */; };
 		D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7464300256CE3F600E618B4 /* ProfileTableViewCell.swift */; };
+		D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7464302256E6DE800E618B4 /* PresentationController.swift */; };
+		D7464305256E718600E618B4 /* ProfilePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7464304256E718600E618B4 /* ProfilePopupViewController.swift */; };
 		D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5B8E625601604003D37B9 /* MainTabBarController.swift */; };
 		D7E5B8E92560411B003D37B9 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7E5B8E82560411B003D37B9 /* Colors.xcassets */; };
 		D7E5B8F02560565A003D37B9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5B8EE2560565A003D37B9 /* Colors.swift */; };
@@ -56,6 +58,8 @@
 		D74642F9256CD40500E618B4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D74642FE256CD91000E618B4 /* ProfileCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCellModel.swift; sourceTree = "<group>"; };
 		D7464300256CE3F600E618B4 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		D7464302256E6DE800E618B4 /* PresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
+		D7464304256E718600E618B4 /* ProfilePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePopupViewController.swift; sourceTree = "<group>"; };
 		D7E5B8E625601604003D37B9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D7E5B8E82560411B003D37B9 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		D7E5B8EE2560565A003D37B9 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 			children = (
 				D74642F7256BAF6000E618B4 /* ProfileViewController.swift */,
 				D7464300256CE3F600E618B4 /* ProfileTableViewCell.swift */,
+				D7464304256E718600E618B4 /* ProfilePopupViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				D7949A8E25619B7B00035D59 /* MainTabBar */,
 				D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */,
 				D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */,
+				D7464302256E6DE800E618B4 /* PresentationController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -479,9 +485,11 @@
 				D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */,
 				D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */,
 				D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */,
+				D7464305256E718600E618B4 /* ProfilePopupViewController.swift in Sources */,
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */,
 				D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */,
+				D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */,
 				D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */,
 				D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */,
 				D7E5B900256193C5003D37B9 /* Strings.swift in Sources */,

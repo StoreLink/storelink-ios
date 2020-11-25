@@ -54,7 +54,7 @@ class ProfileTableViewCell: UITableViewCell {
         iconImageView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(20)
             $0.left.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().offset(-15)
+            $0.bottom.equalToSuperview().offset(-20)
             $0.width.height.equalTo(25)
         }
         

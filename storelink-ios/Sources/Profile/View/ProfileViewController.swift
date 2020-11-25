@@ -110,7 +110,10 @@ final class ProfileViewController: ScrollViewController {
     }
     
     @objc private func authorizeButtonTapped() {
-        
+        let authorizationPopupView = ProfilePopupViewController()
+        authorizationPopupView.modalPresentationStyle = .custom
+        authorizationPopupView.transitioningDelegate = self
+        self.present(authorizationPopupView, animated: true, completion: nil)
     }
 }
 
@@ -135,5 +138,11 @@ extension ProfileViewController: UITableViewDelegate {
         }
         
         return headerView
+    }
+}
+
+extension ProfileViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
