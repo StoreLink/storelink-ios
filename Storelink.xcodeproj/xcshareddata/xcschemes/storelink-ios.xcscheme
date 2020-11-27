@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D7E6A94D251215B700C7E0C9"
-               BuildableName = "storelink-ios.app"
-               BlueprintName = "storelink-ios"
-               ReferencedContainer = "container:storelink-ios.xcodeproj">
+               BuildableName = "Storelink.app"
+               BlueprintName = "Storelink"
+               ReferencedContainer = "container:Storelink.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D7E6A963251215B700C7E0C9"
-               BuildableName = "storelink-iosTests.xctest"
-               BlueprintName = "storelink-iosTests"
-               ReferencedContainer = "container:storelink-ios.xcodeproj">
+               BuildableName = "StorelinkTests.xctest"
+               BlueprintName = "StorelinkTests"
+               ReferencedContainer = "container:Storelink.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D7E6A96E251215B700C7E0C9"
-               BuildableName = "storelink-iosUITests.xctest"
-               BlueprintName = "storelink-iosUITests"
-               ReferencedContainer = "container:storelink-ios.xcodeproj">
+               BuildableName = "StorelinkUITests.xctest"
+               BlueprintName = "StorelinkUITests"
+               ReferencedContainer = "container:Storelink.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D7E6A94D251215B700C7E0C9"
-            BuildableName = "storelink-ios.app"
-            BlueprintName = "storelink-ios"
-            ReferencedContainer = "container:storelink-ios.xcodeproj">
+            BuildableName = "Storelink.app"
+            BlueprintName = "Storelink"
+            ReferencedContainer = "container:Storelink.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -83,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D7E6A94D251215B700C7E0C9"
-            BuildableName = "storelink-ios.app"
-            BlueprintName = "storelink-ios"
-            ReferencedContainer = "container:storelink-ios.xcodeproj">
+            BuildableName = "Storelink.app"
+            BlueprintName = "Storelink"
+            ReferencedContainer = "container:Storelink.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

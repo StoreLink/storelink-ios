@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6290E699A4368ED45BCEE497 /* Pods_storelink_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */; };
+		215DAF90B2F8C9972A10CBA8 /* Pods_Storelink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7376A069A62F5F141AB9A6E1 /* Pods_Storelink.framework */; };
 		D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */; };
 		D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */; };
 		D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F7256BAF6000E618B4 /* ProfileViewController.swift */; };
@@ -49,7 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_storelink_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0497CEC566DCE3F36CD3C6B2 /* Pods-Storelink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storelink.debug.xcconfig"; path = "Target Support Files/Pods-Storelink/Pods-Storelink.debug.xcconfig"; sourceTree = "<group>"; };
+		5326CBA582402C1E82A9714F /* Pods-Storelink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storelink.release.xcconfig"; path = "Target Support Files/Pods-Storelink/Pods-Storelink.release.xcconfig"; sourceTree = "<group>"; };
+		7376A069A62F5F141AB9A6E1 /* Pods_Storelink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storelink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.debug.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.release.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.release.xcconfig"; sourceTree = "<group>"; };
 		D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniitialViewController.swift; sourceTree = "<group>"; };
@@ -67,16 +69,16 @@
 		D7E5B8FF256193C5003D37B9 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		D7E5B905256198EA003D37B9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = Localizable.strings; sourceTree = "<group>"; };
 		D7E5B90825619901003D37B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
-		D7E6A94E251215B700C7E0C9 /* storelink-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "storelink-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7E6A94E251215B700C7E0C9 /* Storelink.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Storelink.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A951251215B700C7E0C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D7E6A95A251215B700C7E0C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7E6A95D251215B700C7E0C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7E6A95F251215B700C7E0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7E6A964251215B700C7E0C9 /* storelink-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "storelink-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7E6A964251215B700C7E0C9 /* StorelinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorelinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A968251215B700C7E0C9 /* storelink_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storelink_iosTests.swift; sourceTree = "<group>"; };
 		D7E6A96A251215B700C7E0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7E6A96F251215B700C7E0C9 /* storelink-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "storelink-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7E6A96F251215B700C7E0C9 /* StorelinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorelinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A973251215B700C7E0C9 /* storelink_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storelink_iosUITests.swift; sourceTree = "<group>"; };
 		D7E6A975251215B700C7E0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6290E699A4368ED45BCEE497 /* Pods_storelink_ios.framework in Frameworks */,
+				215DAF90B2F8C9972A10CBA8 /* Pods_Storelink.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +114,8 @@
 			children = (
 				9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */,
 				B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */,
+				0497CEC566DCE3F36CD3C6B2 /* Pods-Storelink.debug.xcconfig */,
+				5326CBA582402C1E82A9714F /* Pods-Storelink.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -201,9 +205,9 @@
 		D7E6A945251215B700C7E0C9 = {
 			isa = PBXGroup;
 			children = (
-				D7E6A950251215B700C7E0C9 /* storelink-ios */,
-				D7E6A967251215B700C7E0C9 /* storelink-iosTests */,
-				D7E6A972251215B700C7E0C9 /* storelink-iosUITests */,
+				D7E6A950251215B700C7E0C9 /* Storelink */,
+				D7E6A967251215B700C7E0C9 /* StorelinkTests */,
+				D7E6A972251215B700C7E0C9 /* StorelinkUITests */,
 				D7E6A94F251215B700C7E0C9 /* Products */,
 				0F5CE3F19B94203314ED9DCC /* Pods */,
 				F55AD9F6E81B14EF726DC74F /* Frameworks */,
@@ -213,14 +217,14 @@
 		D7E6A94F251215B700C7E0C9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D7E6A94E251215B700C7E0C9 /* storelink-ios.app */,
-				D7E6A964251215B700C7E0C9 /* storelink-iosTests.xctest */,
-				D7E6A96F251215B700C7E0C9 /* storelink-iosUITests.xctest */,
+				D7E6A94E251215B700C7E0C9 /* Storelink.app */,
+				D7E6A964251215B700C7E0C9 /* StorelinkTests.xctest */,
+				D7E6A96F251215B700C7E0C9 /* StorelinkUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D7E6A950251215B700C7E0C9 /* storelink-ios */ = {
+		D7E6A950251215B700C7E0C9 /* Storelink */ = {
 			isa = PBXGroup;
 			children = (
 				D7E6A951251215B700C7E0C9 /* AppDelegate.swift */,
@@ -234,31 +238,31 @@
 				D7E6A95A251215B700C7E0C9 /* Assets.xcassets */,
 				D7E5B8E82560411B003D37B9 /* Colors.xcassets */,
 			);
-			path = "storelink-ios";
+			path = Storelink;
 			sourceTree = "<group>";
 		};
-		D7E6A967251215B700C7E0C9 /* storelink-iosTests */ = {
+		D7E6A967251215B700C7E0C9 /* StorelinkTests */ = {
 			isa = PBXGroup;
 			children = (
 				D7E6A968251215B700C7E0C9 /* storelink_iosTests.swift */,
 				D7E6A96A251215B700C7E0C9 /* Info.plist */,
 			);
-			path = "storelink-iosTests";
+			path = StorelinkTests;
 			sourceTree = "<group>";
 		};
-		D7E6A972251215B700C7E0C9 /* storelink-iosUITests */ = {
+		D7E6A972251215B700C7E0C9 /* StorelinkUITests */ = {
 			isa = PBXGroup;
 			children = (
 				D7E6A973251215B700C7E0C9 /* storelink_iosUITests.swift */,
 				D7E6A975251215B700C7E0C9 /* Info.plist */,
 			);
-			path = "storelink-iosUITests";
+			path = StorelinkUITests;
 			sourceTree = "<group>";
 		};
 		F55AD9F6E81B14EF726DC74F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0E56E5540CD0319B9CCF9E45 /* Pods_storelink_ios.framework */,
+				7376A069A62F5F141AB9A6E1 /* Pods_Storelink.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,9 +270,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D7E6A94D251215B700C7E0C9 /* storelink-ios */ = {
+		D7E6A94D251215B700C7E0C9 /* Storelink */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7E6A978251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-ios" */;
+			buildConfigurationList = D7E6A978251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "Storelink" */;
 			buildPhases = (
 				19CDD3F988B5C0830F41B695 /* [CP] Check Pods Manifest.lock */,
 				D7E6A94A251215B700C7E0C9 /* Sources */,
@@ -282,14 +286,14 @@
 			);
 			dependencies = (
 			);
-			name = "storelink-ios";
+			name = Storelink;
 			productName = "storelink-ios";
-			productReference = D7E6A94E251215B700C7E0C9 /* storelink-ios.app */;
+			productReference = D7E6A94E251215B700C7E0C9 /* Storelink.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D7E6A963251215B700C7E0C9 /* storelink-iosTests */ = {
+		D7E6A963251215B700C7E0C9 /* StorelinkTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7E6A97B251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-iosTests" */;
+			buildConfigurationList = D7E6A97B251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "StorelinkTests" */;
 			buildPhases = (
 				D7E6A960251215B700C7E0C9 /* Sources */,
 				D7E6A961251215B700C7E0C9 /* Frameworks */,
@@ -300,14 +304,14 @@
 			dependencies = (
 				D7E6A966251215B700C7E0C9 /* PBXTargetDependency */,
 			);
-			name = "storelink-iosTests";
+			name = StorelinkTests;
 			productName = "storelink-iosTests";
-			productReference = D7E6A964251215B700C7E0C9 /* storelink-iosTests.xctest */;
+			productReference = D7E6A964251215B700C7E0C9 /* StorelinkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D7E6A96E251215B700C7E0C9 /* storelink-iosUITests */ = {
+		D7E6A96E251215B700C7E0C9 /* StorelinkUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D7E6A97E251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-iosUITests" */;
+			buildConfigurationList = D7E6A97E251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "StorelinkUITests" */;
 			buildPhases = (
 				D7E6A96B251215B700C7E0C9 /* Sources */,
 				D7E6A96C251215B700C7E0C9 /* Frameworks */,
@@ -318,9 +322,9 @@
 			dependencies = (
 				D7E6A971251215B700C7E0C9 /* PBXTargetDependency */,
 			);
-			name = "storelink-iosUITests";
+			name = StorelinkUITests;
 			productName = "storelink-iosUITests";
-			productReference = D7E6A96F251215B700C7E0C9 /* storelink-iosUITests.xctest */;
+			productReference = D7E6A96F251215B700C7E0C9 /* StorelinkUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -346,7 +350,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D7E6A949251215B700C7E0C9 /* Build configuration list for PBXProject "storelink-ios" */;
+			buildConfigurationList = D7E6A949251215B700C7E0C9 /* Build configuration list for PBXProject "Storelink" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -360,9 +364,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D7E6A94D251215B700C7E0C9 /* storelink-ios */,
-				D7E6A963251215B700C7E0C9 /* storelink-iosTests */,
-				D7E6A96E251215B700C7E0C9 /* storelink-iosUITests */,
+				D7E6A94D251215B700C7E0C9 /* Storelink */,
+				D7E6A963251215B700C7E0C9 /* StorelinkTests */,
+				D7E6A96E251215B700C7E0C9 /* StorelinkUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -412,7 +416,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-storelink-ios-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Storelink-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -425,15 +429,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-storelink-ios/Pods-storelink-ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7E5B8E3255FFD5E003D37B9 /* ⚙️SwiftLint */ = {
@@ -517,12 +521,12 @@
 /* Begin PBXTargetDependency section */
 		D7E6A966251215B700C7E0C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D7E6A94D251215B700C7E0C9 /* storelink-ios */;
+			target = D7E6A94D251215B700C7E0C9 /* Storelink */;
 			targetProxy = D7E6A965251215B700C7E0C9 /* PBXContainerItemProxy */;
 		};
 		D7E6A971251215B700C7E0C9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D7E6A94D251215B700C7E0C9 /* storelink-ios */;
+			target = D7E6A94D251215B700C7E0C9 /* Storelink */;
 			targetProxy = D7E6A970251215B700C7E0C9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -673,18 +677,18 @@
 		};
 		D7E6A979251215B700C7E0C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */;
+			baseConfigurationReference = 0497CEC566DCE3F36CD3C6B2 /* Pods-Storelink.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6HNL37WZ78;
-				INFOPLIST_FILE = "storelink-ios/Info.plist";
+				INFOPLIST_FILE = Storelink/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kz.iitu.storelink-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = kz.iitu.storelink;
+				PRODUCT_NAME = Storelink;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -692,18 +696,18 @@
 		};
 		D7E6A97A251215B700C7E0C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */;
+			baseConfigurationReference = 5326CBA582402C1E82A9714F /* Pods-Storelink.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6HNL37WZ78;
-				INFOPLIST_FILE = "storelink-ios/Info.plist";
+				INFOPLIST_FILE = Storelink/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "kz.iitu.storelink-ios";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = kz.iitu.storelink;
+				PRODUCT_NAME = Storelink;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -727,7 +731,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/storelink-ios.app/storelink-ios";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Storelink.app/Storelink";
 			};
 			name = Debug;
 		};
@@ -749,7 +753,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/storelink-ios.app/storelink-ios";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Storelink.app/Storelink";
 			};
 			name = Release;
 		};
@@ -796,7 +800,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D7E6A949251215B700C7E0C9 /* Build configuration list for PBXProject "storelink-ios" */ = {
+		D7E6A949251215B700C7E0C9 /* Build configuration list for PBXProject "Storelink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D7E6A976251215B700C7E0C9 /* Debug */,
@@ -805,7 +809,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7E6A978251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-ios" */ = {
+		D7E6A978251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "Storelink" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D7E6A979251215B700C7E0C9 /* Debug */,
@@ -814,7 +818,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7E6A97B251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-iosTests" */ = {
+		D7E6A97B251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "StorelinkTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D7E6A97C251215B700C7E0C9 /* Debug */,
@@ -823,7 +827,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D7E6A97E251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "storelink-iosUITests" */ = {
+		D7E6A97E251215B700C7E0C9 /* Build configuration list for PBXNativeTarget "StorelinkUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D7E6A97F251215B700C7E0C9 /* Debug */,
