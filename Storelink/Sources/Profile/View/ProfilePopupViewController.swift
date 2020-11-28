@@ -124,12 +124,12 @@ final class ProfilePopupViewController: UIViewController {
     
     @objc private func loginButtonTapped() {
         self.dismiss(animated: true, completion: nil)
-        signupAction?()
+        loginAction?()
     }
     
     @objc private func signupButtonTapped() {
         self.dismiss(animated: true, completion: nil)
-        loginAction?()
+        signupAction?()
     }
     
     @objc private func swipeDownGestureAction(sender: UIPanGestureRecognizer) {

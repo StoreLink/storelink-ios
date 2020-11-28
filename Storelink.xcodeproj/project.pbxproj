@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		215DAF90B2F8C9972A10CBA8 /* Pods_Storelink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7376A069A62F5F141AB9A6E1 /* Pods_Storelink.framework */; };
+		D70CEA5425723E3800E01911 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5325723E3800E01911 /* LoginViewController.swift */; };
+		D70CEA5725723E7C00E01911 /* SignupPhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5625723E7C00E01911 /* SignupPhoneNumberViewController.swift */; };
 		D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */; };
 		D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */; };
 		D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F7256BAF6000E618B4 /* ProfileViewController.swift */; };
@@ -54,6 +56,8 @@
 		7376A069A62F5F141AB9A6E1 /* Pods_Storelink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storelink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AE008CFA45C54CCD88A8436 /* Pods-storelink-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.debug.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B0BF45651AA32C089E1C3C13 /* Pods-storelink-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-storelink-ios.release.xcconfig"; path = "Target Support Files/Pods-storelink-ios/Pods-storelink-ios.release.xcconfig"; sourceTree = "<group>"; };
+		D70CEA5325723E3800E01911 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D70CEA5625723E7C00E01911 /* SignupPhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneNumberViewController.swift; sourceTree = "<group>"; };
 		D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniitialViewController.swift; sourceTree = "<group>"; };
 		D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		D74642F7256BAF6000E618B4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,40 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D70CEA5125723DBA00E01911 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D70CEA5325723E3800E01911 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D70CEA5225723DE000E01911 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				D70CEA5525723E4A00E01911 /* PhoneNumber */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		D70CEA5525723E4A00E01911 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				D70CEA5625723E7C00E01911 /* SignupPhoneNumberViewController.swift */,
+			);
+			path = PhoneNumber;
+			sourceTree = "<group>";
+		};
+		D70CEA582572881E00E01911 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */,
+				D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */,
+				D7464302256E6DE800E618B4 /* PresentationController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		D74642F6256BAF1E00E618B4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,11 +197,11 @@
 		D7949A8D25619B6200035D59 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D70CEA5225723DE000E01911 /* Signup */,
+				D70CEA5125723DBA00E01911 /* Login */,
 				D74642F6256BAF1E00E618B4 /* Profile */,
 				D7949A8E25619B7B00035D59 /* MainTabBar */,
-				D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */,
-				D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */,
-				D7464302256E6DE800E618B4 /* PresentationController.swift */,
+				D70CEA582572881E00E01911 /* Common */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -486,10 +524,12 @@
 				D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */,
 				D7E5B8F02560565A003D37B9 /* Colors.swift in Sources */,
 				D7E5B8F12560565A003D37B9 /* Assets.swift in Sources */,
+				D70CEA5425723E3800E01911 /* LoginViewController.swift in Sources */,
 				D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */,
 				D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */,
 				D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */,
 				D7464305256E718600E618B4 /* ProfilePopupViewController.swift in Sources */,
+				D70CEA5725723E7C00E01911 /* SignupPhoneNumberViewController.swift in Sources */,
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */,
 				D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */,

@@ -114,6 +114,14 @@ final class ProfileViewController: ScrollViewController {
         authorizationPopupView.modalPresentationStyle = .custom
         authorizationPopupView.transitioningDelegate = self
         self.present(authorizationPopupView, animated: true, completion: nil)
+        
+        authorizationPopupView.loginAction = { [weak self] in
+            self?.navigationController?.present(UINavigationController(rootViewController: LoginViewController()), animated: true, completion: nil)
+        }
+        
+        authorizationPopupView.signupAction = { [weak self] in
+            
+        }
     }
 }
 
