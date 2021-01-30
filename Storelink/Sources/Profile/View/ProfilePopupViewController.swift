@@ -42,26 +42,14 @@ final class ProfilePopupViewController: UIViewController {
         return label
     }()
     
-    private let loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Вход", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = Colors.teal.color
-        button.layer.cornerRadius = 5
+    private let loginButton: MainButton = {
+        let button = MainButton(title: "Вход")
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
-    private let signupButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Регистрация", for: .normal)
-        button.setTitleColor(Colors.teal.color, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = .white
-        button.layer.borderWidth = 1
-        button.layer.cornerRadius = 5
-        button.layer.borderColor = Colors.teal.color.cgColor
+    private let signupButton: SecondaryButton = {
+        let button = SecondaryButton(title: "Регистрация")
         button.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -111,14 +99,12 @@ final class ProfilePopupViewController: UIViewController {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(30)
             $0.left.equalToSuperview().offset(30)
             $0.right.equalToSuperview().offset(-30)
-            $0.height.equalTo(45)
         }
         
         signupButton.snp.makeConstraints {
             $0.top.equalTo(loginButton.snp.bottom).offset(15)
             $0.left.equalToSuperview().offset(30)
             $0.right.equalToSuperview().offset(-30)
-            $0.height.equalTo(45)
         }
     }
     

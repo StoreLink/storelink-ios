@@ -29,7 +29,7 @@ final class ProfileViewController: ScrollViewController {
         let button = UIButton()
         button.setTitle("Войти в кабинет", for: .normal)
         button.setTitleColor(Colors.teal.color, for: .normal)
-        button.setTitleColor(Colors.teal.color.withAlphaComponent(0.7), for: [.normal, .highlighted])
+        button.setTitleColor(Colors.darkTeal.color, for: [.normal, .highlighted])
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.addTarget(self, action: #selector(authorizeButtonTapped), for: .touchUpInside)
         button.setTitleColor(.black, for: .selected)

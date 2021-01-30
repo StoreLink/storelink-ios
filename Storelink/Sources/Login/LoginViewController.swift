@@ -25,13 +25,8 @@ class LoginViewController: InitialViewController {
         return textField
     }()
     
-    private let loginButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Вход", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        button.backgroundColor = Colors.teal.color
-        button.layer.cornerRadius = 5
+    private let loginButton: MainButton = {
+        let button = MainButton(title: "Вход")
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -65,7 +60,6 @@ class LoginViewController: InitialViewController {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(30)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
-            $0.height.equalTo(45)
         }
     }
     
