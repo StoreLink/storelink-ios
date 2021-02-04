@@ -13,6 +13,7 @@
 		D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5B257299F500E01911 /* BaseTextField.swift */; };
 		D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */; };
 		D7456EF925C4024D00F591B5 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7456EF825C4024D00F591B5 /* SecondaryButton.swift */; };
+		D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7456EFD25C9006500F591B5 /* TextFieldEffects.swift */; };
 		D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */; };
 		D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F7256BAF6000E618B4 /* ProfileViewController.swift */; };
 		D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F9256CD40500E618B4 /* ProfileViewModel.swift */; };
@@ -65,6 +66,7 @@
 		D70CEA5B257299F500E01911 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniitialViewController.swift; sourceTree = "<group>"; };
 		D7456EF825C4024D00F591B5 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
+		D7456EFD25C9006500F591B5 /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		D74642F7256BAF6000E618B4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D74642F9256CD40500E618B4 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				D70CEA5B257299F500E01911 /* BaseTextField.swift */,
+				D7456EFD25C9006500F591B5 /* TextFieldEffects.swift */,
 				D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */,
 				D79DCC3B25C2CAE100DE6DCD /* MainButton.swift */,
 				D7456EF825C4024D00F591B5 /* SecondaryButton.swift */,
@@ -563,6 +566,7 @@
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */,
 				D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */,
+				D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */,
 				D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */,
 				D79DCC3C25C2CAE100DE6DCD /* MainButton.swift in Sources */,
 				D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */,

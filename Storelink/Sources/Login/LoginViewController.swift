@@ -10,16 +10,14 @@ import UIKit
 
 class LoginViewController: InitialViewController {
     
-    private let phoneNumberTextField: SkyFloatingLabelTextField = {
-        let textField = SkyFloatingLabelTextField()
-        textField.title = "Номер телефона"
+    private let phoneNumberTextField: BaseTextField = {
+        let textField = BaseTextField()
         textField.placeholder = "Номер телефона"
         return textField
     }()
     
-    private let passwordTextField: SkyFloatingLabelTextField = {
-        let textField = SkyFloatingLabelTextField()
-        textField.title = "Пароль"
+    private let passwordTextField: BaseTextField = {
+        let textField = BaseTextField()
         textField.placeholder = "Пароль"
         textField.isSecureTextEntry = true
         return textField
