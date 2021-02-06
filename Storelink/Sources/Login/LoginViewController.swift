@@ -16,16 +16,24 @@ class LoginViewController: InitialViewController {
         return textField
     }()
     
-    private let passwordTextField: BaseTextField = {
+    private lazy var passwordTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Пароль"
         textField.isSecureTextEntry = true
+        textField.rightView = passwordRightButton
+        textField.rightViewMode = .always
         return textField
     }()
     
     private let loginButton: MainButton = {
         let button = MainButton(title: "Вход")
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private let passwordRightButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        button.setImage(Assets.eye.image, for: .normal)
         return button
     }()
 

@@ -13,14 +13,18 @@ import UIKit
  */
 @IBDesignable open class BaseTextField: TextFieldEffects {
     
-    private let placeholderLabel = UILabel()
+    private enum Constants {
+        static let borderSize: CGFloat = 1
+        static let borderCornerRadius: CGFloat = 4
+        static let textFieldInsets = CGPoint(x: 16, y: 5)
+        static let placeholderInsets = CGPoint(x: 16, y: 5)
+        static let bottomInset: CGFloat = 5
+        static let rightViewSize: CGFloat = 24
+        static let leftAndRigthPadding: CGFloat = 16
+    }
     
+    private let placeholderLabel = UILabel()
     private let borderLayer = CALayer()
-    private let borderSize: CGFloat = 1
-    private let borderCornerRadius: CGFloat = 4
-    private let textFieldInsets = CGPoint(x: 15, y: 5)
-    private let placeholderInsets = CGPoint(x: 15, y: 5)
-    private let bottomInset: CGFloat = 5
     
     /**
      The color of the border when it has content.
@@ -113,23 +117,21 @@ import UIKit
     private func updatePlaceholder() {
         placeholderLabel.frame = placeholderRect(forBounds: bounds)
         placeholderLabel.text = placeholder
-        placeholderLabel.textColor = placeholderColor
+        placeholderLabel.textColor = isFirstResponder ? activeBorderColor : placeholderColor
         placeholderLabel.textAlignment = textAlignment
         
         if isFirstResponder || text!.isNotEmpty {
             placeholderLabel.font = placeholderFontFromFont(UIFont.systemFont(ofSize: 15, weight: .medium))
-            placeholderLabel.textColor = activeBorderColor
         } else {
             placeholderLabel.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-            placeholderLabel.textColor = placeholderColor
         }
     }
     
     private func updateBorder() {
         borderLayer.frame = rectForBounds(bounds)
-        borderLayer.cornerRadius = borderCornerRadius
-        borderLayer.borderWidth = borderSize
-        borderLayer.borderColor = (isFirstResponder || text!.isNotEmpty) ? activeBorderColor.cgColor : inactiveBorderColor.cgColor
+        borderLayer.cornerRadius = Constants.borderCornerRadius
+        borderLayer.borderWidth = Constants.borderSize
+        borderLayer.borderColor = isFirstResponder ? activeBorderColor.cgColor : inactiveBorderColor.cgColor
     }
     
     private func placeholderFontFromFont(_ font: UIFont) -> UIFont! {
@@ -149,9 +151,9 @@ import UIKit
     
     open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         if isFirstResponder || text!.isNotEmpty {
-            return CGRect(x: placeholderInsets.x, y: placeholderInsets.y, width: bounds.width - placeholderInsets.x, height: placeholderHeight)
+            return CGRect(x: Constants.placeholderInsets.x, y: Constants.placeholderInsets.y, width: bounds.width - Constants.placeholderInsets.x, height: placeholderHeight)
         } else {
-            return CGRect(x: placeholderInsets.x, y: 0, width: bounds.width - placeholderInsets.x, height: bounds.height)
+            return CGRect(x: Constants.placeholderInsets.x, y: 0, width: bounds.width - Constants.placeholderInsets.x, height: bounds.height)
         }
     }
     
@@ -159,7 +161,17 @@ import UIKit
         return textRect(forBounds: bounds)
     }
     
-    override open func textRect(forBounds bounds: CGRect) -> CGRect {
-        return CGRect(x: textFieldInsets.x, y: textFieldInsets.y + placeholderHeight, width: bounds.width - placeholderInsets.x, height: bounds.height - placeholderHeight - textFieldInsets.y - bottomInset)
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: Constants.textFieldInsets.x,
+                      y: Constants.textFieldInsets.y + placeholderHeight,
+                      width: bounds.width - Constants.placeholderInsets.x - Constants.leftAndRigthPadding - (rightViewMode == .always ? Constants.rightViewSize : 0),
+                      height: bounds.height - placeholderHeight - Constants.textFieldInsets.y - Constants.bottomInset)
+    }
+    
+    open override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        return CGRect(x: bounds.width - Constants.rightViewSize - 16,
+                      y: (bounds.height - Constants.rightViewSize) / 2,
+                      width: Constants.rightViewSize,
+                      height: Constants.rightViewSize)
     }
 }
