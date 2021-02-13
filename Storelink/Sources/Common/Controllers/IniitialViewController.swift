@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class InitialViewController: UIViewController {
+    
+    var disposeBag = DisposeBag()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -27,12 +30,8 @@ class InitialViewController: UIViewController {
         bind()
     }
     
-    func setupUI() {
-        
-    }
+    func setupUI() {}
     
-    func bind() {
-        
-    }
+    func bind() {}
 
 }

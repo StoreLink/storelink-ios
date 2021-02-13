@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import InputMask
 
-class LoginViewController: InitialViewController {
+final class LoginViewController: InitialViewController {
     
-    private let phoneNumberTextField: BaseTextField = {
+    private lazy var phoneMask: MaskedTextFieldDelegate = {
+        let mask = MaskedTextFieldDelegate(primaryFormat: "+7 ([000])-[000]-[00]-[00]")
+        mask.delegate = self
+        return mask
+    }()
+    
+    private lazy var phoneNumberTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Номер телефона"
+        textField.delegate = phoneMask
         return textField
     }()
     
@@ -25,11 +33,7 @@ class LoginViewController: InitialViewController {
         return textField
     }()
     
-    private let loginButton: MainButton = {
-        let button = MainButton(title: "Вход")
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        return button
-    }()
+    private let loginButton = MainButton(title: "Вход")
     
     private let passwordRightButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -69,7 +73,14 @@ class LoginViewController: InitialViewController {
         }
     }
     
-    @objc func loginButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
+    override func bind() {
+        loginButton.rx.tap.bind { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+        
+        passwordRightButton.rx.tap.bind { [weak self] in
+            self?.passwordTextField.isSecureTextEntry.toggle()
+            (self?.passwordTextField.isSecureTextEntry ?? true) ? self?.passwordRightButton.setImage(Assets.eye.image, for: .normal) : self?.passwordRightButton.setImage(Assets.eyeInvisible.image, for: .normal)
+        }.disposed(by: disposeBag)
     }
 }

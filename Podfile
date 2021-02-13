@@ -10,7 +10,8 @@ target 'Storelink' do
   pod 'SwiftGen'    # https://github.com/SwiftGen/SwiftGen
   pod 'SwiftLint'   # https://github.com/realm/SwiftLint
   pod 'RxSwift', '~> 5'   # https://github.com/ReactiveX/RxSwift   
-  pod 'RxCocoa', '~> 5'   # https://github.com/ReactiveX/RxSwift 
+  pod 'RxCocoa', '~> 5'   # https://github.com/ReactiveX/RxSwift
+  pod 'InputMask'   # https://github.com/RedMadRobot/input-mask-ios
 
 
   # target 'StorelinkTests' do

@@ -13,7 +13,6 @@ import RxCocoa
 final class ProfileViewController: ScrollViewController {
     
     private let viewModel: ProfileViewModel
-    private let disposeBag = DisposeBag()
     
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -31,7 +30,7 @@ final class ProfileViewController: ScrollViewController {
         button.setTitleColor(Colors.teal.color, for: .normal)
         button.setTitleColor(Colors.darkTeal.color, for: [.normal, .highlighted])
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        button.addTarget(self, action: #selector(authorizeButtonTapped), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(authorizeButtonTapped), for: .touchUpInside)
         button.setTitleColor(.black, for: .selected)
         return button
     }()
@@ -105,23 +104,23 @@ final class ProfileViewController: ScrollViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { (item) in
-//            print("\(item) selected")
-            }).disposed(by: disposeBag)
-    }
-    
-    @objc private func authorizeButtonTapped() {
-        let authorizationPopupView = ProfilePopupViewController()
-        authorizationPopupView.modalPresentationStyle = .custom
-        authorizationPopupView.transitioningDelegate = self
-        self.present(authorizationPopupView, animated: true, completion: nil)
-        
-        authorizationPopupView.loginAction = { [weak self] in
-            self?.navigationController?.present(UINavigationController(rootViewController: LoginViewController()), animated: true, completion: nil)
-        }
-        
-        authorizationPopupView.signupAction = { [weak self] in
             
-        }
+        }).disposed(by: disposeBag)
+        
+        authorizeButton.rx.tap.bind { [weak self] in
+            let authorizationPopupView = ProfilePopupViewController()
+            authorizationPopupView.modalPresentationStyle = .custom
+            authorizationPopupView.transitioningDelegate = self
+            self?.present(authorizationPopupView, animated: true, completion: nil)
+            
+            authorizationPopupView.loginAction = { [weak self] in
+                self?.navigationController?.present(UINavigationController(rootViewController: LoginViewController()), animated: true, completion: nil)
+            }
+            
+            authorizationPopupView.signupAction = { [weak self] in
+                self?.navigationController?.present(UINavigationController(rootViewController: SignupPhoneViewController()), animated: true, completion: nil)
+            }
+        }.disposed(by: disposeBag)
     }
 }
 
