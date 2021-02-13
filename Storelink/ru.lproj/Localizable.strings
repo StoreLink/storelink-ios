@@ -11,4 +11,17 @@
 "storage" = "Хранилище";
 "messages" = "Сообщения";
 "profile" = "Профиль";
-
+"login" = "Вход";
+"signup" = "Регистрация";
+"continue" = "Продолжить";
+"password" = "Пароль";
+"phone_number" = "Номер телефона";
+"login_to_account" = "Войти в кабинет";
+"account_settings" = "Настройки аккаунта";
+"login_or_register" = "Вход или регистрация";
+"login_to_manage_account" = "Авторизуйтесь чтобы управлять свойм аккаунтом";
+"personal_information" = "Персональная информация";
+"payment_methods" = "Методы оплаты";
+"notifications" = "Уведомления";
+"verification_required" = "Требуется проверка";
+"four_digit_code" = "Введите 4-значный код, отправленный на:";

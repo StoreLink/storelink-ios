@@ -11,3 +11,17 @@
 "storage" = "Storage";
 "messages" = "Messages";
 "profile" = "Profile";
+"login" = "Login";
+"signup" = "Sign up";
+"continue" = "Continue";
+"password" = "Password";
+"phone_number" = "Phone number";
+"login_to_account" = "Login to account";
+"account_settings" = "Account settings";
+"login_or_register" = "Login or register";
+"login_to_manage_account" = "Login to manage your account";
+"personal_information" = "Personal information";
+"payment_methods" = "Payment methods";
+"notifications" = "Notifications";
+"verification_required" = "Verification required";
+"four_digit_code" = "Enter 4-digit code sent to:";

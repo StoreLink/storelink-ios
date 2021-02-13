@@ -12,8 +12,9 @@ import RxCocoa
 final class ProfileViewModel {
     
     let profileItems: BehaviorRelay<[ProfileCellModel]> = BehaviorRelay(value: [
-        ProfileCellModel(name: "Персональная информация", image: Assets.personInfo.image),
-        ProfileCellModel(name: "Методы оплаты", image: Assets.paymentCard.image),
-        ProfileCellModel(name: "Уведомления", image: Assets.notification.image)])
+        ProfileCellModel(name: Strings.personalInformation, image: Assets.personInfo.image),
+        ProfileCellModel(name: Strings.paymentMethods, image: Assets.paymentCard.image),
+        ProfileCellModel(name: Strings.notifications, image: Assets.notification.image)
+    ])
     
 }

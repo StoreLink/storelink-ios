@@ -11,25 +11,29 @@ import InputMask
 
 final class SignupPhoneViewController: InitialViewController {
     
+    private enum Constants {
+        static let phoneFormat = "+7 ([000])-[000]-[00]-[00]"
+    }
+    
     private lazy var phoneMask: MaskedTextFieldDelegate = {
-        let mask = MaskedTextFieldDelegate(primaryFormat: "+7 ([000])-[000]-[00]-[00]")
+        let mask = MaskedTextFieldDelegate(primaryFormat: Constants.phoneFormat)
         mask.delegate = self
         return mask
     }()
     
     private lazy var phoneTextField: BaseTextField = {
         let textField = BaseTextField()
-        textField.placeholder = "Номер телефона"
+        textField.placeholder = Strings.phoneNumber
         textField.delegate = phoneMask
         return textField
     }()
     
-    private let continueButton = MainButton(title: "Продолжить")
+    private let continueButton = MainButton(title: Strings.continue)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Регистрация"
+        title = Strings.signup
     }
     
     override func setupUI() {

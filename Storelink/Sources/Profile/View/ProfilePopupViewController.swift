@@ -25,7 +25,7 @@ final class ProfilePopupViewController: UIViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Вход или регистрация"
+        label.text = Strings.loginOrRegister
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 0
@@ -34,7 +34,7 @@ final class ProfilePopupViewController: UIViewController {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Авторизуйтесь чтобы управлять свойм аккаунтом"
+        label.text = Strings.loginToManageAccount
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = .gray
         label.textAlignment = .center
@@ -43,13 +43,13 @@ final class ProfilePopupViewController: UIViewController {
     }()
     
     private let loginButton: MainButton = {
-        let button = MainButton(title: "Вход")
+        let button = MainButton(title: Strings.login)
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
     
     private let signupButton: SecondaryButton = {
-        let button = SecondaryButton(title: "Регистрация")
+        let button = SecondaryButton(title: Strings.signup)
         button.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         return button
     }()

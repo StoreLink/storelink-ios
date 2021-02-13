@@ -37,7 +37,7 @@ final class SignupOTPViewController: InitialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Регистрация"
+        title = Strings.signup
     }
     
     override func setupUI() {
@@ -63,7 +63,7 @@ final class SignupOTPViewController: InitialViewController {
     }
     
     func setData() {
-        titleLabel.text = "Требуется проверка"
-        descriptionLabel.text = "Введите 4-значный код, отправленный на:"
+        titleLabel.text = Strings.verificationRequired
+        descriptionLabel.text = Strings.fourDigitCode
     }
 }

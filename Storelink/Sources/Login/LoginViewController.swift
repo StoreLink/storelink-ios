@@ -11,29 +11,33 @@ import InputMask
 
 final class LoginViewController: InitialViewController {
     
+    private enum Constants {
+        static let phoneFormat = "+7 ([000])-[000]-[00]-[00]"
+    }
+    
     private lazy var phoneMask: MaskedTextFieldDelegate = {
-        let mask = MaskedTextFieldDelegate(primaryFormat: "+7 ([000])-[000]-[00]-[00]")
+        let mask = MaskedTextFieldDelegate(primaryFormat: Constants.phoneFormat)
         mask.delegate = self
         return mask
     }()
     
     private lazy var phoneNumberTextField: BaseTextField = {
         let textField = BaseTextField()
-        textField.placeholder = "Номер телефона"
+        textField.placeholder = Strings.phoneNumber
         textField.delegate = phoneMask
         return textField
     }()
     
     private lazy var passwordTextField: BaseTextField = {
         let textField = BaseTextField()
-        textField.placeholder = "Пароль"
+        textField.placeholder = Strings.password
         textField.isSecureTextEntry = true
         textField.rightView = passwordRightButton
         textField.rightViewMode = .always
         return textField
     }()
     
-    private let loginButton = MainButton(title: "Вход")
+    private let loginButton = MainButton(title: Strings.login)
     
     private let passwordRightButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -44,7 +48,7 @@ final class LoginViewController: InitialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Вход"
+        title = Strings.login
     }
     
     override func setupUI() {

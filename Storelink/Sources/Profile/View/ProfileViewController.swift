@@ -12,6 +12,10 @@ import RxCocoa
 
 final class ProfileViewController: ScrollViewController {
     
+    private enum Constants {
+        static let cellIdentifier = "cellId"
+    }
+    
     private let viewModel: ProfileViewModel
     
     private let avatarImageView: UIImageView = {
@@ -26,11 +30,10 @@ final class ProfileViewController: ScrollViewController {
     
     private let authorizeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Войти в кабинет", for: .normal)
+        button.setTitle(Strings.loginToAccount, for: .normal)
         button.setTitleColor(Colors.teal.color, for: .normal)
         button.setTitleColor(Colors.darkTeal.color, for: [.normal, .highlighted])
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-//        button.addTarget(self, action: #selector(authorizeButtonTapped), for: .touchUpInside)
         button.setTitleColor(.black, for: .selected)
         return button
     }()
@@ -40,7 +43,7 @@ final class ProfileViewController: ScrollViewController {
         tableView.rowHeight = 45
         tableView.isScrollEnabled = false
         tableView.showsVerticalScrollIndicator = false
-        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
         return tableView
     }()
     
@@ -98,7 +101,7 @@ final class ProfileViewController: ScrollViewController {
             .disposed(by: disposeBag)
         
         viewModel.profileItems.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: "cell", cellType: ProfileTableViewCell.self)) {row, item, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) {row, item, cell in
                 cell.profile = item
             }
             .disposed(by: disposeBag)
@@ -130,7 +133,7 @@ extension ProfileViewController: UITableViewDelegate {
         
         let label: UILabel = {
             let label = UILabel()
-            label.text = "Настройки аккаунта"
+            label.text = Strings.accountSettings
             label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
             label.textColor = .gray
             return label
