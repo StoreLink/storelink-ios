@@ -13,6 +13,17 @@
 		D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5B257299F500E01911 /* BaseTextField.swift */; };
 		D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */; };
 		D72F419425D7EC0D008282A4 /* SignupOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */; };
+		D72F419C25D92C50008282A4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F419B25D92C50008282A4 /* AppCoordinator.swift */; };
+		D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */; };
+		D72F41B225DA9191008282A4 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */; };
+		D72F41BA25DA9D88008282A4 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41B925DA9D88008282A4 /* MainCoordinator.swift */; };
+		D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41BF25DABA07008282A4 /* MainViewController.swift */; };
+		D72F41C525DABD0D008282A4 /* StorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */; };
+		D72F41CA25DABDD2008282A4 /* AddCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41C925DABDD2008282A4 /* AddCoordinator.swift */; };
+		D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */; };
+		D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41DF25DABFFE008282A4 /* StorageViewController.swift */; };
+		D72F41E825DAC012008282A4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41E725DAC012008282A4 /* AddViewController.swift */; };
+		D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41EC25DAC021008282A4 /* MessagesViewController.swift */; };
 		D7456EF925C4024D00F591B5 /* SecondaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7456EF825C4024D00F591B5 /* SecondaryButton.swift */; };
 		D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7456EFD25C9006500F591B5 /* TextFieldEffects.swift */; };
 		D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */; };
@@ -66,6 +77,17 @@
 		D70CEA5B257299F500E01911 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniitialViewController.swift; sourceTree = "<group>"; };
 		D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOTPViewModel.swift; sourceTree = "<group>"; };
+		D72F419B25D92C50008282A4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		D72F41B925DA9D88008282A4 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		D72F41BF25DABA07008282A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCoordinator.swift; sourceTree = "<group>"; };
+		D72F41C925DABDD2008282A4 /* AddCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoordinator.swift; sourceTree = "<group>"; };
+		D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
+		D72F41DF25DABFFE008282A4 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
+		D72F41E725DAC012008282A4 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		D72F41EC25DAC021008282A4 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		D7456EF825C4024D00F591B5 /* SecondaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondaryButton.swift; sourceTree = "<group>"; };
 		D7456EFD25C9006500F591B5 /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		D74642F4256B9F2F00E618B4 /* ScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +212,52 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		D72F41A325D948D6008282A4 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				D72F419B25D92C50008282A4 /* AppCoordinator.swift */,
+				D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */,
+				D72F41B925DA9D88008282A4 /* MainCoordinator.swift */,
+				D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */,
+				D72F41C925DABDD2008282A4 /* AddCoordinator.swift */,
+				D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */,
+				D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		D72F41BE25DA9E54008282A4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D72F41BF25DABA07008282A4 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		D72F41D625DABE50008282A4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				D72F41DF25DABFFE008282A4 /* StorageViewController.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		D72F41D725DABE6A008282A4 /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				D72F41E725DAC012008282A4 /* AddViewController.swift */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		D72F41DE25DABFDA008282A4 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				D72F41EC25DAC021008282A4 /* MessagesViewController.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		D74642F6256BAF1E00E618B4 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,9 +306,13 @@
 		D7949A8D25619B6200035D59 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D72F41BE25DA9E54008282A4 /* Main */,
+				D72F41D625DABE50008282A4 /* Storage */,
+				D72F41D725DABE6A008282A4 /* Add */,
+				D72F41DE25DABFDA008282A4 /* Messages */,
+				D74642F6256BAF1E00E618B4 /* Profile */,
 				D70CEA5225723DE000E01911 /* Signup */,
 				D70CEA5125723DBA00E01911 /* Login */,
-				D74642F6256BAF1E00E618B4 /* Profile */,
 				D7949A8E25619B7B00035D59 /* MainTabBar */,
 				D70CEA582572881E00E01911 /* Common */,
 			);
@@ -308,6 +380,7 @@
 			children = (
 				D7E6A951251215B700C7E0C9 /* AppDelegate.swift */,
 				D7E6A953251215B700C7E0C9 /* SceneDelegate.swift */,
+				D72F41A325D948D6008282A4 /* Coordinator */,
 				D7949A8D25619B6200035D59 /* Sources */,
 				D7E5B8ED25605240003D37B9 /* SwiftGen */,
 				D7E5B902256198A0003D37B9 /* ru.lproj */,
@@ -563,27 +636,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7456EF925C4024D00F591B5 /* SecondaryButton.swift in Sources */,
+				D72F41C525DABD0D008282A4 /* StorageCoordinator.swift in Sources */,
 				D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */,
 				D7E5B8F02560565A003D37B9 /* Colors.swift in Sources */,
 				D7E5B8F12560565A003D37B9 /* Assets.swift in Sources */,
 				D72F419425D7EC0D008282A4 /* SignupOTPViewModel.swift in Sources */,
 				D70CEA5425723E3800E01911 /* LoginViewController.swift in Sources */,
+				D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */,
+				D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */,
 				D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */,
+				D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */,
 				D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */,
 				D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */,
 				D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */,
+				D72F41E825DAC012008282A4 /* AddViewController.swift in Sources */,
 				D7464305256E718600E618B4 /* ProfilePopupViewController.swift in Sources */,
 				D70CEA5725723E7C00E01911 /* SignupPhoneViewController.swift in Sources */,
+				D72F419C25D92C50008282A4 /* AppCoordinator.swift in Sources */,
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D7750A2325D2CAB700E3A4C5 /* SignupOTPViewController.swift in Sources */,
+				D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */,
+				D72F41B225DA9191008282A4 /* ProfileCoordinator.swift in Sources */,
 				D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */,
 				D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */,
 				D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */,
+				D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */,
 				D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */,
 				D79DCC3C25C2CAE100DE6DCD /* MainButton.swift in Sources */,
 				D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */,
 				D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */,
+				D72F41CA25DABDD2008282A4 /* AddCoordinator.swift in Sources */,
 				D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */,
+				D72F41BA25DA9D88008282A4 /* MainCoordinator.swift in Sources */,
 				D7E5B900256193C5003D37B9 /* Strings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

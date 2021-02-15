@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-bookmark-2.png",
+      "filename" : "icons8-add.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-bookmark-1.png",
+      "filename" : "icons8-add-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-bookmark.png",
+      "filename" : "icons8-add-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

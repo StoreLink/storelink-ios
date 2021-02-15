@@ -12,10 +12,10 @@ import Foundation
 internal enum Strings {
   /// Настройки аккаунта
   internal static let accountSettings = Strings.tr("Localizable", "account_settings")
+  /// Добавить
+  internal static let add = Strings.tr("Localizable", "add")
   /// Продолжить
   internal static let `continue` = Strings.tr("Localizable", "continue")
-  /// Избранное
-  internal static let favorites = Strings.tr("Localizable", "favorites")
   /// Введите 4-значный код, отправленный на:
   internal static let fourDigitCode = Strings.tr("Localizable", "four_digit_code")
   /// Вход

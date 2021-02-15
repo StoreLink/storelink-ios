@@ -7,7 +7,7 @@
 */
 
 "main" = "Main";
-"favorites" = "Favorites";
+"add" = "Add";
 "storage" = "Storage";
 "messages" = "Messages";
 "profile" = "Profile";

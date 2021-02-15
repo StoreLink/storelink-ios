@@ -16,6 +16,8 @@ final class ProfileViewController: ScrollViewController {
         static let cellIdentifier = "cellId"
     }
     
+    var coordinator: ProfileFlow?
+    
     private let viewModel: ProfileViewModel
     
     private let avatarImageView: UIImageView = {
@@ -58,7 +60,7 @@ final class ProfileViewController: ScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = Strings.profile
+        title = Strings.profile  
     }
     
     override func setupUI() {
@@ -101,13 +103,14 @@ final class ProfileViewController: ScrollViewController {
             .disposed(by: disposeBag)
         
         viewModel.profileItems.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) {row, item, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) { row, item, cell in
                 cell.profile = item
+                print(row)
             }
             .disposed(by: disposeBag)
         
-        tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { (item) in
-            
+        tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { item in
+            print(item)
         }).disposed(by: disposeBag)
         
         authorizeButton.rx.tap.bind { [weak self] in

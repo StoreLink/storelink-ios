@@ -28,7 +28,7 @@ internal enum Assets {
   internal static let person = ImageAsset(name: "person")
   internal static let personInfo = ImageAsset(name: "person_info")
   internal static let rightArrow = ImageAsset(name: "right_arrow")
-  internal static let tabFavorite = ImageAsset(name: "tab_favorite")
+  internal static let tabAdd = ImageAsset(name: "tab_add")
   internal static let tabMain = ImageAsset(name: "tab_main")
   internal static let tabMessage = ImageAsset(name: "tab_message")
   internal static let tabProfile = ImageAsset(name: "tab_profile")

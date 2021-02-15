@@ -8,10 +8,7 @@
 
 import UIKit
 
-/**
- An AkiraTextField is a subclass of the TextFieldEffects object, is a control that displays an UITextField with a customizable visual effect around the edges of the control.
- */
-@IBDesignable open class BaseTextField: TextFieldEffects {
+open class BaseTextField: TextFieldEffects {
     
     private enum Constants {
         static let borderSize: CGFloat = 1

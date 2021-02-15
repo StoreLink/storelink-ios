@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTableViewCell: UITableViewCell {
+final class ProfileTableViewCell: UITableViewCell {
     
     var profile: ProfileCellModel? {
         didSet {
