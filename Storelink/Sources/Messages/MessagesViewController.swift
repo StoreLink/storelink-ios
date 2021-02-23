@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessagesViewController: InitialViewController {
+final class MessagesViewController: InitialViewController {
     
     var coordinator: MessagesFlow?
 

@@ -37,7 +37,7 @@ final class ProfileTableViewCell: UITableViewCell {
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
         
     }
@@ -52,9 +52,8 @@ final class ProfileTableViewCell: UITableViewCell {
         }
         
         iconImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(20)
+            $0.centerY.equalToSuperview()
             $0.left.equalToSuperview().offset(20)
-            $0.bottom.equalToSuperview().offset(-20)
             $0.width.height.equalTo(25)
         }
         

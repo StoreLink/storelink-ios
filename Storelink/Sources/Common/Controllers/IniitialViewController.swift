@@ -11,7 +11,7 @@ import RxSwift
 
 class InitialViewController: UIViewController {
     
-    var disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -28,6 +28,33 @@ class InitialViewController: UIViewController {
         
         setupUI()
         bind()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        setBackButton()
+    }
+    
+    func setBackButton() {
+        if let count = self.navigationController?.viewControllers.count, count <= 1 {
+            self.navigationItem.leftBarButtonItem = nil
+        } else {
+            let leftBarButtonItem: UIBarButtonItem = {
+                let barButtonItem = UIBarButtonItem()
+                barButtonItem.image = Assets.back.image
+                barButtonItem.title = ""
+                barButtonItem.tintColor = .black
+                barButtonItem.target = self
+                barButtonItem.action = #selector(backAction)
+                return barButtonItem
+            }()
+            navigationItem.leftBarButtonItem = leftBarButtonItem
+        }
+    }
+    
+    @objc private func backAction() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func setupUI() {}

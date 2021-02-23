@@ -16,9 +16,8 @@ final class ProfileViewController: ScrollViewController {
         static let cellIdentifier = "cellId"
     }
     
-    var coordinator: ProfileFlow?
-    
     private let viewModel: ProfileViewModel
+    var coordinator: ProfileFlow?    
     
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -105,7 +104,6 @@ final class ProfileViewController: ScrollViewController {
         viewModel.profileItems.asObservable()
             .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) { row, item, cell in
                 cell.profile = item
-                print(row)
             }
             .disposed(by: disposeBag)
         
@@ -114,23 +112,13 @@ final class ProfileViewController: ScrollViewController {
         }).disposed(by: disposeBag)
         
         authorizeButton.rx.tap.bind { [weak self] in
-            let authorizationPopupView = ProfilePopupViewController()
-            authorizationPopupView.modalPresentationStyle = .custom
-            authorizationPopupView.transitioningDelegate = self
-            self?.present(authorizationPopupView, animated: true, completion: nil)
-            
-            authorizationPopupView.loginAction = { [weak self] in
-                self?.navigationController?.present(UINavigationController(rootViewController: LoginViewController()), animated: true, completion: nil)
-            }
-            
-            authorizationPopupView.signupAction = { [weak self] in
-                self?.navigationController?.present(UINavigationController(rootViewController: SignupPhoneViewController()), animated: true, completion: nil)
-            }
+            self?.coordinator?.showPopupView()
         }.disposed(by: disposeBag)
     }
 }
 
 extension ProfileViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         
@@ -151,11 +139,5 @@ extension ProfileViewController: UITableViewDelegate {
         }
         
         return headerView
-    }
-}
-
-extension ProfileViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }

@@ -8,13 +8,12 @@
 
 import UIKit
 
-final class ProfilePopupViewController: UIViewController {
+final class ProfilePopupViewController: InitialViewController {
     
     private var hasSetPointOrigin = false
     private var pointOrigin: CGPoint?
     
-    var signupAction: (() -> Void)?
-    var loginAction: (() -> Void)?
+    var coordinator: ProfileFlow?
     
     private let topHandleView: UIView = {
         let view = UIView()
@@ -42,17 +41,9 @@ final class ProfilePopupViewController: UIViewController {
         return label
     }()
     
-    private let loginButton: MainButton = {
-        let button = MainButton(title: Strings.login)
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        return button
-    }()
+    private let loginButton = MainButton(title: Strings.login)
     
-    private let signupButton: SecondaryButton = {
-        let button = SecondaryButton(title: Strings.signup)
-        button.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
-        return button
-    }()
+    private let signupButton = SecondaryButton(title: Strings.signup)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +61,7 @@ final class ProfilePopupViewController: UIViewController {
         }
     }
     
-    private func setupUI() {
+    override func setupUI() {
         view.backgroundColor = .white
         [topHandleView, titleLabel, descriptionLabel, loginButton, signupButton].forEach {
             view.addSubview($0)
@@ -108,14 +99,14 @@ final class ProfilePopupViewController: UIViewController {
         }
     }
     
-    @objc private func loginButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
-        loginAction?()
-    }
-    
-    @objc private func signupButtonTapped() {
-        self.dismiss(animated: true, completion: nil)
-        signupAction?()
+    override func bind() {
+        loginButton.rx.tap.bind { [weak self] in
+            self?.coordinator?.showLoginView()
+        }.disposed(by: disposeBag)
+        
+        signupButton.rx.tap.bind { [weak self] in
+            self?.coordinator?.showSignupView()
+        }.disposed(by: disposeBag)
     }
     
     @objc private func swipeDownGestureAction(sender: UIPanGestureRecognizer) {

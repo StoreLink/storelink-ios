@@ -30,6 +30,8 @@ final class SignupPhoneViewController: InitialViewController {
     
     private let continueButton = MainButton(title: Strings.continue)
     
+    var coordinator: SignupFlow?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,9 +59,7 @@ final class SignupPhoneViewController: InitialViewController {
     
     override func bind() {
         continueButton.rx.tap.bind { [weak self] in
-            let viewModel = SignupOTPViewModel(phoneNumber: self?.phoneTextField.text ?? "")
-            let viewController = SignupOTPViewController(viewModel: viewModel)
-            self?.navigationController?.pushViewController(viewController, animated: true)
+            self?.coordinator?.showOTPView(phoneNumber: self?.phoneTextField.text ?? "")
         }.disposed(by: disposeBag)
     }
     

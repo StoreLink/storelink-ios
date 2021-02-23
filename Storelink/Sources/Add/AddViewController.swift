@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddViewController: InitialViewController {
+final class AddViewController: InitialViewController {
     
     var coordinator: AddFlow?
 

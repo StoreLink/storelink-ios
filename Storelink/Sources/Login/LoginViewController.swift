@@ -44,6 +44,8 @@ final class LoginViewController: InitialViewController {
         button.setImage(Assets.eye.image, for: .normal)
         return button
     }()
+    
+    var coordinator: LoginFlow?
 
     override func viewDidLoad() {
         super.viewDidLoad()

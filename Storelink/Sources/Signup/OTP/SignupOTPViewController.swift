@@ -12,19 +12,21 @@ final class SignupOTPViewController: InitialViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         label.textAlignment = .center
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 0
         return label
     }()
     
     private let viewModel: SignupOTPViewModel
+    
+    var coordinator: SignupFlow?
     
     init(viewModel: SignupOTPViewModel) {
         self.viewModel = viewModel
@@ -64,6 +66,14 @@ final class SignupOTPViewController: InitialViewController {
     
     func setData() {
         titleLabel.text = Strings.verificationRequired
-        descriptionLabel.text = Strings.fourDigitCode
+        
+        let text: NSMutableAttributedString = .init(string: Strings.fourDigitCode + "\n" + viewModel.phoneNumber, attributes: [ .foregroundColor: UIColor.lightGray])
+        let range: NSRange = text.mutableString.range(of: viewModel.phoneNumber)
+        text.addAttributes([.foregroundColor: UIColor.black], range: range)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 4
+        text.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSRange(location: 0, length: text.length))
+        descriptionLabel.attributedText = text
+        descriptionLabel.textAlignment = .center
     }
 }

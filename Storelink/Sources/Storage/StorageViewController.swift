@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StorageViewController: InitialViewController {
+final class StorageViewController: InitialViewController {
 
     var coordinator: StorageFlow?
     
