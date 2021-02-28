@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 
 protocol Coordinator {
     func start()
@@ -27,11 +29,17 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
+        enableGoogleMaps()
         let navigationController = UINavigationController()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
         coordinate(to: tabBarCoordinator)
+    }
+    
+    private func enableGoogleMaps() {
+        GMSServices.provideAPIKey(GlobalConstants.googleMapsAPIKey)
+        GMSPlacesClient.provideAPIKey(GlobalConstants.googleMapsAPIKey)
     }
 }

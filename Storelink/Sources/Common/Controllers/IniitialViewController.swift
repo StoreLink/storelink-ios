@@ -33,10 +33,10 @@ class InitialViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setBackButton()
+        setNavigationLeftBarButton()
     }
     
-    func setBackButton() {
+    func setNavigationLeftBarButton() {
         if let count = self.navigationController?.viewControllers.count, count <= 1 {
             self.navigationItem.leftBarButtonItem = nil
         } else {

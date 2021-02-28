@@ -39,6 +39,8 @@
 		D7750A2325D2CAB700E3A4C5 /* SignupOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */; };
 		D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */; };
 		D79DCC3C25C2CAE100DE6DCD /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79DCC3B25C2CAE100DE6DCD /* MainButton.swift */; };
+		D7AF66F025E6B0010088522F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF66EF25E6B0010088522F /* MapViewController.swift */; };
+		D7AF671E25E83A9A0088522F /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF671D25E83A9A0088522F /* GlobalConstants.swift */; };
 		D7CEC97525E433750051D0CF /* StorageDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */; };
 		D7CEC97D25E43C480051D0CF /* StorageDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CEC97C25E43C480051D0CF /* StorageDescriptionViewModel.swift */; };
 		D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E5B8E625601604003D37B9 /* MainTabBarController.swift */; };
@@ -113,6 +115,8 @@
 		D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOTPViewController.swift; sourceTree = "<group>"; };
 		D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		D79DCC3B25C2CAE100DE6DCD /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		D7AF66EF25E6B0010088522F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		D7AF671D25E83A9A0088522F /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDescriptionViewController.swift; sourceTree = "<group>"; };
 		D7CEC97C25E43C480051D0CF /* StorageDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDescriptionViewModel.swift; sourceTree = "<group>"; };
 		D7E5B8E625601604003D37B9 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 		D70CEA582572881E00E01911 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D7AF671C25E83A770088522F /* Constants */,
 				D72F41F425DBEA32008282A4 /* TransitioningDelegate */,
 				D70CEA5A257299BD00E01911 /* Views */,
 				D70CEA59257299B500E01911 /* Controllers */,
@@ -341,6 +346,7 @@
 		D7949A8D25619B6200035D59 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				D7AF66EE25E6AFEC0088522F /* Map */,
 				D72F41BE25DA9E54008282A4 /* Main */,
 				D7CEC97025E432880051D0CF /* StorageDescription */,
 				D72F41D625DABE50008282A4 /* Storage */,
@@ -361,6 +367,22 @@
 				D7E5B8E625601604003D37B9 /* MainTabBarController.swift */,
 			);
 			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		D7AF66EE25E6AFEC0088522F /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				D7AF66EF25E6B0010088522F /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		D7AF671C25E83A770088522F /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D7AF671D25E83A9A0088522F /* GlobalConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		D7CEC97025E432880051D0CF /* StorageDescription */ = {
@@ -535,6 +557,7 @@
 				37A5F2452BFF69DB21DC5C17 /* [CP] Embed Pods Frameworks */,
 				D7E5B8E3255FFD5E003D37B9 /* ⚙️SwiftLint */,
 				D7E5B8EC25604DC9003D37B9 /* ⚙️SwiftGen */,
+				38173E3CA08DD9E81AE23FE0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -694,6 +717,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		38173E3CA08DD9E81AE23FE0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Storelink/Pods-Storelink-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D7E5B8E3255FFD5E003D37B9 /* ⚙️SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -749,7 +789,9 @@
 				D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */,
 				D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */,
 				D7CEC97D25E43C480051D0CF /* StorageDescriptionViewModel.swift in Sources */,
+				D7AF671E25E83A9A0088522F /* GlobalConstants.swift in Sources */,
 				D7F66DF825DD119B00D5D569 /* SignupPhoneViewModel.swift in Sources */,
+				D7AF66F025E6B0010088522F /* MapViewController.swift in Sources */,
 				D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */,
 				D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */,
 				D7E6A954251215B700C7E0C9 /* SceneDelegate.swift in Sources */,

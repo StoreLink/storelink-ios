@@ -9,11 +9,12 @@
 import UIKit
 
 protocol MainFlow: class {
-   func showStorageDescriptionView()
+    func showStorageDescriptionView()
+    func showMapView()
+    func closeMapView()
 }
 
 class MainCoordinator: Coordinator, MainFlow {
-    
     weak var navigationController: UINavigationController?
     
     init(navigationController: UINavigationController) {
@@ -33,5 +34,16 @@ class MainCoordinator: Coordinator, MainFlow {
         let viewModel = StorageDescriptionViewModel()
         let viewController = StorageDescriptionViewController(viewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showMapView() {
+        let viewController = MapViewController()
+        viewController.coordinator = self
+        viewController.modalPresentationStyle = .fullScreen
+        navigationController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    func closeMapView() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 }

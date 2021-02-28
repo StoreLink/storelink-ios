@@ -19,6 +19,12 @@ final class MainViewController: InitialViewController {
     private let viewModel: MainViewModel
     var coordinator: MainFlow?
     
+    private let mapBarButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "Map"
+        return button
+    }()
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -54,6 +60,10 @@ final class MainViewController: InitialViewController {
             self?.coordinator?.showStorageDescriptionView()
         }).disposed(by: disposeBag)
         
+        mapBarButtonItem.rx.tap.bind { [weak self] in
+            self?.coordinator?.showMapView()
+        }.disposed(by: disposeBag)
+        
         let input = MainViewModel.Input()
         let output = viewModel.transform(input: input)
         
@@ -71,6 +81,10 @@ final class MainViewController: InitialViewController {
             $0.right.equalToSuperview().offset(-25)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+    }
+    
+    override func setNavigationLeftBarButton() {
+        navigationItem.leftBarButtonItem = mapBarButtonItem
     }
 
 }

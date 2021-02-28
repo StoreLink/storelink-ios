@@ -12,6 +12,10 @@ target 'Storelink' do
   pod 'RxSwift', '~> 5'   # https://github.com/ReactiveX/RxSwift   
   pod 'RxCocoa', '~> 5'   # https://github.com/ReactiveX/RxSwift
   pod 'InputMask'   # https://github.com/RedMadRobot/input-mask-ios
+  pod 'ImageSlideshow'   # https://github.com/zvonicek/ImageSlideshow
+  pod 'ImageSlideshow/SDWebImage'
+  pod 'GoogleMaps'   # https://github.com/googlemaps/maps-sdk-for-ios-samples  
+  pod 'GooglePlaces'
 
 
   # target 'StorelinkTests' do
@@ -23,4 +27,12 @@ target 'Storelink' do
   #   # Pods for testing
   # end
 
+end
+
+post_install do |installer|
+   installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+         config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+      end
+   end
 end
