@@ -14,6 +14,7 @@ target 'Storelink' do
   pod 'InputMask'   # https://github.com/RedMadRobot/input-mask-ios
   pod 'ImageSlideshow'   # https://github.com/zvonicek/ImageSlideshow
   pod 'ImageSlideshow/SDWebImage'
+  pod 'Hero'  # https://github.com/HeroTransitions/Hero
   pod 'GoogleMaps'   # https://github.com/googlemaps/maps-sdk-for-ios-samples  
   pod 'GooglePlaces'
 

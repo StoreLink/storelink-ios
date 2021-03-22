@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainFlow: class {
-    func showStorageDescriptionView()
+    func showStorageDescriptionView(storageItem: StorageItem)
     func showMapView()
     func closeMapView()
 }
@@ -25,13 +25,12 @@ class MainCoordinator: Coordinator, MainFlow {
         let viewModel = MainViewModel()
         let viewController = MainViewController(viewModel: viewModel)
         viewController.coordinator = self
-        
         navigationController?.pushViewController(viewController, animated: false)
     }
     
     // MARK: - Flow Methods
-    func showStorageDescriptionView() {
-        let viewModel = StorageDescriptionViewModel()
+    func showStorageDescriptionView(storageItem: StorageItem) {
+        let viewModel = StorageDescriptionViewModel(storageItem: storageItem)
         let viewController = StorageDescriptionViewController(viewModel: viewModel)
         navigationController?.pushViewController(viewController, animated: true)
     }

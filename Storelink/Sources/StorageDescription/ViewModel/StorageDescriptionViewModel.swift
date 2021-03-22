@@ -18,6 +18,12 @@ final class StorageDescriptionViewModel: ViewModel, ViewModelType {
         
     }
     
+    let storageItem: StorageItem
+    
+    init(storageItem: StorageItem) {
+        self.storageItem = storageItem
+    }
+    
     func transform(input: Input) -> Output {
         
         return Output()

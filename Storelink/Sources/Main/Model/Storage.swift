@@ -9,8 +9,14 @@
 import Foundation
 
 struct StorageItem {
-    let title: String
+    let id: Int
+    let name: String
     let description: String
-    let location: String
     let price: Int
+    let size: Int
+    let location: String
+    let publishTime: String
+    let availableTime: String
+    let images: [String]
+    let type: String
 }

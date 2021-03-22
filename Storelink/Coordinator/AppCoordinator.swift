@@ -30,11 +30,11 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         enableGoogleMaps()
-        let navigationController = UINavigationController()
-        window.rootViewController = navigationController
+        let tabBarNavigationController = UINavigationController()
+        window.rootViewController = tabBarNavigationController
         window.makeKeyAndVisible()
         
-        let tabBarCoordinator = TabBarCoordinator(navigationController: navigationController)
+        let tabBarCoordinator = TabBarCoordinator(navigationController: tabBarNavigationController)
         coordinate(to: tabBarCoordinator)
     }
     

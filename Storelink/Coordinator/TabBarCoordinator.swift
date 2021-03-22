@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Hero
 
 class TabBarCoordinator: Coordinator {
     let navigationController: UINavigationController
@@ -17,10 +18,13 @@ class TabBarCoordinator: Coordinator {
     
     func start() {
         let tabBarController = MainTabBarController()
+        tabBarController.hero.isEnabled = true
         tabBarController.modalPresentationStyle = .overFullScreen
         tabBarController.coordinator = self
         
         let mainNavigationController = UINavigationController()
+        mainNavigationController.hero.isEnabled = true
+        mainNavigationController.heroNavigationAnimationType = .cover(direction: .up)
         mainNavigationController.tabBarItem.image = Assets.tabMain.image
         let mainCoordinator = MainCoordinator(navigationController: mainNavigationController)
         

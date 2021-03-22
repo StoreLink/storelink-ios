@@ -35,13 +35,7 @@ final class MapViewController: InitialViewController {
         return mapView
     }()
     
-    private let closeButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Assets.close.image, for: .normal)
-        button.backgroundColor = .white
-        button.layer.cornerRadius = 20
-        return button
-    }()
+    private let closeButton: CustomNavigationBarButton = .init(image: Assets.close.image)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +50,6 @@ final class MapViewController: InitialViewController {
         closeButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
             $0.left.equalToSuperview().offset(20)
-            $0.height.width.equalTo(40)
-        }
-        closeButton.imageView?.snp.makeConstraints {
-            $0.height.width.equalTo(20)
         }
     }
     

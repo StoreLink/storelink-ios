@@ -21,7 +21,15 @@ final class MainViewController: InitialViewController {
     
     private let mapBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.title = "Map"
+        button.image = Assets.map.image
+        button.tintColor = Colors.teal.color
+        return button
+    }()
+    
+    private let filterBarButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = Assets.filter.image
+        button.tintColor = Colors.teal.color
         return button
     }()
     
@@ -34,7 +42,7 @@ final class MainViewController: InitialViewController {
         return tableView
     }()
     
-    private let dataSource: BehaviorRelay<[StorageItem]> = .init(value: [])
+    private let dataSource: PublishRelay<[StorageItem]> = .init()
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -50,19 +58,21 @@ final class MainViewController: InitialViewController {
     }
     
     override func bind() {
-        dataSource.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: MainTableViewCell.self)) { _, item, cell in
-                cell.storageItem = item
+        dataSource
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: MainTableViewCell.self)) { _, model, cell in
+                cell.storageItem = model
             }
             .disposed(by: disposeBag)
 
         tableView.rx.modelSelected(StorageItem.self).subscribe(onNext: { [weak self] item in
-            self?.coordinator?.showStorageDescriptionView()
-        }).disposed(by: disposeBag)
+            self?.coordinator?.showStorageDescriptionView(storageItem: item)
+        })
+        .disposed(by: disposeBag)
         
         mapBarButtonItem.rx.tap.bind { [weak self] in
             self?.coordinator?.showMapView()
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
         
         let input = MainViewModel.Input()
         let output = viewModel.transform(input: input)
@@ -73,10 +83,10 @@ final class MainViewController: InitialViewController {
     }
     
     override func setupUI() {
+        setNavigationRightBarButtonItem()
         view.addSubview(tableView)
-
         tableView.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.left.equalToSuperview().offset(25)
             $0.right.equalToSuperview().offset(-25)
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
@@ -85,6 +95,10 @@ final class MainViewController: InitialViewController {
     
     override func setNavigationLeftBarButton() {
         navigationItem.leftBarButtonItem = mapBarButtonItem
+    }
+    
+    func setNavigationRightBarButtonItem() {
+        navigationItem.rightBarButtonItem = filterBarButtonItem
     }
 
 }

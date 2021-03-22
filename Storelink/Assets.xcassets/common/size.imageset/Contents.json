@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-paper_money-2.png",
+      "filename" : "icons8-full_screen 1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-paper_money-1.png",
+      "filename" : "icons8-full_screen 1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-paper_money.png",
+      "filename" : "icons8-full_screen 1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

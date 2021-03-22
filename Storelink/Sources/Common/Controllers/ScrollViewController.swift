@@ -21,14 +21,16 @@ class ScrollViewController: InitialViewController {
         return scrollView
     }()
     
-    let _contentView: UIView = {
+    let _containerView: UIView = {
         let view = UIView()
         return view
     }()
     
-    let _contentStackView: UIStackView = {
+    let _stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fill
         return stackView
     }()
     
@@ -41,19 +43,19 @@ class ScrollViewController: InitialViewController {
     
     override func setupUI() {
         setupScrollView()
-        setupContentView()
-        setupContentStackView()
+        setupContainerView()
+        setupStackView()
     }
     
     // MARK: - Methods
     
     func addView(view: UIView) {
-        _contentStackView.addArrangedSubview(view)
+        _stackView.addArrangedSubview(view)
     }
     
     func addSpaceView(withSpacing spacing: CGFloat) {
         let spaceView = UIView()
-        _contentStackView.addArrangedSubview(spaceView)
+        _stackView.addArrangedSubview(spaceView)
         spaceView.snp.makeConstraints {
             $0.height.equalTo(spacing)
         }
@@ -63,19 +65,20 @@ class ScrollViewController: InitialViewController {
         view.addSubview(_scrollView)
         _scrollView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+            $0.width.equalTo(view)
         }
     }
     
-    private func setupContentView() {
-        _scrollView.addSubview(_contentView)
-        _contentView.snp.makeConstraints {
+    private func setupContainerView() {
+        _scrollView.addSubview(_containerView)
+        _containerView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
     
-    private func setupContentStackView() {
-        _contentView.addSubview(_contentStackView)
-        _contentStackView.snp.makeConstraints {
+    private func setupStackView() {
+        _containerView.addSubview(_stackView)
+        _stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
             $0.width.equalTo(view)
         }

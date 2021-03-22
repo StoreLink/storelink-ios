@@ -7,15 +7,25 @@
 //
 
 import UIKit
+import SDWebImage
 
-class MainTableViewCell: UITableViewCell {
+final class MainTableViewCell: UITableViewCell {
     
     var storageItem: StorageItem? {
         didSet {
-            titleLabel.text = storageItem?.title
-            descriptionLabel.text = storageItem?.description
+            storageImageView.sd_setImage(with: URL(string: (storageItem?.images.first)!))
+            storageImageView.heroID = String(storageItem?.id ?? 0)
+            typeLabel.text = storageItem?.type
+            titleLabel.text = storageItem?.name
+            var price = String(storageItem?.price ?? 0)
+            price.addSymbol(symbol: GlobalConstants.tgm)
+            priceLabel.text = price
             locationLabel.text = storageItem?.location
-            priceLabel.text = String(storageItem?.price ?? 0)
+            var size = String(storageItem?.size ?? 0)
+            size.addSymbol(symbol: GlobalConstants.m)
+            sizeLabel.text = size
+            timeLabel.text = storageItem?.availableTime
+            publishDateLabel.text = storageItem?.publishTime
         }
     }
     
@@ -39,55 +49,60 @@ class MainTableViewCell: UITableViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 10
         imageView.backgroundColor = .lightGray
+        imageView.clipsToBounds = true
         return imageView
+    }()
+    
+    private let typeLabel: LabelWithBackgroundView = {
+        let label = LabelWithBackgroundView()
+        return label
     }()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 16)
+        label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         label.textAlignment = .left
+        label.numberOfLines = 1
         return label
-    }()
-    
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.textColor = .darkGray
-        label.textAlignment = .left
-        return label
-    }()
-    
-    private let locationImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Assets.location.image
-        imageView.contentMode = .scaleAspectFill
-        imageView.snp.makeConstraints {
-            $0.height.width.equalTo(16)
-        }
-        return imageView
-    }()
-    
-    private let locationLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textAlignment = .left
-        return label
-    }()
-    
-    private let priceImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = Assets.money.image
-        imageView.contentMode = .scaleAspectFill
-        imageView.snp.makeConstraints {
-            $0.height.width.equalTo(16)
-        }
-        return imageView
     }()
     
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
+        label.textAlignment = .right
+        return label
+    }()
+    
+    private let locationLabel: LabelWithLeftImageView = {
+        let label = LabelWithLeftImageView()
+        label.image = Assets.location.image
+        label.titleFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.titleColor = UIColor.gray
+        label.spacing = 3
+        return label
+    }()
+    
+    private let sizeLabel: LabelWithLeftImageView = {
+        let label = LabelWithLeftImageView()
+        label.image = Assets.size.image
+        label.titleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.spacing = 5
+        return label
+    }()
+    
+    private let timeLabel: LabelWithLeftImageView = {
+        let label = LabelWithLeftImageView()
+        label.image = Assets.clock.image
+        label.titleFont = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.spacing = 5
+        return label
+    }()
+    
+    private let publishDateLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .right
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .gray
         return label
     }()
     
@@ -104,59 +119,61 @@ class MainTableViewCell: UITableViewCell {
     func setupUI() {
         backgroundColor = .clear
         selectionStyle = .none
-        
-        addSubview(roundedView)
+        contentView.addSubview(roundedView)
         
         roundedView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-30)
+            $0.bottom.equalToSuperview().offset(-20)
         }
         
-        [storageImageView, titleLabel, descriptionLabel].forEach {
+        [storageImageView, titleLabel, priceLabel, locationLabel, sizeLabel, timeLabel, publishDateLabel].forEach {
             roundedView.addSubview($0)
         }
         
         storageImageView.snp.makeConstraints {
-            $0.top.left.right.equalToSuperview()
+            $0.top.equalToSuperview().offset(10)
+            $0.left.right.equalToSuperview()
             $0.height.equalTo(200)
+        }
+        
+        storageImageView.addSubview(typeLabel)
+        typeLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(10)
+            $0.bottom.equalToSuperview().offset(-10)
         }
         
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(storageImageView.snp.bottom).offset(10)
             $0.left.equalToSuperview()
+        }
+        
+        priceLabel.snp.makeConstraints {
+            $0.centerY.equalTo(titleLabel.snp.centerY)
+            $0.left.greaterThanOrEqualTo(titleLabel.snp.right).offset(5)
             $0.right.equalToSuperview()
         }
         
-        descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
+        locationLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(4)
             $0.left.equalToSuperview()
-            $0.right.equalToSuperview()
+            $0.height.equalTo(15)
         }
         
-        let locationStackView = createStackView(views: [locationImageView, locationLabel])
-        roundedView.addSubview(locationStackView)
-        
-        locationStackView.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(5)
-            $0.left.equalToSuperview()
-        }
-        
-        let priceStackView = createStackView(views: [priceImageView, priceLabel])
-        roundedView.addSubview(priceStackView)
-        
-        priceStackView.snp.makeConstraints {
-            $0.top.equalTo(locationStackView.snp.bottom).offset(5)
+        sizeLabel.snp.makeConstraints {
+            $0.top.equalTo(locationLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
-    }
-    
-    func createStackView(views: [UIView]) -> UIView {
-        let collectionView = UIStackView(arrangedSubviews: views)
-        collectionView.axis = .horizontal
-        collectionView.spacing = 5
-        collectionView.alignment = .center
-        collectionView.distribution = .fill
-        return collectionView
+        
+        timeLabel.snp.makeConstraints {
+            $0.centerY.equalTo(sizeLabel.snp.centerY)
+            $0.left.equalTo(sizeLabel.snp.right).offset(15)
+        }
+        
+        publishDateLabel.snp.makeConstraints {
+            $0.centerY.equalTo(sizeLabel.snp.centerY)
+            $0.left.greaterThanOrEqualTo(timeLabel.snp.right)
+            $0.right.equalToSuperview()
+        }
     }
 }
