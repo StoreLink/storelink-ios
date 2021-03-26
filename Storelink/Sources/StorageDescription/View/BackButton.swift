@@ -10,9 +10,15 @@ import UIKit
 
 final class BackButton: UIButton {
     
+    var color: UIColor = .white {
+        didSet {
+            backgroundColor = color
+        }
+    }
+    
     override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? UIColor.white.shade(.dark) : .white
+            backgroundColor = isHighlighted ? color.shade(.dark) : color
         }
     }
 
@@ -27,9 +33,10 @@ final class BackButton: UIButton {
     
     func setupView() {
         setImage(Assets.back.image, for: .normal)
-        backgroundColor = .white
+        backgroundColor = color
         layer.cornerRadius = 10
         setupShadow()
+        frame = CGRect(x: 0, y: 0, width: 35, height: 35)
         imageView?.snp.makeConstraints {
             $0.size.equalTo(20)
         }
@@ -45,4 +52,13 @@ final class BackButton: UIButton {
         layer.rasterizationScale = UIScreen.main.scale
     }
     
+    func hideShadows() {
+        color = .clear
+        layer.shadowOpacity = 0
+    }
+    
+    func showShadows() {
+        color = .white
+        layer.shadowOpacity = 0.5
+    }
 }

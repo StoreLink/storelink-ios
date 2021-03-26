@@ -119,7 +119,6 @@ final class StorageDescriptionViewController: ScrollViewController {
         button.imageView?.tintColor = Colors.teal.color
         button.layer.cornerRadius = 10
         button.tintColor = Colors.teal.color
-        button.offConstraint()
         return button
     }()
     
@@ -129,7 +128,6 @@ final class StorageDescriptionViewController: ScrollViewController {
         button.setImage(UIImage(systemName: Constants.phoneImageSFPath), for: .normal)
         button.imageView?.tintColor = Colors.teal.color
         button.layer.cornerRadius = 10
-        button.offConstraint()
         return button
     }()
     
@@ -166,22 +164,28 @@ final class StorageDescriptionViewController: ScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        _scrollView.delegate = self
         // disable hero delegate to enable default UIKit back gesture
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
+    override func setNavigationLeftBarButton() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: likeButton)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        UIApplication.shared.statusBarStyle = .lightContent
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         self.tabBarController?.tabBar.isHidden = true
+        
+        hideNavigationBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        UIApplication.shared.statusBarStyle = .darkContent
-        navigationController?.setNavigationBarHidden(false, animated: animated)
         self.tabBarController?.tabBar.isHidden = false
+        
+        showNavigationBar()
     }
     
     // MARK: - Methods
@@ -197,6 +201,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         setupMap()
         setupProfileView()
         setupBottomView()
+        addSpaceView(withSpacing: 100)
     }
     
     override func bind() {
@@ -216,6 +221,31 @@ final class StorageDescriptionViewController: ScrollViewController {
         usernameLabel.text = "Firstname Lastname"
         userStatusLabel.text = "Owner"
         priceLabel.text = StringUtils.textWithSymbol(text: "100", symbol: GlobalConstants.tgm)
+    }
+    
+    private func hideNavigationBar() {
+        // change status bar style
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        // Make the navigation bar background clear
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.isTranslucent = true
+        
+        backButton.showShadows()
+        likeButton.showShadows()
+    }
+    
+    private func showNavigationBar() {
+        // change status bar style
+        UIApplication.shared.statusBarStyle = .darkContent
+        
+        // Restore the navigation bar to default
+        navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
+        navigationController?.navigationBar.shadowImage = nil
+        
+        backButton.hideShadows()
+        likeButton.hideShadows()
     }
     
     private func setImages() {
@@ -242,20 +272,6 @@ private extension StorageDescriptionViewController {
         imageSliderView.snp.makeConstraints {
             $0.left.right.equalToSuperview()
             $0.height.equalTo(350)
-        }
-
-        imageSliderView.addSubview(backButton)
-        backButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(60)
-            $0.left.equalToSuperview().offset(30)
-            $0.size.equalTo(35)
-        }
-        
-        imageSliderView.addSubview(likeButton)
-        likeButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(60)
-            $0.right.equalToSuperview().offset(-30)
-            $0.size.equalTo(35)
         }
     }
     
@@ -375,8 +391,6 @@ private extension StorageDescriptionViewController {
             $0.centerY.equalToSuperview()
             $0.size.equalTo(40)
         }
-        
-        addSpaceView(withSpacing: 100)
     }
     
     // MARK: bottomView setup
@@ -395,14 +409,13 @@ private extension StorageDescriptionViewController {
         }
         
         bottomView.addSubview(actionButton)
-        actionButton.offConstraint()
         actionButton.snp.makeConstraints {
+            $0.width.equalTo(200)
             $0.top.equalToSuperview().offset(10)
             $0.right.equalToSuperview().offset(-20)
             $0.bottom.equalToSuperview().offset(-(UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0) - 10)
-            $0.width.equalTo(200)
         }
-        
+
         bottomView.addSubview(priceLabel)
         priceLabel.snp.makeConstraints {
             $0.centerY.equalTo(actionButton.snp.centerY)
@@ -422,6 +435,18 @@ private extension StorageDescriptionViewController {
         view.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
+        }
+    }
+}
+
+// MARK: - ScrollView delegate
+extension StorageDescriptionViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let navBarHeight = UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.height ?? 0.0)
+        if scrollView.contentOffset.y + navBarHeight > 350 {
+            showNavigationBar()
+        } else {
+            hideNavigationBar()
         }
     }
 }

@@ -10,6 +10,12 @@ import UIKit
 
 final class LikeButton: UIButton {
     
+    var color: UIColor = .white {
+        didSet {
+            backgroundColor = color
+        }
+    }
+    
     public var isLiked: Bool = false {
         didSet {
             isLiked ? setImage(Assets.heart.image, for: .normal) : setImage(Assets.heartOutline.image, for: .normal)
@@ -18,7 +24,7 @@ final class LikeButton: UIButton {
 
     override var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? UIColor.white.shade(.dark) : .white
+            backgroundColor = isHighlighted ? color.shade(.dark) : color
         }
     }
 
@@ -34,9 +40,10 @@ final class LikeButton: UIButton {
     func setupView() {
         setImage(Assets.heartOutline.image, for: .normal)
         addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
-        backgroundColor = .white
+        backgroundColor = color
         layer.cornerRadius = 10
         setupShadow()
+        frame = CGRect(x: 0, y: 0, width: 35, height: 35)
         imageView?.snp.makeConstraints {
             $0.size.equalTo(20)
         }
@@ -50,6 +57,16 @@ final class LikeButton: UIButton {
         layer.shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 35, height: 35)).cgPath
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
+    }
+    
+    func hideShadows() {
+        color = .clear
+        layer.shadowOpacity = 0
+    }
+    
+    func showShadows() {
+        color = .white
+        layer.shadowOpacity = 0.5
     }
     
     @objc func likeButtonTapped() {

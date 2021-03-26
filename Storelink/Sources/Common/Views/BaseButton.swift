@@ -74,18 +74,9 @@ open class BaseButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.configure()
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure() {
-        heightConstraint.isActive = true
-    }
-    
-    func offConstraint() {
-        heightConstraint.isActive = false
     }
 }
