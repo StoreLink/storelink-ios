@@ -16,7 +16,6 @@
 		D727318125FAA91800DC3CF9 /* CustomNavigationBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318025FAA91700DC3CF9 /* CustomNavigationBarButton.swift */; };
 		D727318425FAAC5500DC3CF9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318325FAAC5500DC3CF9 /* UIColor+Extension.swift */; };
 		D727318825FDE95B00DC3CF9 /* LabelWithLeftImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318725FDE95B00DC3CF9 /* LabelWithLeftImageView.swift */; };
-		D727318B25FE404400DC3CF9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318A25FE404400DC3CF9 /* String+Extension.swift */; };
 		D72F419425D7EC0D008282A4 /* SignupOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */; };
 		D72F419C25D92C50008282A4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F419B25D92C50008282A4 /* AppCoordinator.swift */; };
 		D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */; };
@@ -68,6 +67,9 @@
 		D7F66E0325DE5E3400D5D569 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66E0225DE5E3300D5D569 /* MainViewModel.swift */; };
 		D7F66E0825DE78AD00D5D569 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66E0725DE78AD00D5D569 /* MainTableViewCell.swift */; };
 		D7F66E1325DE94FC00D5D569 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66E1225DE94FC00D5D569 /* Storage.swift */; };
+		D7F9A566260BB39A00D3520E /* DividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9A565260BB39A00D3520E /* DividerView.swift */; };
+		D7F9A578260BC42D00D3520E /* ParametersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9A577260BC42D00D3520E /* ParametersView.swift */; };
+		D7F9A581260C3FD200D3520E /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F9A580260C3FD200D3520E /* StringUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,7 +101,6 @@
 		D727318025FAA91700DC3CF9 /* CustomNavigationBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarButton.swift; sourceTree = "<group>"; };
 		D727318325FAAC5500DC3CF9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D727318725FDE95B00DC3CF9 /* LabelWithLeftImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithLeftImageView.swift; sourceTree = "<group>"; };
-		D727318A25FE404400DC3CF9 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOTPViewModel.swift; sourceTree = "<group>"; };
 		D72F419B25D92C50008282A4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -157,6 +158,9 @@
 		D7F66E0225DE5E3300D5D569 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D7F66E0725DE78AD00D5D569 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		D7F66E1225DE94FC00D5D569 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		D7F9A565260BB39A00D3520E /* DividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerView.swift; sourceTree = "<group>"; };
+		D7F9A577260BC42D00D3520E /* ParametersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersView.swift; sourceTree = "<group>"; };
+		D7F9A580260C3FD200D3520E /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,7 @@
 		D70CEA582572881E00E01911 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D7F9A57F260C3FAD00D3520E /* Utils */,
 				D727318225FAAC3E00DC3CF9 /* Extension */,
 				D7AF671C25E83A770088522F /* Constants */,
 				D72F41F425DBEA32008282A4 /* TransitioningDelegate */,
@@ -251,6 +256,7 @@
 				D79DCC3B25C2CAE100DE6DCD /* MainButton.swift */,
 				D7456EF825C4024D00F591B5 /* SecondaryButton.swift */,
 				D727318025FAA91700DC3CF9 /* CustomNavigationBarButton.swift */,
+				D7F9A565260BB39A00D3520E /* DividerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,7 +265,6 @@
 			isa = PBXGroup;
 			children = (
 				D727318325FAAC5500DC3CF9 /* UIColor+Extension.swift */,
-				D727318A25FE404400DC3CF9 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */,
 				D7B9B3D826092CE8003E4DE6 /* BackButton.swift */,
 				D7B9B3DA26093066003E4DE6 /* LikeButton.swift */,
+				D7F9A577260BC42D00D3520E /* ParametersView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -562,6 +568,14 @@
 				D7041B7026031FD800B29C72 /* LabelWithBackgroundView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D7F9A57F260C3FAD00D3520E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D7F9A580260C3FD200D3520E /* StringUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		F55AD9F6E81B14EF726DC74F /* Frameworks */ = {
@@ -814,7 +828,7 @@
 				D72F419425D7EC0D008282A4 /* SignupOTPViewModel.swift in Sources */,
 				D70CEA5425723E3800E01911 /* LoginViewController.swift in Sources */,
 				D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */,
-				D727318B25FE404400DC3CF9 /* String+Extension.swift in Sources */,
+				D7F9A578260BC42D00D3520E /* ParametersView.swift in Sources */,
 				D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */,
 				D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */,
 				D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */,
@@ -847,11 +861,13 @@
 				D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */,
 				D727318825FDE95B00DC3CF9 /* LabelWithLeftImageView.swift in Sources */,
 				D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */,
+				D7F9A581260C3FD200D3520E /* StringUtils.swift in Sources */,
 				D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */,
 				D7041B7126031FD800B29C72 /* LabelWithBackgroundView.swift in Sources */,
 				D79DCC3C25C2CAE100DE6DCD /* MainButton.swift in Sources */,
 				D727318425FAAC5500DC3CF9 /* UIColor+Extension.swift in Sources */,
 				D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */,
+				D7F9A566260BB39A00D3520E /* DividerView.swift in Sources */,
 				D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */,
 				D72F41CA25DABDD2008282A4 /* AddCoordinator.swift in Sources */,
 				D727318125FAA91800DC3CF9 /* CustomNavigationBarButton.swift in Sources */,

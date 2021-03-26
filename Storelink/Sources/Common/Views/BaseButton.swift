@@ -10,6 +10,12 @@ import UIKit
 
 open class BaseButton: UIButton {
     
+    open override var isHighlighted: Bool {
+        didSet {
+            backgroundColor = isHighlighted ? buttonColor?.shade(.dark) : buttonColor
+        }
+    }
+    
     public var title: String? {
         didSet {
             self.setTitle(title, for: .normal)
@@ -25,6 +31,12 @@ open class BaseButton: UIButton {
     public var titleFont: UIFont? {
         didSet {
             self.titleLabel?.font = titleFont
+        }
+    }
+    
+    public var buttonColor: UIColor? {
+        didSet {
+            self.backgroundColor = buttonColor
         }
     }
     
@@ -71,5 +83,9 @@ open class BaseButton: UIButton {
     
     func configure() {
         heightConstraint.isActive = true
+    }
+    
+    func offConstraint() {
+        heightConstraint.isActive = false
     }
 }

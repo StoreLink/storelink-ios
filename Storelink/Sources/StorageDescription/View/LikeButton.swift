@@ -37,9 +37,6 @@ final class LikeButton: UIButton {
         backgroundColor = .white
         layer.cornerRadius = 10
         setupShadow()
-        snp.makeConstraints {
-            $0.size.equalTo(40)
-        }
         imageView?.snp.makeConstraints {
             $0.size.equalTo(20)
         }
@@ -47,10 +44,12 @@ final class LikeButton: UIButton {
     
     func setupShadow() {
         layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 5)
-        layer.shadowRadius = 3
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 6
         layer.shadowOpacity = 0.5
+        layer.shadowPath = UIBezierPath(rect: CGRect(x: 0, y: 0, width: 35, height: 35)).cgPath
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
     }
     
     @objc func likeButtonTapped() {

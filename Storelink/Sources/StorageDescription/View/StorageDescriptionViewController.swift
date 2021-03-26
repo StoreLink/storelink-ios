@@ -8,9 +8,17 @@
 
 import UIKit
 import ImageSlideshow
+import GoogleMaps
 import SDWebImage
 
 final class StorageDescriptionViewController: ScrollViewController {
+    
+    enum Constants {
+        static let phoneImageSFPath = "phone.fill"
+        static let messageImageSFPath = "message.fill"
+    }
+    
+    // MARK: - Properties
     
     private let viewModel: StorageDescriptionViewModel
     
@@ -30,20 +38,120 @@ final class StorageDescriptionViewController: ScrollViewController {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title"
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
     
+    private let descriptionTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Description"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textAlignment = .left
+        return label
+    }()
+    
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Description of the storage"
-        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .gray
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
+    
+    private let parametersTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Parameters"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private let parametersView = ParametersView()
+    
+    private let mapTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Location"
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private let locationWithImageView: LabelWithLeftImageView = {
+        let label = LabelWithLeftImageView()
+        label.image = Assets.location.image
+        label.imageSize = 15
+        label.titleFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
+        label.titleColor = UIColor.gray
+        label.spacing = 5
+        return label
+    }()
+    
+    private let userImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = Assets.person.image
+        imageView.backgroundColor = Colors.lightGray.color
+        imageView.contentMode = .center
+        imageView.layer.borderWidth = 1.5
+        imageView.layer.cornerRadius = 10
+        return imageView
+    }()
+    
+    private let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        return label
+    }()
+    
+    private let userStatusLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
+        label.textColor = .gray
+        return label
+    }()
+    
+    private let messageButton: BaseButton = {
+        let button = BaseButton()
+        button.buttonColor = Colors.teal.color.withAlphaComponent(0.3)
+        button.setImage(UIImage(systemName: Constants.messageImageSFPath), for: .normal)
+        button.imageView?.tintColor = Colors.teal.color
+        button.layer.cornerRadius = 10
+        button.tintColor = Colors.teal.color
+        button.offConstraint()
+        return button
+    }()
+    
+    private let callButton: BaseButton = {
+        let button = BaseButton()
+        button.buttonColor = Colors.teal.color.withAlphaComponent(0.3)
+        button.setImage(UIImage(systemName: Constants.phoneImageSFPath), for: .normal)
+        button.imageView?.tintColor = Colors.teal.color
+        button.layer.cornerRadius = 10
+        button.offConstraint()
+        return button
+    }()
+    
+    private let bottomView: UIView = {
+        let view = UIView()
+        let blurEffect = UIBlurEffect(style: .prominent)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.frame
+        blurEffectView.layer.masksToBounds = true
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(blurEffectView)
+        return view
+    }()
+    
+    private let priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        label.textAlignment = .left
+        return label
+    }()
+    
+    private let actionButton: MainButton = .init(title: "Add items")
     
     init(viewModel: StorageDescriptionViewModel) {
         self.viewModel = viewModel
@@ -53,62 +161,42 @@ final class StorageDescriptionViewController: ScrollViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - View controller lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // disable hero delegate to enable default UIKit back gesture
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
         UIApplication.shared.statusBarStyle = .lightContent
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        UIApplication.shared.statusBarStyle = .darkContent
         navigationController?.setNavigationBarHidden(false, animated: animated)
-        UIApplication.shared.statusBarStyle = .default
+        self.tabBarController?.tabBar.isHidden = false
     }
+    
+    // MARK: - Methods
     
     override func setupUI() {
         super.setupUI()
+        _scrollView.contentInsetAdjustmentBehavior = .never
         setData()
         
-        _scrollView.contentInsetAdjustmentBehavior = .never
-        
-        addView(view: imageSliderView)
-        imageSliderView.snp.makeConstraints {
-            $0.left.right.equalToSuperview()
-            $0.height.equalTo(350)
-        }
-
-        imageSliderView.addSubview(backButton)
-        backButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(60)
-            $0.left.equalToSuperview().offset(30)
-        }
-        
-        imageSliderView.addSubview(likeButton)
-        likeButton.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(60)
-            $0.right.equalToSuperview().offset(-30)
-        }
-        
-        addSpaceView(withSpacing: 15)
-        addView(view: titleLabel)
-        titleLabel.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
-            $0.trailing.equalToSuperview().offset(-20)
-        }
-
-        addSpaceView(withSpacing: 10)
-        addView(view: descriptionLabel)
-        descriptionLabel.snp.makeConstraints {
-            $0.left.equalToSuperview().offset(20)
-            $0.right.equalToSuperview().offset(-20)
-        }
-
-        addSpaceView(withSpacing: 500)
+        setupImageView()
+        setupTitle()
+        setupParameters()
+        setupMap()
+        setupProfileView()
+        setupBottomView()
     }
     
     override func bind() {
@@ -120,6 +208,14 @@ final class StorageDescriptionViewController: ScrollViewController {
     private func setData() {
         setImages()
         imageSliderView.heroID = String(viewModel.storageItem.id)
+        descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+        parametersView.addParameter(parameter: "Type", value: "storage")
+        parametersView.addParameter(parameter: "Size", value: StringUtils.textWithSymbol(text: "300", symbol: GlobalConstants.m))
+        parametersView.addParameter(parameter: "Available time", value: "9:00 - 16:00")
+        locationWithImageView.text = "Almaty, Kazakhstan"
+        usernameLabel.text = "Firstname Lastname"
+        userStatusLabel.text = "Owner"
+        priceLabel.text = StringUtils.textWithSymbol(text: "100", symbol: GlobalConstants.tgm)
     }
     
     private func setImages() {
@@ -135,4 +231,197 @@ final class StorageDescriptionViewController: ScrollViewController {
         fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: UIActivityIndicatorView.Style.medium, color: nil)
     }
 
+}
+
+// MARK: - UI functions
+private extension StorageDescriptionViewController {
+    
+    // MARK: - ImageView setup
+    func setupImageView() {
+        addView(view: imageSliderView)
+        imageSliderView.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.height.equalTo(350)
+        }
+
+        imageSliderView.addSubview(backButton)
+        backButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(60)
+            $0.left.equalToSuperview().offset(30)
+            $0.size.equalTo(35)
+        }
+        
+        imageSliderView.addSubview(likeButton)
+        likeButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(60)
+            $0.right.equalToSuperview().offset(-30)
+            $0.size.equalTo(35)
+        }
+    }
+    
+    // MARK: - Title and description setup
+    func setupTitle() {
+        addSpaceView(withSpacing: 15)
+        addView(view: titleLabel)
+        titleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+
+        addSpaceView(withSpacing: 15)
+        addView(view: descriptionTitleLabel)
+        descriptionTitleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        addSpaceView(withSpacing: 10)
+        addView(view: descriptionLabel)
+        descriptionLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        addDivider()
+    }
+    
+    // MARK: - ParametersView setup
+    func setupParameters() {
+        addView(view: parametersTitleLabel)
+        parametersTitleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        addSpaceView(withSpacing: 10)
+        addView(view: parametersView)
+        parametersView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        addDivider()
+    }
+    
+    // MARK: - map setup
+    func setupMap() {
+        addView(view: mapTitleLabel)
+        mapTitleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        addSpaceView(withSpacing: 10)
+        let camera = GMSCameraPosition.camera(withLatitude: 43.235126, longitude: 76.909736, zoom: 14.0)
+        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
+        mapView.layer.cornerRadius = 10
+        mapView.settings.scrollGestures = false
+        mapView.settings.zoomGestures = false
+        mapView.settings.tiltGestures = false
+        mapView.settings.rotateGestures = false
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: 43.235126, longitude: 76.909736)
+        marker.map = mapView
+        
+        addView(view: mapView)
+        mapView.snp.makeConstraints {
+            $0.height.equalTo(200)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        addSpaceView(withSpacing: 10)
+        addView(view: locationWithImageView)
+        locationWithImageView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        addDivider()
+    }
+    
+    // MARK: - profile setup
+    func setupProfileView() {
+        let contentView = UIView()
+        addView(view: contentView)
+        contentView.snp.makeConstraints {
+            $0.height.equalTo(50)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        contentView.addSubview(userImageView)
+        userImageView.snp.makeConstraints {
+            $0.size.equalTo(50)
+            $0.top.left.bottom.equalToSuperview()
+        }
+        
+        let stackView = UIStackView(arrangedSubviews: [usernameLabel, userStatusLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        contentView.addSubview(stackView)
+        stackView.snp.makeConstraints {
+            $0.centerY.equalToSuperview()
+            $0.left.equalTo(userImageView.snp.right).offset(10)
+        }
+        
+        contentView.addSubview(callButton)
+        callButton.snp.makeConstraints {
+            $0.right.equalToSuperview()
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
+        }
+        
+        contentView.addSubview(messageButton)
+        messageButton.snp.makeConstraints {
+            $0.right.equalTo(callButton.snp.left).offset(-10)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
+        }
+        
+        addSpaceView(withSpacing: 100)
+    }
+    
+    // MARK: bottomView setup
+    func setupBottomView() {
+        view.addSubview(bottomView)
+        bottomView.snp.makeConstraints {
+            $0.height.equalTo(60 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
+            $0.left.right.bottom.equalToSuperview()
+        }
+        
+        let divider = DividerView()
+        view.addSubview(divider)
+        divider.snp.makeConstraints {
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalTo(bottomView.snp.top)
+        }
+        
+        bottomView.addSubview(actionButton)
+        actionButton.offConstraint()
+        actionButton.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.right.equalToSuperview().offset(-20)
+            $0.bottom.equalToSuperview().offset(-(UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0) - 10)
+            $0.width.equalTo(200)
+        }
+        
+        bottomView.addSubview(priceLabel)
+        priceLabel.snp.makeConstraints {
+            $0.centerY.equalTo(actionButton.snp.centerY)
+            $0.left.equalToSuperview().offset(20)
+            $0.width.greaterThanOrEqualTo(0)
+            $0.right.equalTo(actionButton.snp.left).offset(-25)
+        }
+    }
+    
+    // MARK: - add divider function
+    func addDivider() {
+        let view = DividerView()
+        addSpaceView(withSpacing: 15)
+        addView(view: view)
+        addSpaceView(withSpacing: 15)
+        
+        view.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+    }
 }

@@ -17,13 +17,9 @@ final class MainTableViewCell: UITableViewCell {
             storageImageView.heroID = String(storageItem?.id ?? 0)
             typeLabel.text = storageItem?.type
             titleLabel.text = storageItem?.name
-            var price = String(storageItem?.price ?? 0)
-            price.addSymbol(symbol: GlobalConstants.tgm)
-            priceLabel.text = price
+            priceLabel.text = StringUtils.textWithSymbol(text: String(storageItem?.price ?? 0), symbol: GlobalConstants.tgm)
             locationLabel.text = storageItem?.location
-            var size = String(storageItem?.size ?? 0)
-            size.addSymbol(symbol: GlobalConstants.m)
-            sizeLabel.text = size
+            sizeLabel.text = StringUtils.textWithSymbol(text: String(storageItem?.size ?? 0), symbol: GlobalConstants.m)
             timeLabel.text = storageItem?.availableTime
             publishDateLabel.text = storageItem?.publishTime
         }
@@ -76,7 +72,7 @@ final class MainTableViewCell: UITableViewCell {
     private let locationLabel: LabelWithLeftImageView = {
         let label = LabelWithLeftImageView()
         label.image = Assets.location.image
-        label.titleFont = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.titleFont = UIFont.systemFont(ofSize: 13, weight: .semibold)
         label.titleColor = UIColor.gray
         label.spacing = 3
         return label
