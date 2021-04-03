@@ -442,7 +442,7 @@ private extension StorageDescriptionViewController {
 // MARK: - ScrollView delegate
 extension StorageDescriptionViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let navBarHeight = UIApplication.shared.statusBarFrame.size.height + (navigationController?.navigationBar.frame.height ?? 0.0)
+        let navBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0.0)
         if scrollView.contentOffset.y + navBarHeight > 350 {
             showNavigationBar()
         } else {
