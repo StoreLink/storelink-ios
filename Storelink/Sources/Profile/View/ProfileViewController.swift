@@ -39,14 +39,14 @@ final class ProfileViewController: ScrollViewController {
         return button
     }()
     
-//    private let tableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.rowHeight = 45
-//        tableView.isScrollEnabled = false
-//        tableView.showsVerticalScrollIndicator = false
-//        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
-//        return tableView
-//    }()
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.rowHeight = 45
+        tableView.isScrollEnabled = false
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
+        return tableView
+    }()
     
     init(viewModel: ProfileViewModel) {
         self.viewModel = viewModel
@@ -65,51 +65,54 @@ final class ProfileViewController: ScrollViewController {
     override func setupUI() {
         super.setupUI()
         
-//        addSpaceView(withSpacing: 30)
+        addSpaceView(withSpacing: 30)
         
-//        let profileView = UIView()
-//        addView(view: profileView)
-//        [avatarImageView, authorizeButton].forEach {
-//            profileView.addSubview($0)
-//        }
-//
-//        profileView.snp.makeConstraints {
-//            $0.height.equalTo(60)
-//        }
-//
-//        avatarImageView.snp.makeConstraints {
-//            $0.top.equalToSuperview()
-//            $0.left.equalToSuperview().offset(20)
-//            $0.height.width.equalTo(60)
-//        }
-//
-//        authorizeButton.snp.makeConstraints {
-//            $0.left.equalTo(avatarImageView.snp.right).offset(15)
-//            $0.centerY.equalTo(avatarImageView)
-//        }
-//
-//        addSpaceView(withSpacing: 30)
-//        addView(view: tableView)
-//        tableView.snp.makeConstraints {
-//            $0.height.equalTo(180)
-//        }
+        let profileView = UIView()
+        addView(view: profileView)
+        [avatarImageView, authorizeButton].forEach {
+            profileView.addSubview($0)
+        }
+
+        profileView.snp.makeConstraints {
+            $0.height.equalTo(60)
+            $0.left.right.equalToSuperview()
+        }
+
+        avatarImageView.snp.makeConstraints {
+            $0.top.equalToSuperview()
+            $0.left.equalToSuperview().offset(20)
+            $0.height.width.equalTo(60)
+        }
+
+        authorizeButton.snp.makeConstraints {
+            $0.left.equalTo(avatarImageView.snp.right).offset(15)
+            $0.centerY.equalTo(avatarImageView)
+        }
+
+        addSpaceView(withSpacing: 30)
+        addView(view: tableView)
+        tableView.snp.makeConstraints {
+            $0.height.equalTo(180)
+            $0.left.equalToSuperview()
+            $0.right.equalToSuperview()
+        }
     }
     
     override func bind() {
         
-//        tableView.rx
-//            .setDelegate(self)
-//            .disposed(by: disposeBag)
-//
-//        viewModel.profileItems.asObservable()
-//            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) { row, item, cell in
-//                cell.profile = item
-//            }
-//            .disposed(by: disposeBag)
-//
-//        tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { item in
-//            print(item)
-//        }).disposed(by: disposeBag)
+        tableView.rx
+            .setDelegate(self)
+            .disposed(by: disposeBag)
+
+        viewModel.profileItems.asObservable()
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) { row, item, cell in
+                cell.profile = item
+            }
+            .disposed(by: disposeBag)
+
+        tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { item in
+            print(item)
+        }).disposed(by: disposeBag)
         
         authorizeButton.rx.tap.bind { [weak self] in
             self?.coordinator?.showPopupView()
@@ -119,25 +122,25 @@ final class ProfileViewController: ScrollViewController {
 
 extension ProfileViewController: UITableViewDelegate {
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        
-//        let label: UILabel = {
-//            let label = UILabel()
-//            label.text = Strings.accountSettings
-//            label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
-//            label.textColor = .gray
-//            return label
-//        }()
-//        
-//        headerView.addSubview(label)
-//        
-//        label.snp.makeConstraints {
-//            $0.top.equalToSuperview().offset(10)
-//            $0.left.equalToSuperview().offset(20)
-//            $0.bottom.equalToSuperview().offset(-5)
-//        }
-//        
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        
+        let label: UILabel = {
+            let label = UILabel()
+            label.text = Strings.accountSettings
+            label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
+            label.textColor = .gray
+            return label
+        }()
+        
+        headerView.addSubview(label)
+        
+        label.snp.makeConstraints {
+            $0.top.equalToSuperview().offset(10)
+            $0.left.equalToSuperview().offset(20)
+            $0.bottom.equalToSuperview().offset(-5)
+        }
+        
+        return headerView
+    }
 }

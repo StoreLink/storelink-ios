@@ -23,7 +23,6 @@
 		D72F41BA25DA9D88008282A4 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41B925DA9D88008282A4 /* MainCoordinator.swift */; };
 		D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41BF25DABA07008282A4 /* MainViewController.swift */; };
 		D72F41C525DABD0D008282A4 /* StorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */; };
-		D72F41CA25DABDD2008282A4 /* AddCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41C925DABDD2008282A4 /* AddCoordinator.swift */; };
 		D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */; };
 		D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41DF25DABFFE008282A4 /* StorageViewController.swift */; };
 		D72F41E825DAC012008282A4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41E725DAC012008282A4 /* AddViewController.swift */; };
@@ -108,7 +107,6 @@
 		D72F41B925DA9D88008282A4 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		D72F41BF25DABA07008282A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCoordinator.swift; sourceTree = "<group>"; };
-		D72F41C925DABDD2008282A4 /* AddCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCoordinator.swift; sourceTree = "<group>"; };
 		D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		D72F41DF25DABFFE008282A4 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		D72F41E725DAC012008282A4 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */,
 				D72F41B925DA9D88008282A4 /* MainCoordinator.swift */,
 				D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */,
-				D72F41C925DABDD2008282A4 /* AddCoordinator.swift */,
 				D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */,
 				D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */,
 				D72F420025DC4265008282A4 /* LoginCoordinator.swift */,
@@ -869,7 +866,6 @@
 				D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */,
 				D7F9A566260BB39A00D3520E /* DividerView.swift in Sources */,
 				D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */,
-				D72F41CA25DABDD2008282A4 /* AddCoordinator.swift in Sources */,
 				D727318125FAA91800DC3CF9 /* CustomNavigationBarButton.swift in Sources */,
 				D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */,
 				D72F41BA25DA9D88008282A4 /* MainCoordinator.swift in Sources */,

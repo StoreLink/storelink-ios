@@ -18,7 +18,6 @@ class TabBarCoordinator: Coordinator {
     
     func start() {
         let tabBarController = MainTabBarController()
-        tabBarController.hero.isEnabled = true
         tabBarController.modalPresentationStyle = .overFullScreen
         tabBarController.coordinator = self
         
@@ -32,9 +31,9 @@ class TabBarCoordinator: Coordinator {
         storageNavigationController.tabBarItem.image = Assets.tabStorage.image
         let storageCoordinator = StorageCoordinator(navigationController: storageNavigationController)
         
-        let addNavigationController = UINavigationController()
-        addNavigationController.tabBarItem.image = Assets.tabAdd.image
-        let addCoordinator = AddCoordinator(navigationController: addNavigationController)
+        let addController = AddViewController()
+        addController.tabBarItem.image = Assets.tabAdd.image.withRenderingMode(.alwaysOriginal)
+        addController.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
         let messagesNavigationController = UINavigationController()
         messagesNavigationController.tabBarItem.image = Assets.tabMessage.image
@@ -47,7 +46,7 @@ class TabBarCoordinator: Coordinator {
         tabBarController.viewControllers = [
             mainNavigationController,
             storageNavigationController,
-            addNavigationController,
+            addController,
             messagesNavigationController,
             profileNavigationContoller]
         
@@ -55,7 +54,6 @@ class TabBarCoordinator: Coordinator {
         
         coordinate(to: mainCoordinator)
         coordinate(to: storageCoordinator)
-        coordinate(to: addCoordinator)
         coordinate(to: messagesCoordinator)
         coordinate(to: profileCoordinator)
     }

@@ -67,6 +67,9 @@ final class ProfilePopupViewController: InitialViewController {
             view.addSubview($0)
         }
         
+        loginButton.activateConstraint()
+        signupButton.activateConstraint()
+        
         topHandleView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(15)
             $0.centerX.equalToSuperview()

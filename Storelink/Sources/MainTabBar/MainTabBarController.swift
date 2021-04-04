@@ -15,6 +15,7 @@ final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.delegate = self
         tabBar.tintColor = Colors.teal.color
     }
     
@@ -26,5 +27,17 @@ final class MainTabBarController: UITabBarController {
                 item.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
             }
         }
+        
+    }
+}
+
+// MARK: UITabbar Delegate
+extension MainTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        print(viewController)
+        if viewController.isKind(of: AddViewController.self) {
+            return false
+        }
+        return true
     }
 }

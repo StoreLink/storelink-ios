@@ -9,13 +9,9 @@
 import UIKit
 
 final class AddViewController: InitialViewController {
-    
-    var coordinator: AddFlow?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = Strings.add
     }
     
 }

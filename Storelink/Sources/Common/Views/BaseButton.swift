@@ -79,4 +79,8 @@ open class BaseButton: UIButton {
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func activateConstraint() {
+        heightConstraint.isActive = true
+    }
 }
