@@ -31,7 +31,7 @@ class TabBarCoordinator: Coordinator {
         storageNavigationController.tabBarItem.image = Assets.tabStorage.image
         let storageCoordinator = StorageCoordinator(navigationController: storageNavigationController)
         
-        let addController = AddViewController()
+        let addController = AddPopupViewController()
         addController.tabBarItem.image = Assets.tabAdd.image.withRenderingMode(.alwaysOriginal)
         addController.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         

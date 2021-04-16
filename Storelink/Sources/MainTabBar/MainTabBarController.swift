@@ -35,7 +35,7 @@ final class MainTabBarController: UITabBarController {
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         print(viewController)
-        if viewController.isKind(of: AddViewController.self) {
+        if viewController.isKind(of: AddPopupViewController.self) {
             return false
         }
         return true

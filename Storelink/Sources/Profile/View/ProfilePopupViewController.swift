@@ -22,11 +22,20 @@ final class ProfilePopupViewController: InitialViewController {
         return view
     }()
     
+    private let closeButton: BaseButton = {
+        let button = BaseButton()
+        button.setImage(Assets.close.image.withRenderingMode(UIImage.RenderingMode.alwaysTemplate), for: .normal)
+        button.tintColor = .systemGray
+        button.buttonColor = UIColor.lightGray.withAlphaComponent(0.3)
+        button.layer.cornerRadius = 15
+        return button
+    }()
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = Strings.loginOrRegister
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
@@ -36,7 +45,7 @@ final class ProfilePopupViewController: InitialViewController {
         label.text = Strings.loginToManageAccount
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.textColor = .gray
-        label.textAlignment = .center
+        label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
@@ -63,7 +72,9 @@ final class ProfilePopupViewController: InitialViewController {
     
     override func setupUI() {
         view.backgroundColor = .white
-        [topHandleView, titleLabel, descriptionLabel, loginButton, signupButton].forEach {
+        view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 270)
+        
+        [topHandleView, closeButton, titleLabel, descriptionLabel, loginButton, signupButton].forEach {
             view.addSubview($0)
         }
         
@@ -83,8 +94,18 @@ final class ProfilePopupViewController: InitialViewController {
             $0.right.equalToSuperview().offset(-30)
         }
         
+        closeButton.snp.makeConstraints {
+            $0.size.equalTo(30)
+            $0.centerY.equalTo(titleLabel.snp.centerY)
+            $0.right.equalToSuperview().offset(-30)
+        }
+        
+        closeButton.imageView?.snp.makeConstraints {
+            $0.size.equalTo(16)
+        }
+        
         descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(15)
+            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
             $0.left.equalToSuperview().offset(30)
             $0.right.equalToSuperview().offset(-30)
         }
@@ -103,6 +124,10 @@ final class ProfilePopupViewController: InitialViewController {
     }
     
     override func bind() {
+        closeButton.rx.tap.bind { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
+        }.disposed(by: disposeBag)
+        
         loginButton.rx.tap.bind { [weak self] in
             self?.coordinator?.showLoginView()
         }.disposed(by: disposeBag)

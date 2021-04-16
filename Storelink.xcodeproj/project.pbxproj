@@ -25,7 +25,7 @@
 		D72F41C525DABD0D008282A4 /* StorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */; };
 		D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */; };
 		D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41DF25DABFFE008282A4 /* StorageViewController.swift */; };
-		D72F41E825DAC012008282A4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41E725DAC012008282A4 /* AddViewController.swift */; };
+		D72F41E825DAC012008282A4 /* AddPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41E725DAC012008282A4 /* AddPopupViewController.swift */; };
 		D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41EC25DAC021008282A4 /* MessagesViewController.swift */; };
 		D72F41F625DBEA49008282A4 /* PopupTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41F525DBEA49008282A4 /* PopupTransitionDelegate.swift */; };
 		D72F420125DC4265008282A4 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F420025DC4265008282A4 /* LoginCoordinator.swift */; };
@@ -109,7 +109,7 @@
 		D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCoordinator.swift; sourceTree = "<group>"; };
 		D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
 		D72F41DF25DABFFE008282A4 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
-		D72F41E725DAC012008282A4 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		D72F41E725DAC012008282A4 /* AddPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopupViewController.swift; sourceTree = "<group>"; };
 		D72F41EC25DAC021008282A4 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
 		D72F41F525DBEA49008282A4 /* PopupTransitionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupTransitionDelegate.swift; sourceTree = "<group>"; };
 		D72F420025DC4265008282A4 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 		D72F41D725DABE6A008282A4 /* Add */ = {
 			isa = PBXGroup;
 			children = (
-				D72F41E725DAC012008282A4 /* AddViewController.swift */,
+				D72F41E725DAC012008282A4 /* AddPopupViewController.swift */,
 			);
 			path = Add;
 			sourceTree = "<group>";
@@ -840,7 +840,7 @@
 				D7F66E0325DE5E3400D5D569 /* MainViewModel.swift in Sources */,
 				D7F66E0825DE78AD00D5D569 /* MainTableViewCell.swift in Sources */,
 				D72F41F625DBEA49008282A4 /* PopupTransitionDelegate.swift in Sources */,
-				D72F41E825DAC012008282A4 /* AddViewController.swift in Sources */,
+				D72F41E825DAC012008282A4 /* AddPopupViewController.swift in Sources */,
 				D7464305256E718600E618B4 /* ProfilePopupViewController.swift in Sources */,
 				D7B9B3D926092CE8003E4DE6 /* BackButton.swift in Sources */,
 				D70CEA5725723E7C00E01911 /* SignupPhoneViewController.swift in Sources */,

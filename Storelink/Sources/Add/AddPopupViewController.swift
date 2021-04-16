@@ -1,5 +1,5 @@
 //
-//  AddViewController.swift
+//  AddPopupViewController.swift
 //  Storelink
 //
 //  Created by Акан Акиш on 15.02.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class AddViewController: InitialViewController {
+final class AddPopupViewController: InitialViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
