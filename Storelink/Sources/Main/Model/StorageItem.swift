@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct StorageItem {
+struct StorageItem: Decodable {
     let id: Int
     let name: String
     let description: String
