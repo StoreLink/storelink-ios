@@ -18,6 +18,7 @@ target 'Storelink' do
   pod 'Hero'  # https://github.com/HeroTransitions/Hero
   pod 'GoogleMaps'   # https://github.com/googlemaps/maps-sdk-for-ios-samples  
   pod 'GooglePlaces'
+  pod 'Moya/RxSwift', '~> 14.0'  # https://github.com/Moya/Moya
 
 
   # target 'StorelinkTests' do

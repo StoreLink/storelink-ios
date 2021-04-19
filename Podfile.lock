@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.4.2)
   - GoogleMaps (4.1.0):
     - GoogleMaps/Maps (= 4.1.0)
   - GoogleMaps/Base (4.1.0)
@@ -15,6 +16,11 @@ PODS:
     - SDWebImage (>= 3.7)
   - InputMask (6.0.0)
   - IQKeyboardManagerSwift (6.5.6)
+  - Moya/Core (14.0.0):
+    - Alamofire (~> 5.0)
+  - Moya/RxSwift (14.0.0):
+    - Moya/Core
+    - RxSwift (~> 5.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -36,6 +42,7 @@ DEPENDENCIES:
   - ImageSlideshow/SDWebImage
   - InputMask
   - IQKeyboardManagerSwift
+  - Moya/RxSwift (~> 14.0)
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
   - SnapKit (~> 5.0.0)
@@ -44,12 +51,14 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - GoogleMaps
     - GooglePlaces
     - Hero
     - ImageSlideshow
     - InputMask
     - IQKeyboardManagerSwift
+    - Moya
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -59,12 +68,14 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
   Hero: 052b9b9bab68fc4e30cc04e5936eaf0de97b59d3
   ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   InputMask: f340bdc905a4c4f377e44d865f129f752ac2383d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
@@ -73,6 +84,6 @@ SPEC CHECKSUMS:
   SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 01337ded0352e9df9ae75595370043b94b6c7637
+PODFILE CHECKSUM: 694bb5fda4fb37109913c9d04f6ca8546fe3bd2e
 
 COCOAPODS: 1.10.1
