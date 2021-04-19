@@ -109,6 +109,16 @@ open class BaseTextField: TextFieldEffects {
         })
     }
     
+    // MARK: Publid
+    
+    public func showError() {
+        borderLayer.borderColor = UIColor.red.cgColor
+    }
+    
+    public func hideError() {
+        borderLayer.borderColor = inactiveBorderColor.cgColor
+    }
+    
     // MARK: Private
     
     private func updatePlaceholder() {

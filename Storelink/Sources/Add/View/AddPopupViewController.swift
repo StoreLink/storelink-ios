@@ -1,19 +1,24 @@
 //
-//  ProfilePopupViewController.swift
-//  storelink-ios
+//  AddPopupViewController.swift
+//  Storelink
 //
-//  Created by Акан Акиш on 11/25/20.
-//  Copyright © 2020 Акан Акиш. All rights reserved.
+//  Created by Акан Акиш on 15.02.2021.
+//  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-final class ProfilePopupViewController: InitialViewController {
+final class AddPopupViewController: InitialViewController {
     
+    private enum Constants {
+        static let cellIdentifier = "cellId"
+    }
+    
+    var coordinator: TabBarFlow?
     private var hasSetPointOrigin = false
     private var pointOrigin: CGPoint?
-    
-    var coordinator: ProfileFlow?
     
     private let topHandleView: UIView = {
         let view = UIView()
@@ -33,31 +38,27 @@ final class ProfilePopupViewController: InitialViewController {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = Strings.loginOrRegister
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.text = Strings.add
+        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
     }()
     
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = Strings.loginToManageAccount
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .gray
-        label.textAlignment = .left
-        label.numberOfLines = 0
-        return label
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(AddTableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
+        tableView.isScrollEnabled = false
+        return tableView
     }()
     
-    private let loginButton = MainButton(title: Strings.login)
-    
-    private let signupButton = SecondaryButton(title: Strings.signup)
-    
+    private let dataSource: BehaviorRelay<[AddItem]> = .init(value: [AddItem(title: "Storage", image: Assets.storage.image), AddItem(title: "Item", image: Assets.item.image)])
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setupUI()
         
         let swipeDownGesture = UIPanGestureRecognizer(target: self, action: #selector(swipeDownGestureAction))
         view.addGestureRecognizer(swipeDownGesture)
@@ -72,9 +73,9 @@ final class ProfilePopupViewController: InitialViewController {
     
     override func setupUI() {
         view.backgroundColor = .white
-        view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 270)
+        view.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 220)
         
-        [topHandleView, closeButton, titleLabel, descriptionLabel, loginButton, signupButton].forEach {
+        [topHandleView, closeButton, titleLabel, tableView].forEach {
             view.addSubview($0)
         }
         
@@ -101,39 +102,36 @@ final class ProfilePopupViewController: InitialViewController {
             $0.size.equalTo(16)
         }
         
-        descriptionLabel.snp.makeConstraints {
-            $0.top.equalTo(titleLabel.snp.bottom).offset(5)
-            $0.left.equalToSuperview().offset(30)
-            $0.right.equalToSuperview().offset(-30)
-        }
-        
-        loginButton.snp.makeConstraints {
-            $0.top.equalTo(descriptionLabel.snp.bottom).offset(30)
-            $0.left.equalToSuperview().offset(30)
-            $0.right.equalToSuperview().offset(-30)
-            $0.height.equalTo(45)
-        }
-        
-        signupButton.snp.makeConstraints {
-            $0.top.equalTo(loginButton.snp.bottom).offset(15)
-            $0.left.equalToSuperview().offset(30)
-            $0.right.equalToSuperview().offset(-30)
-            $0.height.equalTo(45)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(10)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
     override func bind() {
         closeButton.rx.tap.bind { [weak self] in
             self?.dismiss(animated: true, completion: nil)
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
         
-        loginButton.rx.tap.bind { [weak self] in
-            self?.coordinator?.showLoginView()
-        }.disposed(by: disposeBag)
+        dataSource
+        .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: AddTableViewCell.self)) { _, model, cell in
+            cell.addItem = model
+        }
+        .disposed(by: disposeBag)
         
-        signupButton.rx.tap.bind { [weak self] in
-            self?.coordinator?.showSignupView()
-        }.disposed(by: disposeBag)
+        tableView.rx.modelSelected(AddItem.self).subscribe(onNext: { [weak self] item in
+            switch item.title {
+            case "Storage":
+                self?.coordinator?.showAddStorageView()
+            case "Item":
+                self?.coordinator?.showAddItemView()
+            default:
+                break
+            }
+        })
+        .disposed(by: disposeBag)
     }
     
     @objc private func swipeDownGestureAction(sender: UIPanGestureRecognizer) {
@@ -157,5 +155,4 @@ final class ProfilePopupViewController: InitialViewController {
             }
         }
     }
-    
 }

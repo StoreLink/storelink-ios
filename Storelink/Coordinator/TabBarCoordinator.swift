@@ -9,7 +9,13 @@
 import UIKit
 import Hero
 
-class TabBarCoordinator: Coordinator {
+protocol TabBarFlow: class {
+    func showAddPopupView()
+    func showAddStorageView()
+    func showAddItemView()
+}
+
+class TabBarCoordinator: Coordinator, TabBarFlow {
     let navigationController: UINavigationController
     
     init(navigationController: UINavigationController) {
@@ -56,6 +62,32 @@ class TabBarCoordinator: Coordinator {
         coordinate(to: storageCoordinator)
         coordinate(to: messagesCoordinator)
         coordinate(to: profileCoordinator)
+    }
+    
+    func showAddPopupView() {
+        let topViewController = UIApplication.topViewController()
+        let addPopupView = AddPopupViewController()
+        addPopupView.coordinator = self
+        addPopupView.modalPresentationStyle = .custom
+        let transitioningDelegate = PopupTransitionDelegate()
+        addPopupView.transitioningDelegate = transitioningDelegate
+        topViewController?.present(addPopupView, animated: true, completion: nil)
+    }
+    
+    func showAddStorageView() {
+        let topViewController = UIApplication.topViewController()
+        topViewController?.dismiss(animated: true, completion: {
+            let topView = UIApplication.topViewController()
+            let viewModel = AddStorageViewModel()
+            let viewController = AddStorageViewController(viewModel: viewModel)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            topView?.present(navigationController, animated: true, completion: nil)
+        })
+    }
+    
+    func showAddItemView() {
+        
     }
 
 }

@@ -27,7 +27,7 @@ final class MainTableViewCell: UITableViewCell {
     
     private let roundedView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         view.layer.masksToBounds = false
         view.layer.cornerRadius = 10
 //        view.layer.shadowColor = UIColor.black.cgColor
@@ -108,6 +108,10 @@ final class MainTableViewCell: UITableViewCell {
         
     }
     
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        roundedView.backgroundColor = highlighted ? UIColor.lightGray.withAlphaComponent(0.3) : .clear
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -118,8 +122,9 @@ final class MainTableViewCell: UITableViewCell {
         contentView.addSubview(roundedView)
         
         roundedView.snp.makeConstraints {
-            $0.top.left.right.equalToSuperview()
-            $0.bottom.equalToSuperview().offset(-20)
+            $0.top.equalToSuperview().offset(10)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-10)
         }
         
         [storageImageView, titleLabel, priceLabel, locationLabel, sizeLabel, timeLabel, publishDateLabel].forEach {
@@ -127,7 +132,7 @@ final class MainTableViewCell: UITableViewCell {
         }
         
         storageImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(10)
+            $0.top.equalToSuperview()
             $0.left.right.equalToSuperview()
             $0.height.equalTo(200)
         }
@@ -158,7 +163,7 @@ final class MainTableViewCell: UITableViewCell {
         sizeLabel.snp.makeConstraints {
             $0.top.equalTo(locationLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-10)
         }
         
         timeLabel.snp.makeConstraints {

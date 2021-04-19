@@ -12,6 +12,7 @@ target 'Storelink' do
   pod 'RxSwift', '~> 5'   # https://github.com/ReactiveX/RxSwift   
   pod 'RxCocoa', '~> 5'   # https://github.com/ReactiveX/RxSwift
   pod 'InputMask'   # https://github.com/RedMadRobot/input-mask-ios
+  pod 'IQKeyboardManagerSwift'   #https://github.com/hackiftekhar/IQKeyboardManager 
   pod 'ImageSlideshow'   # https://github.com/zvonicek/ImageSlideshow
   pod 'ImageSlideshow/SDWebImage'
   pod 'Hero'  # https://github.com/HeroTransitions/Hero

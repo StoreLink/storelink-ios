@@ -27,7 +27,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         imageSlider.activityIndicator = DefaultActivityIndicator()
         imageSlider.contentScaleMode = UIViewContentMode.scaleAspectFill
         imageSlider.pageIndicatorPosition = .init(horizontal: .center, vertical: .bottom)
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapImage))
         imageSlider.addGestureRecognizer(gestureRecognizer)
         return imageSlider
     }()
@@ -256,7 +256,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         imageSliderView.setImageInputs(sdWebImageSource)
     }
     
-    @objc func didTap() {
+    @objc func didTapImage() {
         let fullScreenController = imageSliderView.presentFullScreenController(from: self)
         fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: UIActivityIndicatorView.Style.medium, color: nil)
     }

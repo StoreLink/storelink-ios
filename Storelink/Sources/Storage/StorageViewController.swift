@@ -15,7 +15,7 @@ final class StorageViewController: InitialViewController {
     var coordinator: StorageFlow?
     
     private let segmentControl: UISegmentedControl = {
-        let items = ["Stuff", "Storages"]
+        let items = ["Storages", "Stuff"]
         let sg = UISegmentedControl(items: items)
         sg.frame = CGRect(x: 0, y: 0, width: 250, height: 30)
         sg.selectedSegmentIndex = 0

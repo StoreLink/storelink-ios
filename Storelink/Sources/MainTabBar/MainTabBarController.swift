@@ -10,7 +10,7 @@ import UIKit
 
 final class MainTabBarController: UITabBarController {
     
-    var coordinator: TabBarCoordinator?
+    var coordinator: TabBarFlow?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,9 @@ final class MainTabBarController: UITabBarController {
 // MARK: UITabbar Delegate
 extension MainTabBarController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print(viewController)
+
         if viewController.isKind(of: AddPopupViewController.self) {
+            coordinator?.showAddPopupView()
             return false
         }
         return true

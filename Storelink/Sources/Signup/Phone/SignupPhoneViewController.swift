@@ -43,8 +43,6 @@ final class SignupPhoneViewController: InitialViewController {
             view.addSubview($0)
         }
         
-        continueButton.activateConstraint()
-        
         phoneTextField.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
             $0.left.equalToSuperview().offset(20)
@@ -56,6 +54,7 @@ final class SignupPhoneViewController: InitialViewController {
             $0.top.equalTo(phoneTextField.snp.bottom).offset(30)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
+            $0.height.equalTo(45)
         }
     }
     

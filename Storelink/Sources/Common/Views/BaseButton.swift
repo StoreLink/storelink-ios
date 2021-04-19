@@ -70,17 +70,11 @@ open class BaseButton: UIButton {
         }
     }
     
-    private (set) lazy var heightConstraint: NSLayoutConstraint = heightAnchor.constraint(equalToConstant: 45)
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func activateConstraint() {
-        heightConstraint.isActive = true
     }
 }

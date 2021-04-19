@@ -58,8 +58,6 @@ final class LoginViewController: InitialViewController {
             view.addSubview($0)
         }
         
-        loginButton.activateConstraint()
-        
         phoneNumberTextField.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
             $0.left.equalToSuperview().offset(20)
@@ -78,6 +76,7 @@ final class LoginViewController: InitialViewController {
             $0.top.equalTo(passwordTextField.snp.bottom).offset(30)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
+            $0.height.equalTo(45)
         }
     }
     
