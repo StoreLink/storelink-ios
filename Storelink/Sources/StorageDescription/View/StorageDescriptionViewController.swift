@@ -201,7 +201,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         setupMap()
         setupProfileView()
         setupBottomView()
-        addSpaceView(withSpacing: 100)
+        addSpaceView(withSpacing: 150)
     }
     
     override func bind() {
@@ -215,12 +215,12 @@ final class StorageDescriptionViewController: ScrollViewController {
         imageSliderView.heroID = String(viewModel.storageItem.id)
         descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
         parametersView.addParameter(parameter: "Type", value: "storage")
-        parametersView.addParameter(parameter: "Size", value: StringUtils.textWithSymbol(text: "300", symbol: GlobalConstants.m))
-        parametersView.addParameter(parameter: "Available time", value: "9:00 - 16:00")
+        parametersView.addParameter(parameter: "Size", value: StringUtils.textWithSymbol(text: String(viewModel.storageItem.size), symbol: GlobalConstants.m))
+        parametersView.addParameter(parameter: "Available time", value: viewModel.storageItem.availableTime)
         locationWithImageView.text = "Almaty, Kazakhstan"
         usernameLabel.text = "Firstname Lastname"
         userStatusLabel.text = "Owner"
-        priceLabel.text = StringUtils.textWithSymbol(text: "100", symbol: GlobalConstants.tgm)
+        priceLabel.text = StringUtils.textWithSymbol(text: String(viewModel.storageItem.price), symbol: GlobalConstants.tgm)
     }
     
     private func hideNavigationBar() {
@@ -250,9 +250,13 @@ final class StorageDescriptionViewController: ScrollViewController {
     
     private func setImages() {
         var sdWebImageSource: [SDWebImageSource] = []
-        for imageStringUrl in viewModel.storageItem.images {
-            sdWebImageSource.append(SDWebImageSource(urlString: imageStringUrl)!)
-        }
+//        guard let images = viewModel.storageItem.images else { return }
+//        for imageStringUrl in image {
+//            sdWebImageSource.append(SDWebImageSource(urlString: imageStringUrl)!)
+//        }
+        
+        guard let image = viewModel.storageItem.image else { return }
+        sdWebImageSource.append(SDWebImageSource(urlString: image)!)
         imageSliderView.setImageInputs(sdWebImageSource)
     }
     

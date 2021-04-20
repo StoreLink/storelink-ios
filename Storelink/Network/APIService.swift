@@ -10,6 +10,7 @@ import Moya
 
 enum APIService {
     case getStorages
+    case postStorage(request: StorageItemRequest)
 }
 
 extension APIService: TargetType {
@@ -24,6 +25,8 @@ extension APIService: TargetType {
         switch self {
         case .getStorages:
             return "/storage"
+        case .postStorage:
+            return "/storage/newStorage"
         }
     }
     
@@ -32,12 +35,37 @@ extension APIService: TargetType {
         switch self {
         case .getStorages:
             return .get
+        case .postStorage:
+            return .post
+        }
+    }
+    
+    // Request parameters
+    var parameters: [String: Any]? {
+        switch self {
+        case .postStorage(let request):
+            return request.parameters
+        default:
+            return [:]
+        }
+    }
+    
+    // Type of encoding
+    var parameterEncoding: ParameterEncoding {
+        switch self {
+        case .getStorages:
+            return URLEncoding.default
+        default:
+            return JSONEncoding.default
         }
     }
     
     // Specify body parameters, objects, files etc.
     // Plain request is a request without a body.
     var task: Task {
+        if let parameters = parameters {
+            return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        }
         return .requestPlain
     }
     

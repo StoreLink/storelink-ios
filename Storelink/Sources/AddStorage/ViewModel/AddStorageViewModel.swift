@@ -22,14 +22,15 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
     }
     
     struct Output {
-        
+        let storageAdded: Observable<Void>
     }
     
     private let nameValue: BehaviorRelay<String?> = .init(value: nil)
     private let descriptionValue: BehaviorRelay<String?> = .init(value: nil)
-    private let priceValue: BehaviorRelay<String?> = .init(value: nil)
-    private let sizeValue: BehaviorRelay<String?> = .init(value: nil)
+    private let priceValue: BehaviorRelay<Int?> = .init(value: nil)
+    private let sizeValue: BehaviorRelay<Int?> = .init(value: nil)
     private let storageTypeValue: BehaviorRelay<String?> = .init(value: nil)
+    private let outStorageAdded: PublishRelay<Void> = .init()
     
     func transform(input: Input) -> Output {
         input.actionButtonTrigger
@@ -38,7 +39,10 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
                     let description = self?.descriptionValue.value,
                     let price = self?.priceValue.value,
                     let size = self?.sizeValue.value,
-                    let storageType = self?.storageTypeValue.value else { return}
+                    let storageType = self?.storageTypeValue.value else { return }
+                
+                let request = StorageItemRequest(name: name, description: description, price: price, size: size, availableTime: "", location: nil, images: nil)
+                self?.postRequest(request: request)
             })
             .disposed(by: disposeBag)
         
@@ -51,10 +55,12 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
             .disposed(by: disposeBag)
         
         input.priceValue
+            .map { Int($0) }
             .bind(to: priceValue)
             .disposed(by: disposeBag)
         
         input.sizeValue
+            .map { Int($0) }
             .bind(to: sizeValue)
             .disposed(by: disposeBag)
         
@@ -62,6 +68,16 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
             .bind(to: storageTypeValue)
             .disposed(by: disposeBag)
         
-        return Output()
+        return Output(storageAdded: outStorageAdded.asObservable())
+    }
+    
+    func postRequest(request: StorageItemRequest) {
+        NetworkManager.shared.postStorage(request: request)
+        .subscribe(onSuccess: { [weak self] in
+            self?.outStorageAdded.accept(())
+        }, onError: { error in
+            print("error")
+        })
+        .disposed(by: disposeBag)
     }
 }

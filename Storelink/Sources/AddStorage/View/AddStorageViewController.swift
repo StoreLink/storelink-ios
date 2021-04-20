@@ -208,7 +208,13 @@ final class AddStorageViewController: ScrollViewController {
                                               sizeValue: sizeValue.asObservable().filterNil(),
                                               storageTypeValue: storageTypeValue.asObservable().filterNil(),
                                               actionButtonTrigger: actionButtonTrigger)
-        let _ = viewModel.transform(input: input)
+        let output = viewModel.transform(input: input)
+        
+        output.storageAdded
+            .subscribe(onNext: { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func dataValidation() -> Bool {

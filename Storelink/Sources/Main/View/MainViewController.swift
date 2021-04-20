@@ -33,8 +33,11 @@ final class MainViewController: InitialViewController {
         return button
     }()
     
-    private let tableView: UITableView = {
+    private let refreshControl: UIRefreshControl = .init()
+    
+    private lazy var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.refreshControl = refreshControl
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.showsVerticalScrollIndicator = false
@@ -74,11 +77,17 @@ final class MainViewController: InitialViewController {
         }
         .disposed(by: disposeBag)
         
-        let input = MainViewModel.Input()
+        let input = MainViewModel.Input(loadDataTrigger: refreshControl.rx.controlEvent(.valueChanged).asObservable())
         let output = viewModel.transform(input: input)
         
         output.storageItems
             .bind(to: dataSource)
+            .disposed(by: disposeBag)
+        
+        output.dataLoaded
+            .subscribe(onNext: { [weak self] in
+                self?.refreshControl.endRefreshing()
+            })
             .disposed(by: disposeBag)
     }
     

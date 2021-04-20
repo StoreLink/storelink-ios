@@ -13,7 +13,11 @@ final class MainTableViewCell: UITableViewCell {
     
     var storageItem: StorageItem? {
         didSet {
-            storageImageView.sd_setImage(with: URL(string: (storageItem?.images.first)!))
+            if let imageURL = URL(string: storageItem?.image ?? "") {
+                storageImageView.sd_setImage(with: imageURL)
+            } else {
+                storageImageView.image = nil
+            }
             storageImageView.heroID = String(storageItem?.id ?? 0)
             typeLabel.text = storageItem?.type
             titleLabel.text = storageItem?.name
@@ -21,7 +25,7 @@ final class MainTableViewCell: UITableViewCell {
             locationLabel.text = storageItem?.location
             sizeLabel.text = StringUtils.textWithSymbol(text: String(storageItem?.size ?? 0), symbol: GlobalConstants.m)
             timeLabel.text = storageItem?.availableTime
-            publishDateLabel.text = storageItem?.publishTime
+            publishDateLabel.text = storageItem?.createdDate
         }
     }
     
