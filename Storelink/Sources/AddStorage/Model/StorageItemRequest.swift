@@ -15,7 +15,7 @@ struct StorageItemRequest: Encodable {
     let size: Int
     let availableTime: String
     let location: String?
-    let images: [String]?
+    let image: String
     
     enum CodingKeys: String, CodingKey {
         case name = "storageName"
@@ -23,7 +23,8 @@ struct StorageItemRequest: Encodable {
         case availableTime = "storageAvailableTime"
         case price = "storagePrice"
         case size = "storageSize"
-        case location, images
+        case image = "storageImage"
+        case location
     }
     
     // To encode object

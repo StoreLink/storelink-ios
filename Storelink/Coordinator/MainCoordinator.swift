@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainFlow: class {
     func showStorageDescriptionView(storageItem: StorageItem)
+    func showStorageLocationView(latitude: Double, longitude: Double)
     func showMapView()
     func closeMapView()
 }
@@ -32,6 +33,12 @@ class MainCoordinator: Coordinator, MainFlow {
     func showStorageDescriptionView(storageItem: StorageItem) {
         let viewModel = StorageDescriptionViewModel(storageItem: storageItem)
         let viewController = StorageDescriptionViewController(viewModel: viewModel)
+        viewController.coordinator = self
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showStorageLocationView(latitude: Double, longitude: Double) {
+        let viewController = StorageLocationViewController(latitude: latitude, longitude: longitude)
         navigationController?.pushViewController(viewController, animated: true)
     }
     

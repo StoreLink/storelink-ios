@@ -18,20 +18,13 @@ final class MapViewController: InitialViewController {
     private var currentLocation: CLLocation?
     private var placesClient: GMSPlacesClient!
     private var preciseLocationZoomLevel: Float = 15.0
-    private var approximateLocationZoomLevel: Float = 10.0
-    private lazy var mapView: GMSMapView = {
-        // A default location to use when location permission is not granted.
-        let defaultLocation = CLLocation(latitude: -33.869405, longitude: 151.199)
-
-        // Create a map.
-        let zoomLevel = preciseLocationZoomLevel
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-                                              longitude: defaultLocation.coordinate.longitude,
-                                              zoom: zoomLevel)
-        let mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+    
+    private lazy var mapView: MapView = {
+        let mapView = MapView(labelIsHidden: true)
+        mapView.setCameraPosition(withLatitude: 43.240887, longitude: 76.929203)
         mapView.settings.myLocationButton = true
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
+        mapView.zoomLevel = preciseLocationZoomLevel
         return mapView
     }()
     
@@ -46,6 +39,9 @@ final class MapViewController: InitialViewController {
     
     override func setupUI() {
         view.addSubview(mapView)
+        mapView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
         view.addSubview(closeButton)
         closeButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)

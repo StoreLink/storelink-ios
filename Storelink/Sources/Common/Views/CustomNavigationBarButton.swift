@@ -31,11 +31,7 @@ class CustomNavigationBarButton: UIButton {
         layer.cornerRadius = 20
         
         snp.makeConstraints {
-            $0.height.width.equalTo(40)
-        }
-        
-        imageView?.snp.makeConstraints {
-            $0.height.width.equalTo(20)
+            $0.size.equalTo(40)
         }
     }
     

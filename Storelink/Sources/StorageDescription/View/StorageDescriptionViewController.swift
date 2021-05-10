@@ -20,6 +20,8 @@ final class StorageDescriptionViewController: ScrollViewController {
     
     // MARK: - Properties
     
+    var coordinator: MainCoordinator?
+    
     private let viewModel: StorageDescriptionViewModel
     
     private lazy var imageSliderView: ImageSlideshow = {
@@ -77,6 +79,16 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textAlignment = .left
         return label
+    }()
+    
+    private lazy var mapView: MapView = {
+        let view = MapView()
+        view.mapDelegate = self
+        view.cornerRadius = 10
+        view.setCameraPosition(withLatitude: 43.235126, longitude: 76.909736)
+        view.addMarker(withLatitude: 43.235126, longitude: 76.909736)
+        view.disableGestures()
+        return view
     }()
     
     private let locationWithImageView: LabelWithLeftImageView = {
@@ -328,19 +340,8 @@ private extension StorageDescriptionViewController {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
+        
         addSpaceView(withSpacing: 10)
-        let camera = GMSCameraPosition.camera(withLatitude: 43.235126, longitude: 76.909736, zoom: 14.0)
-        let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
-        mapView.layer.cornerRadius = 10
-        mapView.settings.scrollGestures = false
-        mapView.settings.zoomGestures = false
-        mapView.settings.tiltGestures = false
-        mapView.settings.rotateGestures = false
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 43.235126, longitude: 76.909736)
-        marker.map = mapView
-        
         addView(view: mapView)
         mapView.snp.makeConstraints {
             $0.height.equalTo(200)
@@ -452,5 +453,13 @@ extension StorageDescriptionViewController: UIScrollViewDelegate {
         } else {
             hideNavigationBar()
         }
+    }
+}
+
+// MARK: - MapViewDelegate
+extension StorageDescriptionViewController: MapViewDelegate {
+    
+    func didTapMapView() {
+        coordinator?.showStorageLocationView(latitude: 43.235126, longitude: 76.909736)
     }
 }

@@ -15,6 +15,7 @@ final class AddStorageViewController: ScrollViewController {
     private let viewModel: AddStorageViewModel
     private let nameValue: BehaviorRelay<String?> = .init(value: nil)
     private let descriptionValue: BehaviorRelay<String?> = .init(value: nil)
+    private let availableTimeValue: BehaviorRelay<String?> = .init(value: nil)
     private let priceValue: BehaviorRelay<String?> = .init(value: nil)
     private let sizeValue: BehaviorRelay<String?> = .init(value: nil)
     private let storageTypeValue: BehaviorRelay<String?> = .init(value: nil)
@@ -52,6 +53,12 @@ final class AddStorageViewController: ScrollViewController {
         return textView
     }()
     
+    private let availableTimeTextField: BaseTextField = {
+        let textField = BaseTextField()
+        textField.placeholder = "Available time"
+        return textField
+    }()
+    
     private let priceTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Price" + " " + GlobalConstants.tgm
@@ -80,6 +87,23 @@ final class AddStorageViewController: ScrollViewController {
         button.borderWidth = 1
         button.cornerRadius = 4
         return button
+    }()
+    
+    private let mapTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Select location"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        return label
+    }()
+    
+    private lazy var mapView: MapView = {
+        let mapView = MapView()
+        mapView.mapDelegate = self
+        mapView.setCameraPosition(withLatitude: 43.240887, longitude: 76.929203)
+        mapView.cornerRadius = 4
+        mapView.disableGestures()
+        return mapView
     }()
     
     private let actionButton = MainButton(title: Strings.add)
@@ -128,6 +152,13 @@ final class AddStorageViewController: ScrollViewController {
         }
         
         addSpaceView(withSpacing: 15)
+        addView(view: availableTimeTextField)
+        availableTimeTextField.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        addSpaceView(withSpacing: 15)
         addView(view: priceTextField)
         priceTextField.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
@@ -149,12 +180,32 @@ final class AddStorageViewController: ScrollViewController {
             $0.height.equalTo(50)
         }
         
+        addSpaceView(withSpacing: 15)
+        addView(view: mapTitleLabel)
+        mapTitleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        addSpaceView(withSpacing: 5)
+        addView(view: mapView)
+        mapView.snp.makeConstraints {
+            $0.left.equalTo(20)
+            $0.right.equalTo(-20)
+            $0.height.equalTo(200)
+        }
+        
         view.addSubview(actionButton)
         actionButton.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.bottom.equalToSuperview().offset(-30)
             $0.height.equalTo(50)
+        }
+        
+        _scrollView.snp.remakeConstraints {
+            $0.top.left.right.equalToSuperview()
+            $0.bottom.equalTo(actionButton.snp.top).offset(-15)
         }
         
     }
@@ -178,6 +229,11 @@ final class AddStorageViewController: ScrollViewController {
         descriptionTextView.rx.text
             .asObservable()
             .bind(to: descriptionValue)
+            .disposed(by: disposeBag)
+        
+        availableTimeTextField.rx.text
+            .asObservable()
+            .bind(to: availableTimeValue)
             .disposed(by: disposeBag)
         
         priceTextField.rx.text
@@ -204,6 +260,7 @@ final class AddStorageViewController: ScrollViewController {
         
         let input = AddStorageViewModel.Input(nameValue: nameValue.asObservable().filterNil(),
                                               descriptionValue: descriptionValue.asObservable().filterNil(),
+                                              availableTimeValue: availableTimeValue.asObservable().filterNil(),
                                               priceValue: priceValue.asObservable().filterNil(),
                                               sizeValue: sizeValue.asObservable().filterNil(),
                                               storageTypeValue: storageTypeValue.asObservable().filterNil(),
@@ -232,6 +289,13 @@ final class AddStorageViewController: ScrollViewController {
             isDataCorrect = false
         } else {
             descriptionTextView.layer.borderColor = UIColor.lightGray.cgColor
+        }
+        
+        if let availableTime = availableTimeValue.value, availableTime.isEmpty {
+            availableTimeTextField.showError()
+            isDataCorrect = false
+        } else {
+            availableTimeTextField.hideError()
         }
         
         if let price = priceValue.value, price.isEmpty {
@@ -282,4 +346,16 @@ final class AddStorageViewController: ScrollViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
+}
+
+extension AddStorageViewController: MapViewDelegate {
+    
+    func didTapMapView() {
+        let viewController = SelectLocationMapViewController()
+        navigationController?.pushViewController(viewController, animated: true)
+        viewController.updateLocation = { [weak self] latitude, longitude in
+            self?.mapView.setCameraPosition(withLatitude: latitude, longitude: longitude)
+            self?.mapView.addMarker(withLatitude: latitude, longitude: longitude)
+        }
+    }
 }

@@ -15,6 +15,7 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
     struct Input {
         let nameValue: Observable<String>
         let descriptionValue: Observable<String>
+        let availableTimeValue: Observable<String>
         let priceValue: Observable<String>
         let sizeValue: Observable<String>
         let storageTypeValue: Observable<String>
@@ -27,6 +28,7 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
     
     private let nameValue: BehaviorRelay<String?> = .init(value: nil)
     private let descriptionValue: BehaviorRelay<String?> = .init(value: nil)
+    private let availableTimeValue: BehaviorRelay<String?> = .init(value: nil)
     private let priceValue: BehaviorRelay<Int?> = .init(value: nil)
     private let sizeValue: BehaviorRelay<Int?> = .init(value: nil)
     private let storageTypeValue: BehaviorRelay<String?> = .init(value: nil)
@@ -37,11 +39,12 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
             .subscribe(onNext: { [weak self] in
                 guard let name = self?.nameValue.value,
                     let description = self?.descriptionValue.value,
+                    let availableTime = self?.availableTimeValue.value,
                     let price = self?.priceValue.value,
                     let size = self?.sizeValue.value,
                     let storageType = self?.storageTypeValue.value else { return }
                 
-                let request = StorageItemRequest(name: name, description: description, price: price, size: size, availableTime: "", location: nil, images: nil)
+                let request = StorageItemRequest(name: name, description: description, price: price, size: size, availableTime: "", location: nil, image: "https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?s=1024x768")
                 self?.postRequest(request: request)
             })
             .disposed(by: disposeBag)
@@ -52,6 +55,10 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
         
         input.descriptionValue
             .bind(to: descriptionValue)
+            .disposed(by: disposeBag)
+        
+        input.availableTimeValue
+            .bind(to: availableTimeValue)
             .disposed(by: disposeBag)
         
         input.priceValue
