@@ -47,6 +47,8 @@
 		D7513885262C4F0400EB1B84 /* AddStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7513884262C4F0400EB1B84 /* AddStorageViewController.swift */; };
 		D7750A2325D2CAB700E3A4C5 /* SignupOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */; };
 		D7783A372649CEF40094AE1C /* StorageLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */; };
+		D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A3B264A489D0094AE1C /* StoragesView.swift */; };
+		D7783A41264A49010094AE1C /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A40264A49010094AE1C /* ItemsView.swift */; };
 		D792C61526466F9E00D4D0D7 /* SelectLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */; };
 		D79C0264263D59E300A21FB2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0263263D59E300A21FB2 /* MapView.swift */; };
 		D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */; };
@@ -144,6 +146,8 @@
 		D7513884262C4F0400EB1B84 /* AddStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStorageViewController.swift; sourceTree = "<group>"; };
 		D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOTPViewController.swift; sourceTree = "<group>"; };
 		D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocationViewController.swift; sourceTree = "<group>"; };
+		D7783A3B264A489D0094AE1C /* StoragesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragesView.swift; sourceTree = "<group>"; };
+		D7783A40264A49010094AE1C /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
 		D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationMapViewController.swift; sourceTree = "<group>"; };
 		D79C0263263D59E300A21FB2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
@@ -333,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				D72F41DF25DABFFE008282A4 /* StorageViewController.swift */,
+				D7783A3B264A489D0094AE1C /* StoragesView.swift */,
+				D7783A40264A49010094AE1C /* ItemsView.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -949,6 +955,7 @@
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D7CEC97525E433750051D0CF /* StorageDescriptionViewController.swift in Sources */,
 				D7750A2325D2CAB700E3A4C5 /* SignupOTPViewController.swift in Sources */,
+				D7783A41264A49010094AE1C /* ItemsView.swift in Sources */,
 				D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */,
 				D72F41B225DA9191008282A4 /* ProfileCoordinator.swift in Sources */,
 				D74642F8256BAF6000E618B4 /* ProfileViewController.swift in Sources */,
@@ -961,6 +968,7 @@
 				D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */,
 				D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */,
 				D727318825FDE95B00DC3CF9 /* LabelWithLeftImageView.swift in Sources */,
+				D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */,
 				D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */,
 				D7F9A581260C3FD200D3520E /* StringUtils.swift in Sources */,
 				D7513882262C20AD00EB1B84 /* AddItem.swift in Sources */,

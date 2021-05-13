@@ -88,6 +88,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         view.setCameraPosition(withLatitude: 43.235126, longitude: 76.909736)
         view.addMarker(withLatitude: 43.235126, longitude: 76.909736)
         view.disableGestures()
+        view.heroID = "map"
         return view
     }()
     
@@ -189,7 +190,6 @@ final class StorageDescriptionViewController: ScrollViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        
         hideNavigationBar()
     }
 

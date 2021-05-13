@@ -15,6 +15,7 @@ class StorageLocationViewController: InitialViewController {
     
     private lazy var mapView: MapView = {
         let mapView = MapView(labelIsHidden: true)
+        mapView.heroID = "map"
         return mapView
     }()
     
@@ -35,7 +36,11 @@ class StorageLocationViewController: InitialViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func setupUI() {

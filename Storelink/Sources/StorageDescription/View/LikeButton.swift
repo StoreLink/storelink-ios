@@ -43,7 +43,11 @@ final class LikeButton: UIButton {
         backgroundColor = color
         layer.cornerRadius = 10
         setupShadow()
-        frame = CGRect(x: 0, y: 0, width: 35, height: 35)
+        
+        snp.makeConstraints {
+            $0.size.equalTo(35)
+        }
+        
         imageView?.snp.makeConstraints {
             $0.size.equalTo(20)
         }

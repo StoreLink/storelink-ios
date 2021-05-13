@@ -15,7 +15,7 @@ final class StorageViewController: InitialViewController {
     var coordinator: StorageFlow?
     
     private let segmentControl: UISegmentedControl = {
-        let items = ["Storages", "Stuff"]
+        let items = ["Storages", "Items"]
         let sg = UISegmentedControl(items: items)
         sg.frame = CGRect(x: 0, y: 0, width: 250, height: 30)
         sg.selectedSegmentIndex = 0
@@ -23,6 +23,9 @@ final class StorageViewController: InitialViewController {
         sg.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         return sg
     }()
+    
+    private let storagesView: StoragesView = .init()
+    private let itemsView: ItemsView = .init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,15 +35,31 @@ final class StorageViewController: InitialViewController {
     
     override func setupUI() {
         self.navigationItem.titleView = segmentControl
+        
+        view.addSubview(storagesView)
+        storagesView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+        
+        view.addSubview(itemsView)
+        itemsView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
     }
     
     override func bind() {
         segmentControl.rx.selectedSegmentIndex.subscribe(onNext: { [weak self] index in
             switch index {
             case 0:
-                print(0)
+                self?.storagesView.isHidden = false
+                self?.itemsView.isHidden = true
             case 1:
-                print(1)
+                self?.storagesView.isHidden = true
+                self?.itemsView.isHidden = false
             default:
                 break
             }
