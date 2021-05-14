@@ -11,7 +11,7 @@ import UIKit
 protocol MainFlow: class {
     func showStorageDescriptionView(storageItem: StorageItem)
     func showStorageLocationView(latitude: Double, longitude: Double)
-    func showMapView()
+    func showMapView(storages: [StorageItem])
     func closeMapView()
 }
 
@@ -42,8 +42,8 @@ class MainCoordinator: Coordinator, MainFlow {
         navigationController?.pushViewController(viewController, animated: true)
     }
     
-    func showMapView() {
-        let viewController = MapViewController()
+    func showMapView(storages: [StorageItem]) {
+        let viewController = MapViewController(storages: storages)
         viewController.coordinator = self
         viewController.modalPresentationStyle = .fullScreen
         navigationController?.present(viewController, animated: true, completion: nil)

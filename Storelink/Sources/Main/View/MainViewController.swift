@@ -45,7 +45,7 @@ final class MainViewController: InitialViewController {
         return tableView
     }()
     
-    private let dataSource: PublishRelay<[StorageItem]> = .init()
+    private let dataSource: BehaviorRelay<[StorageItem]> = .init(value: [])
     
     init(viewModel: MainViewModel) {
         self.viewModel = viewModel
@@ -73,7 +73,8 @@ final class MainViewController: InitialViewController {
         .disposed(by: disposeBag)
         
         mapBarButtonItem.rx.tap.bind { [weak self] in
-            self?.coordinator?.showMapView()
+            let storages = self?.dataSource.value
+            self?.coordinator?.showMapView(storages: storages ?? [])
         }
         .disposed(by: disposeBag)
         

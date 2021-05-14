@@ -7,10 +7,16 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 import GoogleMaps
 import GooglePlaces
 
 final class MapViewController: InitialViewController {
+    
+    enum Constants {
+        static let cellIdentifier = "cellId"
+    }
     
     var coordinator: MainCoordinator?
     
@@ -18,18 +24,45 @@ final class MapViewController: InitialViewController {
     private var currentLocation: CLLocation?
     private var placesClient: GMSPlacesClient!
     private var preciseLocationZoomLevel: Float = 15.0
+    private var dataSource: BehaviorRelay<[StorageItem]> = .init(value: [])
     
     private lazy var mapView: MapView = {
         let mapView = MapView(labelIsHidden: true)
         mapView.setCameraPosition(withLatitude: 43.240887, longitude: 76.929203)
-        mapView.settings.myLocationButton = true
+        mapView.settings.myLocationButton = false
         mapView.isMyLocationEnabled = true
         mapView.zoomLevel = preciseLocationZoomLevel
         return mapView
     }()
     
+    private lazy var collectionViewLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        layout.itemSize = CGSize(width: view.frame.size.width, height: 150)
+        return layout
+    }()
+    
+    private lazy var collectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.register(MapCollectionViewCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
+        collectionView.backgroundColor = .clear
+        collectionView.isPagingEnabled = true
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+    
     private let closeButton: CustomNavigationBarButton = .init(image: Assets.close.image)
-
+    
+    init(storages: [StorageItem]) {
+        dataSource.accept(storages)
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,10 +75,18 @@ final class MapViewController: InitialViewController {
         mapView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        
         view.addSubview(closeButton)
         closeButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20)
             $0.left.equalToSuperview().offset(20)
+        }
+        
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints {
+            $0.height.equalTo(190)
+            $0.left.right.equalToSuperview()
+            $0.bottom.equalToSuperview().offset(-50)
         }
     }
     
@@ -54,6 +95,12 @@ final class MapViewController: InitialViewController {
             self?.coordinator?.closeMapView()
         }
         .disposed(by: disposeBag)
+        
+        dataSource
+            .bind(to: collectionView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: MapCollectionViewCell.self)) { _, model, cell in
+                cell.storageItem = model
+            }
+            .disposed(by: disposeBag)
     }
     
     func setupLocationManager() {

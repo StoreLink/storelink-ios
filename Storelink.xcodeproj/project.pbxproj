@@ -49,6 +49,8 @@
 		D7783A372649CEF40094AE1C /* StorageLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */; };
 		D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A3B264A489D0094AE1C /* StoragesView.swift */; };
 		D7783A41264A49010094AE1C /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A40264A49010094AE1C /* ItemsView.swift */; };
+		D78AFF90264E3664009096A6 /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78AFF8F264E3664009096A6 /* MapCollectionViewCell.swift */; };
+		D78AFF94264E96C5009096A6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78AFF93264E96C5009096A6 /* UIView+Extension.swift */; };
 		D792C61526466F9E00D4D0D7 /* SelectLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */; };
 		D79C0264263D59E300A21FB2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0263263D59E300A21FB2 /* MapView.swift */; };
 		D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */; };
@@ -148,6 +150,8 @@
 		D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocationViewController.swift; sourceTree = "<group>"; };
 		D7783A3B264A489D0094AE1C /* StoragesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragesView.swift; sourceTree = "<group>"; };
 		D7783A40264A49010094AE1C /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		D78AFF8F264E3664009096A6 /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
+		D78AFF93264E96C5009096A6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationMapViewController.swift; sourceTree = "<group>"; };
 		D79C0263263D59E300A21FB2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		D79DCC3325C28BFA00DE6DCD /* BaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 				D751387B262B8EE000EB1B84 /* UIApplication+Extension.swift */,
 				D7DD9930262DF5E200BD603A /* UIAlertController+Extension.swift */,
 				D7DD9936262E1D8700BD603A /* Observable+Operators.swift */,
+				D78AFF93264E96C5009096A6 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 			children = (
 				D7AF66EF25E6B0010088522F /* MapViewController.swift */,
 				D79C0263263D59E300A21FB2 /* MapView.swift */,
+				D78AFF8F264E3664009096A6 /* MapCollectionViewCell.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -973,6 +979,7 @@
 				D7F9A581260C3FD200D3520E /* StringUtils.swift in Sources */,
 				D7513882262C20AD00EB1B84 /* AddItem.swift in Sources */,
 				D7DD9931262DF5E200BD603A /* UIAlertController+Extension.swift in Sources */,
+				D78AFF90264E3664009096A6 /* MapCollectionViewCell.swift in Sources */,
 				D74642FF256CD91000E618B4 /* ProfileCellModel.swift in Sources */,
 				D7041B7126031FD800B29C72 /* LabelWithBackgroundView.swift in Sources */,
 				D79DCC3C25C2CAE100DE6DCD /* MainButton.swift in Sources */,
@@ -983,6 +990,7 @@
 				D7F9A566260BB39A00D3520E /* DividerView.swift in Sources */,
 				D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */,
 				D727318125FAA91800DC3CF9 /* CustomNavigationBarButton.swift in Sources */,
+				D78AFF94264E96C5009096A6 /* UIView+Extension.swift in Sources */,
 				D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */,
 				D72F41BA25DA9D88008282A4 /* MainCoordinator.swift in Sources */,
 				D72F420125DC4265008282A4 /* LoginCoordinator.swift in Sources */,
