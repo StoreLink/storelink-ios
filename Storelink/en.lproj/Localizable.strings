@@ -9,7 +9,7 @@
 "main" = "Main";
 "add" = "Add";
 "storage" = "Storage";
-"messages" = "Messages";
+"calculator" = "Calculator";
 "profile" = "Profile";
 "login" = "Login";
 "signup" = "Sign up";

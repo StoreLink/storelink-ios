@@ -9,12 +9,21 @@
 import RxSwift
 import RxCocoa
 
-final class ProfileViewModel {
+final class ProfileViewModel: ViewModel, ViewModelType {
     
-    let profileItems: BehaviorRelay<[ProfileCellModel]> = BehaviorRelay(value: [
-        ProfileCellModel(name: Strings.personalInformation, image: Assets.personInfo.image),
-        ProfileCellModel(name: Strings.paymentMethods, image: Assets.paymentCard.image),
-        ProfileCellModel(name: Strings.notifications, image: Assets.notification.image)
-    ])
+    struct Input { }
     
+    struct Output {
+        let profileItems: Observable<[ProfileCellModel]>
+    }
+    
+    private let profileItems: BehaviorRelay<[ProfileCellModel]> = BehaviorRelay(value: [])
+    
+    func transform(input: Input) -> Output {
+        
+        profileItems.accept([ProfileCellModel(name: Strings.personalInformation, image: Assets.personInfo.image),
+                             ProfileCellModel(name: Strings.paymentMethods, image: Assets.paymentCard.image),
+                             ProfileCellModel(name: Strings.notifications, image: Assets.notification.image)])
+        return Output(profileItems: profileItems.asObservable())
+    }
 }

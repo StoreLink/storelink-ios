@@ -46,7 +46,7 @@ class StorageLocationViewController: InitialViewController {
     override func setupUI() {
         setNavigationRightBarButtonItem()
         mapView.setCameraPosition(withLatitude: latitude, longitude: longitude)
-        mapView.addMarker(withLatitude: latitude, longitude: longitude)
+        mapView.setSingleMarker(withLatitude: latitude, longitude: longitude)
         view.addSubview(mapView)
         mapView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)

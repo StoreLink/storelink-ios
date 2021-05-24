@@ -59,7 +59,7 @@ final class ProfileViewController: ScrollViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = Strings.profile  
+        title = Strings.profile
     }
     
     override func setupUI() {
@@ -99,15 +99,8 @@ final class ProfileViewController: ScrollViewController {
     }
     
     override func bind() {
-        
         tableView.rx
             .setDelegate(self)
-            .disposed(by: disposeBag)
-
-        viewModel.profileItems.asObservable()
-            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) { row, item, cell in
-                cell.profile = item
-            }
             .disposed(by: disposeBag)
 
         tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { item in
@@ -117,6 +110,15 @@ final class ProfileViewController: ScrollViewController {
         authorizeButton.rx.tap.bind { [weak self] in
             self?.coordinator?.showPopupView()
         }.disposed(by: disposeBag)
+        
+        let input = ProfileViewModel.Input()
+        let output = viewModel.transform(input: input)
+        
+        output.profileItems
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ProfileTableViewCell.self)) { _, item, cell in
+                cell.profile = item
+            }
+            .disposed(by: disposeBag)
     }
 }
 

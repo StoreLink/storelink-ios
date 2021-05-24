@@ -34,4 +34,11 @@ final class NetworkManager: NetworkManagerProtocol {
             .filterSuccessfulStatusCodes()
             .map { _ in }
     }
+    
+    func postRegistration(request: UserRequest) -> Single<RequestMessage> {
+        return provider.rx
+            .request(.postRegistration(request: request))
+            .filterSuccessfulStatusCodes()
+            .map(RequestMessage.self)
+    }
 }

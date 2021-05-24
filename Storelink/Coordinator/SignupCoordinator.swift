@@ -21,10 +21,12 @@ class SignupCoordinator: Coordinator, SignupFlow {
     }
     
     func start() {
-        let viewController = SignupPhoneViewController()
+        let viewModel = SignupViewModel()
+        let viewController = SignupViewController(viewModel: viewModel)
         viewController.coordinator = self
-        viewController.modalPresentationStyle = .formSheet
-        navigationController?.present(UINavigationController(rootViewController: viewController), animated: true, completion: { [weak self] in
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.modalPresentationStyle = .fullScreen
+        navigationController?.present(navController, animated: true, completion: { [weak self] in
             self?.navigationController = viewController.navigationController
         })
     }

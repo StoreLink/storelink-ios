@@ -56,7 +56,9 @@ final class MapViewController: InitialViewController {
     private let closeButton: CustomNavigationBarButton = .init(image: Assets.close.image)
     
     init(storages: [StorageItem]) {
+        super.init()
         dataSource.accept(storages)
+        setMarkers(storages: storages)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -113,6 +115,13 @@ final class MapViewController: InitialViewController {
         locationManager.delegate = self
 
         placesClient = GMSPlacesClient.shared()
+    }
+    
+    func setMarkers(storages: [StorageItem]) {
+        storages.forEach {
+            $0
+            mapView.addMarker(withLatitude: 43.235126, longitude: 76.909736)
+        }
     }
 
 }

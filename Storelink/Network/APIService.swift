@@ -11,6 +11,7 @@ import Moya
 enum APIService {
     case getStorages
     case postStorage(request: StorageItemRequest)
+    case postRegistration(request: UserRequest)
 }
 
 extension APIService: TargetType {
@@ -27,6 +28,8 @@ extension APIService: TargetType {
             return "/storage"
         case .postStorage:
             return "/storage/newStorage"
+        case .postRegistration:
+            return "/auth/signup"
         }
     }
     
@@ -35,7 +38,8 @@ extension APIService: TargetType {
         switch self {
         case .getStorages:
             return .get
-        case .postStorage:
+        case .postStorage,
+             .postRegistration:
             return .post
         }
     }
@@ -44,6 +48,8 @@ extension APIService: TargetType {
     var parameters: [String: Any]? {
         switch self {
         case .postStorage(let request):
+            return request.parameters
+        case .postRegistration(let request):
             return request.parameters
         default:
             return [:]

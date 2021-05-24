@@ -53,7 +53,7 @@ class SelectLocationMapViewController: InitialViewController {
 
 extension SelectLocationMapViewController: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        self.mapView.addMarker(withLatitude: coordinate.latitude, longitude: coordinate.longitude)
+        self.mapView.setSingleMarker(withLatitude: coordinate.latitude, longitude: coordinate.longitude)
         self.updateLocation?(coordinate.latitude, coordinate.longitude)
         setNavigationRightBarButtonItem()
     }

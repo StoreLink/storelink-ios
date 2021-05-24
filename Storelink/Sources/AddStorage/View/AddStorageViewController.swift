@@ -355,7 +355,7 @@ extension AddStorageViewController: MapViewDelegate {
         navigationController?.pushViewController(viewController, animated: true)
         viewController.updateLocation = { [weak self] latitude, longitude in
             self?.mapView.setCameraPosition(withLatitude: latitude, longitude: longitude)
-            self?.mapView.addMarker(withLatitude: latitude, longitude: longitude)
+            self?.mapView.setSingleMarker(withLatitude: latitude, longitude: longitude)
         }
     }
 }

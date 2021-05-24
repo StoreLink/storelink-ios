@@ -41,9 +41,9 @@ class TabBarCoordinator: Coordinator, TabBarFlow {
         addController.tabBarItem.image = Assets.tabAdd.image.withRenderingMode(.alwaysOriginal)
         addController.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         
-        let messagesNavigationController = UINavigationController()
-        messagesNavigationController.tabBarItem.image = Assets.tabMessage.image
-        let messagesCoordinator = MessagesCoordinator(navigationController: messagesNavigationController)
+        let calculatePriceNavigationController = UINavigationController()
+        calculatePriceNavigationController.tabBarItem.image = Assets.tabCalculator.image
+        let calculatePriceCoordinator = CalculatePriceCoordinator(navigationController: calculatePriceNavigationController)
         
         let profileNavigationContoller = UINavigationController()
         profileNavigationContoller.tabBarItem.image = Assets.tabProfile.image
@@ -53,14 +53,14 @@ class TabBarCoordinator: Coordinator, TabBarFlow {
             mainNavigationController,
             storageNavigationController,
             addController,
-            messagesNavigationController,
+            calculatePriceNavigationController,
             profileNavigationContoller]
         
         navigationController.present(tabBarController, animated: false, completion: nil)
         
         coordinate(to: mainCoordinator)
         coordinate(to: storageCoordinator)
-        coordinate(to: messagesCoordinator)
+        coordinate(to: calculatePriceCoordinator)
         coordinate(to: profileCoordinator)
     }
     

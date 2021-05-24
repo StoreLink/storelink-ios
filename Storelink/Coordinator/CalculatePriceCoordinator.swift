@@ -1,5 +1,5 @@
 //
-//  MessagesCoordinator.swift
+//  CalculatePriceCoordinator.swift
 //  Storelink
 //
 //  Created by Акан Акиш on 15.02.2021.
@@ -12,7 +12,7 @@ protocol MessagesFlow: class {
     
 }
 
-class MessagesCoordinator: Coordinator, MessagesFlow {
+class CalculatePriceCoordinator: Coordinator, MessagesFlow {
     
     weak var navigationController: UINavigationController?
     
@@ -21,7 +21,7 @@ class MessagesCoordinator: Coordinator, MessagesFlow {
     }
     
     func start() {
-        let viewController = MessagesViewController()
+        let viewController = CalculatePriceViewController()
         viewController.coordinator = self
         
         navigationController?.pushViewController(viewController, animated: false)

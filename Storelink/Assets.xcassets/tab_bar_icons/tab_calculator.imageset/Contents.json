@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "icons8-messaging.png",
+      "filename" : "icons8-calculator.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "icons8-messaging-1.png",
+      "filename" : "icons8-calculator-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "icons8-messaging-2.png",
+      "filename" : "icons8-calculator-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

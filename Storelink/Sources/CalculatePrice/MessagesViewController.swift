@@ -8,14 +8,14 @@
 
 import UIKit
 
-final class MessagesViewController: InitialViewController {
+final class CalculatePriceViewController: InitialViewController {
     
     var coordinator: MessagesFlow?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = Strings.messages
+        title = Strings.calculator
     }
 
 }

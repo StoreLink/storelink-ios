@@ -14,6 +14,8 @@ internal enum Strings {
   internal static let accountSettings = Strings.tr("Localizable", "account_settings")
   /// Добавить
   internal static let add = Strings.tr("Localizable", "add")
+  /// Калькулятор
+  internal static let calculator = Strings.tr("Localizable", "calculator")
   /// Продолжить
   internal static let `continue` = Strings.tr("Localizable", "continue")
   /// Введите 4-значный код, отправленный на:
@@ -28,8 +30,6 @@ internal enum Strings {
   internal static let loginToManageAccount = Strings.tr("Localizable", "login_to_manage_account")
   /// Главная
   internal static let main = Strings.tr("Localizable", "main")
-  /// Сообщения
-  internal static let messages = Strings.tr("Localizable", "messages")
   /// Уведомления
   internal static let notifications = Strings.tr("Localizable", "notifications")
   /// Пароль

@@ -86,7 +86,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         view.mapDelegate = self
         view.cornerRadius = 10
         view.setCameraPosition(withLatitude: 43.235126, longitude: 76.909736)
-        view.addMarker(withLatitude: 43.235126, longitude: 76.909736)
+        view.setSingleMarker(withLatitude: 43.235126, longitude: 76.909736)
         view.disableGestures()
         view.heroID = "map"
         return view

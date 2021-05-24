@@ -10,20 +10,19 @@
 		91F6E15A11ACA88CC5C553AC /* Pods_Storelink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E59E81E9E9A4F083E0A2DBB /* Pods_Storelink.framework */; };
 		D7041B7126031FD800B29C72 /* LabelWithBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7041B7026031FD800B29C72 /* LabelWithBackgroundView.swift */; };
 		D70CEA5425723E3800E01911 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5325723E3800E01911 /* LoginViewController.swift */; };
-		D70CEA5725723E7C00E01911 /* SignupPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5625723E7C00E01911 /* SignupPhoneViewController.swift */; };
+		D70CEA5725723E7C00E01911 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5625723E7C00E01911 /* SignupViewController.swift */; };
 		D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70CEA5B257299F500E01911 /* BaseTextField.swift */; };
 		D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */; };
 		D727318125FAA91800DC3CF9 /* CustomNavigationBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318025FAA91700DC3CF9 /* CustomNavigationBarButton.swift */; };
 		D727318425FAAC5500DC3CF9 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318325FAAC5500DC3CF9 /* UIColor+Extension.swift */; };
 		D727318825FDE95B00DC3CF9 /* LabelWithLeftImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D727318725FDE95B00DC3CF9 /* LabelWithLeftImageView.swift */; };
-		D72F419425D7EC0D008282A4 /* SignupOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */; };
 		D72F419C25D92C50008282A4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F419B25D92C50008282A4 /* AppCoordinator.swift */; };
 		D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */; };
 		D72F41B225DA9191008282A4 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */; };
 		D72F41BA25DA9D88008282A4 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41B925DA9D88008282A4 /* MainCoordinator.swift */; };
 		D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41BF25DABA07008282A4 /* MainViewController.swift */; };
 		D72F41C525DABD0D008282A4 /* StorageCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */; };
-		D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */; };
+		D72F41CF25DABDE6008282A4 /* CalculatePriceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41CE25DABDE6008282A4 /* CalculatePriceCoordinator.swift */; };
 		D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41DF25DABFFE008282A4 /* StorageViewController.swift */; };
 		D72F41E825DAC012008282A4 /* AddPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41E725DAC012008282A4 /* AddPopupViewController.swift */; };
 		D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41EC25DAC021008282A4 /* MessagesViewController.swift */; };
@@ -45,7 +44,6 @@
 		D751387E262C1C6E00EB1B84 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D751387D262C1C6E00EB1B84 /* AddTableViewCell.swift */; };
 		D7513882262C20AD00EB1B84 /* AddItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7513881262C20AD00EB1B84 /* AddItem.swift */; };
 		D7513885262C4F0400EB1B84 /* AddStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7513884262C4F0400EB1B84 /* AddStorageViewController.swift */; };
-		D7750A2325D2CAB700E3A4C5 /* SignupOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */; };
 		D7783A372649CEF40094AE1C /* StorageLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */; };
 		D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A3B264A489D0094AE1C /* StoragesView.swift */; };
 		D7783A41264A49010094AE1C /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A40264A49010094AE1C /* ItemsView.swift */; };
@@ -59,6 +57,8 @@
 		D7AF671E25E83A9A0088522F /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AF671D25E83A9A0088522F /* GlobalConstants.swift */; };
 		D7B9B3D926092CE8003E4DE6 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9B3D826092CE8003E4DE6 /* BackButton.swift */; };
 		D7B9B3DB26093066003E4DE6 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B9B3DA26093066003E4DE6 /* LikeButton.swift */; };
+		D7BC256E265ABA6F008E8C99 /* UserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC256D265ABA6F008E8C99 /* UserRequest.swift */; };
+		D7BC2574265ACC0D008E8C99 /* RequestMassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC2573265ACC0D008E8C99 /* RequestMassage.swift */; };
 		D7CEC97525E433750051D0CF /* StorageDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */; };
 		D7CEC97D25E43C480051D0CF /* StorageDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CEC97C25E43C480051D0CF /* StorageDescriptionViewModel.swift */; };
 		D7DD9931262DF5E200BD603A /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9930262DF5E200BD603A /* UIAlertController+Extension.swift */; };
@@ -78,7 +78,7 @@
 		D7E6A95E251215B700C7E0C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7E6A95C251215B700C7E0C9 /* LaunchScreen.storyboard */; };
 		D7E6A969251215B700C7E0C9 /* storelink_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A968251215B700C7E0C9 /* storelink_iosTests.swift */; };
 		D7E6A974251215B700C7E0C9 /* storelink_iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E6A973251215B700C7E0C9 /* storelink_iosUITests.swift */; };
-		D7F66DF825DD119B00D5D569 /* SignupPhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66DF725DD119B00D5D569 /* SignupPhoneViewModel.swift */; };
+		D7F66DF825DD119B00D5D569 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66DF725DD119B00D5D569 /* SignupViewModel.swift */; };
 		D7F66DFE25DD40D200D5D569 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66DFD25DD40D200D5D569 /* ViewModel.swift */; };
 		D7F66E0325DE5E3400D5D569 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66E0225DE5E3300D5D569 /* MainViewModel.swift */; };
 		D7F66E0825DE78AD00D5D569 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F66E0725DE78AD00D5D569 /* MainTableViewCell.swift */; };
@@ -111,20 +111,19 @@
 		A31FCF39C1CCF55C70901A3B /* Pods-Storelink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storelink.release.xcconfig"; path = "Target Support Files/Pods-Storelink/Pods-Storelink.release.xcconfig"; sourceTree = "<group>"; };
 		D7041B7026031FD800B29C72 /* LabelWithBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithBackgroundView.swift; sourceTree = "<group>"; };
 		D70CEA5325723E3800E01911 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		D70CEA5625723E7C00E01911 /* SignupPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneViewController.swift; sourceTree = "<group>"; };
+		D70CEA5625723E7C00E01911 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		D70CEA5B257299F500E01911 /* BaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTextField.swift; sourceTree = "<group>"; };
 		D718FF7C2513C74D007D0E30 /* IniitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniitialViewController.swift; sourceTree = "<group>"; };
 		D727318025FAA91700DC3CF9 /* CustomNavigationBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarButton.swift; sourceTree = "<group>"; };
 		D727318325FAAC5500DC3CF9 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		D727318725FDE95B00DC3CF9 /* LabelWithLeftImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelWithLeftImageView.swift; sourceTree = "<group>"; };
-		D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOTPViewModel.swift; sourceTree = "<group>"; };
 		D72F419B25D92C50008282A4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		D72F41B925DA9D88008282A4 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		D72F41BF25DABA07008282A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageCoordinator.swift; sourceTree = "<group>"; };
-		D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesCoordinator.swift; sourceTree = "<group>"; };
+		D72F41CE25DABDE6008282A4 /* CalculatePriceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatePriceCoordinator.swift; sourceTree = "<group>"; };
 		D72F41DF25DABFFE008282A4 /* StorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageViewController.swift; sourceTree = "<group>"; };
 		D72F41E725DAC012008282A4 /* AddPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPopupViewController.swift; sourceTree = "<group>"; };
 		D72F41EC25DAC021008282A4 /* MessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
@@ -146,7 +145,6 @@
 		D751387D262C1C6E00EB1B84 /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		D7513881262C20AD00EB1B84 /* AddItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItem.swift; sourceTree = "<group>"; };
 		D7513884262C4F0400EB1B84 /* AddStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStorageViewController.swift; sourceTree = "<group>"; };
-		D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupOTPViewController.swift; sourceTree = "<group>"; };
 		D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocationViewController.swift; sourceTree = "<group>"; };
 		D7783A3B264A489D0094AE1C /* StoragesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragesView.swift; sourceTree = "<group>"; };
 		D7783A40264A49010094AE1C /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
@@ -160,6 +158,8 @@
 		D7AF671D25E83A9A0088522F /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		D7B9B3D826092CE8003E4DE6 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		D7B9B3DA26093066003E4DE6 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		D7BC256D265ABA6F008E8C99 /* UserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequest.swift; sourceTree = "<group>"; };
+		D7BC2573265ACC0D008E8C99 /* RequestMassage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMassage.swift; sourceTree = "<group>"; };
 		D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDescriptionViewController.swift; sourceTree = "<group>"; };
 		D7CEC97C25E43C480051D0CF /* StorageDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDescriptionViewModel.swift; sourceTree = "<group>"; };
 		D7DD9930262DF5E200BD603A /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		D7E6A96F251215B700C7E0C9 /* StorelinkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorelinkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7E6A973251215B700C7E0C9 /* storelink_iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storelink_iosUITests.swift; sourceTree = "<group>"; };
 		D7E6A975251215B700C7E0C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D7F66DF725DD119B00D5D569 /* SignupPhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPhoneViewModel.swift; sourceTree = "<group>"; };
+		D7F66DF725DD119B00D5D569 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		D7F66DFD25DD40D200D5D569 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D7F66E0225DE5E3300D5D569 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		D7F66E0725DE78AD00D5D569 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
@@ -249,19 +249,11 @@
 		D70CEA5225723DE000E01911 /* Signup */ = {
 			isa = PBXGroup;
 			children = (
-				D7750A2125D2C9D800E3A4C5 /* OTP */,
-				D70CEA5525723E4A00E01911 /* Phone */,
+				D70CEA5625723E7C00E01911 /* SignupViewController.swift */,
+				D7F66DF725DD119B00D5D569 /* SignupViewModel.swift */,
+				D7BC256D265ABA6F008E8C99 /* UserRequest.swift */,
 			);
 			path = Signup;
-			sourceTree = "<group>";
-		};
-		D70CEA5525723E4A00E01911 /* Phone */ = {
-			isa = PBXGroup;
-			children = (
-				D70CEA5625723E7C00E01911 /* SignupPhoneViewController.swift */,
-				D7F66DF725DD119B00D5D569 /* SignupPhoneViewModel.swift */,
-			);
-			path = Phone;
 			sourceTree = "<group>";
 		};
 		D70CEA582572881E00E01911 /* Common */ = {
@@ -320,7 +312,7 @@
 				D72F41AC25D9708B008282A4 /* TabBarCoordinator.swift */,
 				D72F41B925DA9D88008282A4 /* MainCoordinator.swift */,
 				D72F41C425DABD0D008282A4 /* StorageCoordinator.swift */,
-				D72F41CE25DABDE6008282A4 /* MessagesCoordinator.swift */,
+				D72F41CE25DABDE6008282A4 /* CalculatePriceCoordinator.swift */,
 				D72F41B125DA9191008282A4 /* ProfileCoordinator.swift */,
 				D72F420025DC4265008282A4 /* LoginCoordinator.swift */,
 				D72F420825DC44D3008282A4 /* SignupCoordinator.swift */,
@@ -357,12 +349,12 @@
 			path = Add;
 			sourceTree = "<group>";
 		};
-		D72F41DE25DABFDA008282A4 /* Messages */ = {
+		D72F41DE25DABFDA008282A4 /* CalculatePrice */ = {
 			isa = PBXGroup;
 			children = (
 				D72F41EC25DAC021008282A4 /* MessagesViewController.swift */,
 			);
-			path = Messages;
+			path = CalculatePrice;
 			sourceTree = "<group>";
 		};
 		D72F41F425DBEA32008282A4 /* TransitioningDelegate */ = {
@@ -413,6 +405,7 @@
 		D7513876262ABE5300EB1B84 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D7BC2572265ACBFB008E8C99 /* Model */,
 				D7513877262ABF3100EB1B84 /* APIService.swift */,
 				D7513879262ACCEB00EB1B84 /* NetworkManager.swift */,
 			);
@@ -446,15 +439,6 @@
 			path = AddStorage;
 			sourceTree = "<group>";
 		};
-		D7750A2125D2C9D800E3A4C5 /* OTP */ = {
-			isa = PBXGroup;
-			children = (
-				D7750A2225D2CAB700E3A4C5 /* SignupOTPViewController.swift */,
-				D72F419325D7EC0D008282A4 /* SignupOTPViewModel.swift */,
-			);
-			path = OTP;
-			sourceTree = "<group>";
-		};
 		D7949A8D25619B6200035D59 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,7 +448,7 @@
 				D72F41D625DABE50008282A4 /* Storage */,
 				D72F41D725DABE6A008282A4 /* Add */,
 				D7513883262C4ECC00EB1B84 /* AddStorage */,
-				D72F41DE25DABFDA008282A4 /* Messages */,
+				D72F41DE25DABFDA008282A4 /* CalculatePrice */,
 				D74642F6256BAF1E00E618B4 /* Profile */,
 				D70CEA5125723DBA00E01911 /* Login */,
 				D70CEA5225723DE000E01911 /* Signup */,
@@ -498,6 +482,14 @@
 				D7AF671D25E83A9A0088522F /* GlobalConstants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		D7BC2572265ACBFB008E8C99 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D7BC2573265ACC0D008E8C99 /* RequestMassage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D7CEC97025E432880051D0CF /* StorageDescription */ = {
@@ -930,9 +922,9 @@
 				D7E6A952251215B700C7E0C9 /* AppDelegate.swift in Sources */,
 				D7E5B8F02560565A003D37B9 /* Colors.swift in Sources */,
 				D7E5B8F12560565A003D37B9 /* Assets.swift in Sources */,
-				D72F419425D7EC0D008282A4 /* SignupOTPViewModel.swift in Sources */,
 				D70CEA5425723E3800E01911 /* LoginViewController.swift in Sources */,
 				D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */,
+				D7BC2574265ACC0D008E8C99 /* RequestMassage.swift in Sources */,
 				D751387C262B8EE000EB1B84 /* UIApplication+Extension.swift in Sources */,
 				D7F9A578260BC42D00D3520E /* ParametersView.swift in Sources */,
 				D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */,
@@ -940,8 +932,9 @@
 				D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */,
 				D7B9B3DB26093066003E4DE6 /* LikeButton.swift in Sources */,
 				D7CEC97D25E43C480051D0CF /* StorageDescriptionViewModel.swift in Sources */,
+				D7BC256E265ABA6F008E8C99 /* UserRequest.swift in Sources */,
 				D7AF671E25E83A9A0088522F /* GlobalConstants.swift in Sources */,
-				D7F66DF825DD119B00D5D569 /* SignupPhoneViewModel.swift in Sources */,
+				D7F66DF825DD119B00D5D569 /* SignupViewModel.swift in Sources */,
 				D7AF66F025E6B0010088522F /* MapViewController.swift in Sources */,
 				D74642F5256B9F2F00E618B4 /* ScrollViewController.swift in Sources */,
 				D74642FA256CD40500E618B4 /* ProfileViewModel.swift in Sources */,
@@ -954,13 +947,12 @@
 				D7464305256E718600E618B4 /* ProfilePopupViewController.swift in Sources */,
 				D7B9B3D926092CE8003E4DE6 /* BackButton.swift in Sources */,
 				D7513878262ABF3100EB1B84 /* APIService.swift in Sources */,
-				D70CEA5725723E7C00E01911 /* SignupPhoneViewController.swift in Sources */,
+				D70CEA5725723E7C00E01911 /* SignupViewController.swift in Sources */,
 				D7783A372649CEF40094AE1C /* StorageLocationViewController.swift in Sources */,
 				D7F66DFE25DD40D200D5D569 /* ViewModel.swift in Sources */,
 				D72F419C25D92C50008282A4 /* AppCoordinator.swift in Sources */,
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D7CEC97525E433750051D0CF /* StorageDescriptionViewController.swift in Sources */,
-				D7750A2325D2CAB700E3A4C5 /* SignupOTPViewController.swift in Sources */,
 				D7783A41264A49010094AE1C /* ItemsView.swift in Sources */,
 				D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */,
 				D72F41B225DA9191008282A4 /* ProfileCoordinator.swift in Sources */,
@@ -975,7 +967,7 @@
 				D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */,
 				D727318825FDE95B00DC3CF9 /* LabelWithLeftImageView.swift in Sources */,
 				D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */,
-				D72F41CF25DABDE6008282A4 /* MessagesCoordinator.swift in Sources */,
+				D72F41CF25DABDE6008282A4 /* CalculatePriceCoordinator.swift in Sources */,
 				D7F9A581260C3FD200D3520E /* StringUtils.swift in Sources */,
 				D7513882262C20AD00EB1B84 /* AddItem.swift in Sources */,
 				D7DD9931262DF5E200BD603A /* UIAlertController+Extension.swift in Sources */,

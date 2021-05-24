@@ -74,8 +74,13 @@ final class MapView: GMSMapView {
         camera = GMSCameraPosition.camera(withLatitude: withLatitude, longitude: longitude, zoom: zoomLevel)
     }
     
-    func addMarker(withLatitude: Double, longitude: Double) {
+    func setSingleMarker(withLatitude: Double, longitude: Double) {
         marker.position = CLLocationCoordinate2D(latitude: withLatitude, longitude: longitude)
+        marker.map = self
+    }
+    
+    func addMarker(withLatitude: Double, longitude: Double) {
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: withLatitude, longitude: longitude))
         marker.map = self
     }
 }
