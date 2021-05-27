@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SignupFlow: class {
-    func showOTPView(phoneNumber: String)
+    func showLoginView()
 }
 
 class SignupCoordinator: Coordinator, SignupFlow {
@@ -32,10 +32,9 @@ class SignupCoordinator: Coordinator, SignupFlow {
     }
     
     // MARK: - Flow Methods
-    func showOTPView(phoneNumber: String) {
-        let viewModel = SignupOTPViewModel(phoneNumber: phoneNumber)
-        let viewController = SignupOTPViewController(viewModel: viewModel)
-        
-        navigationController?.pushViewController(viewController, animated: true)
+    func showLoginView() {
+        let viewModel = LoginViewModel()
+        let controller = LoginViewController(viewModel: viewModel)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

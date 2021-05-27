@@ -31,33 +31,53 @@ final class SignupViewController: InitialViewController {
     private let usernameTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Username"
+        textField.autocorrectionType = .no
         return textField
     }()
     
     private let emailTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Email"
+        textField.autocorrectionType = .no
         return textField
     }()
     
-    private let passwordTextField: BaseTextField = {
+    private lazy var passwordTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Password"
+        textField.rightViewMode = .always
+        textField.isSecureTextEntry = true
+        textField.rightView = passwordRightButton
         return textField
+    }()
+    
+    private let passwordRightButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        button.setImage(Assets.eye.image, for: .normal)
+        return button
     }()
     
     private let passwordValidationLabel: UILabel = {
         let label = UILabel()
         label.text = "Password must containt at least 8 characters"
         label.textColor = .lightGray
-        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         return label
     }()
     
-    private let repeatPasswordTextField: BaseTextField = {
+    private lazy var repeatPasswordTextField: BaseTextField = {
         let textField = BaseTextField()
         textField.placeholder = "Repeat password"
+        textField.rightViewMode = .always
+        textField.isSecureTextEntry = true
+        textField.rightView = repeatPasswordRightButton
         return textField
+    }()
+    
+    private let repeatPasswordRightButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        button.setImage(Assets.eye.image, for: .normal)
+        return button
     }()
     
     private let actionButton = MainButton(title: "Create")
@@ -113,9 +133,15 @@ final class SignupViewController: InitialViewController {
             $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(50)
         }
+        
+        passwordValidationLabel.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(5)
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
 
         repeatPasswordTextField.snp.makeConstraints {
-            $0.top.equalTo(passwordTextField.snp.bottom).offset(20)
+            $0.top.equalTo(passwordValidationLabel.snp.bottom).offset(10)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(50)
@@ -130,10 +156,27 @@ final class SignupViewController: InitialViewController {
     }
     
     override func bind() {
+        viewModel.loading
+            .asObservable()
+            .bind { [weak self] loading in
+                loading ? self?.startLoader() : self?.stopLoader()
+            }
+            .disposed(by: disposeBag)
+        
         closeBarButtonItem.rx.tap.bind { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
         .disposed(by: disposeBag)
+        
+        passwordRightButton.rx.tap.bind { [weak self] in
+            self?.passwordTextField.isSecureTextEntry.toggle()
+            (self?.passwordTextField.isSecureTextEntry ?? true) ? self?.passwordRightButton.setImage(Assets.eye.image, for: .normal) : self?.passwordRightButton.setImage(Assets.eyeInvisible.image, for: .normal)
+        }.disposed(by: disposeBag)
+        
+        repeatPasswordRightButton.rx.tap.bind { [weak self] in
+            self?.repeatPasswordTextField.isSecureTextEntry.toggle()
+            (self?.repeatPasswordTextField.isSecureTextEntry ?? true) ? self?.repeatPasswordRightButton.setImage(Assets.eye.image, for: .normal) : self?.repeatPasswordRightButton.setImage(Assets.eyeInvisible.image, for: .normal)
+        }.disposed(by: disposeBag)
         
         let input = SignupViewModel.Input(username: usernameTextField.rx.text.asObservable().filterNil(),
                                           email: emailTextField.rx.text.asObservable().filterNil(),
@@ -141,6 +184,18 @@ final class SignupViewController: InitialViewController {
                                           repeatPassword: repeatPasswordTextField.rx.text.asObservable().filterNil(),
                                           buttonTrigger: actionButton.rx.tap.asObservable())
         let output = viewModel.transform(input: input)
+        
+        output.showAlert.subscribe(onNext: { [weak self] message in
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self?.navigationController?.present(alert, animated: true, completion: nil)
+        })
+        .disposed(by: disposeBag)
+        
+        output.showLoginTrigger.subscribe(onNext: { [weak self] in
+            self?.coordinator?.showLoginView()
+        })
+        .disposed(by: disposeBag)
     }
     
 }

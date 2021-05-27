@@ -21,9 +21,12 @@ class LoginCoordinator: Coordinator, LoginFlow {
     }
     
     func start() {
-        let viewController = LoginViewController()
+        let viewModel = LoginViewModel()
+        let viewController = LoginViewController(viewModel: viewModel)
         viewController.coordinator = self
-        navigationController?.present(UINavigationController(rootViewController: viewController), animated: true, completion: { [weak self] in
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.modalPresentationStyle = .fullScreen
+        navigationController?.present(navController, animated: true, completion: { [weak self] in
             self?.navigationController = viewController.navigationController
         })
     }

@@ -20,4 +20,5 @@ protocol ViewModelType {
 class ViewModel: NSObject {
     
     let disposeBag = DisposeBag()
+    let loading = ActivityIndicator()
 }

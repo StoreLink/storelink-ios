@@ -17,7 +17,14 @@ final class ProfileViewController: ScrollViewController {
     }
     
     private let viewModel: ProfileViewModel
-    var coordinator: ProfileFlow?    
+    var coordinator: ProfileFlow?
+    
+    private let logoutBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.title = "Logout"
+        button.tintColor = .systemRed
+        return button
+    }()
     
     private let avatarImageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,6 +44,13 @@ final class ProfileViewController: ScrollViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(.black, for: .selected)
         return button
+    }()
+    
+    private let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+        label.isHidden = true
+        return label
     }()
     
     private let tableView: UITableView = {
@@ -60,6 +74,7 @@ final class ProfileViewController: ScrollViewController {
         super.viewDidLoad()
         
         title = Strings.profile
+        notificationObserver()
     }
     
     override func setupUI() {
@@ -69,7 +84,7 @@ final class ProfileViewController: ScrollViewController {
         
         let profileView = UIView()
         addView(view: profileView)
-        [avatarImageView, authorizeButton].forEach {
+        [avatarImageView, authorizeButton, usernameLabel].forEach {
             profileView.addSubview($0)
         }
 
@@ -85,6 +100,11 @@ final class ProfileViewController: ScrollViewController {
         }
 
         authorizeButton.snp.makeConstraints {
+            $0.left.equalTo(avatarImageView.snp.right).offset(15)
+            $0.centerY.equalTo(avatarImageView)
+        }
+        
+        usernameLabel.snp.makeConstraints {
             $0.left.equalTo(avatarImageView.snp.right).offset(15)
             $0.centerY.equalTo(avatarImageView)
         }
@@ -105,11 +125,18 @@ final class ProfileViewController: ScrollViewController {
 
         tableView.rx.modelSelected(ProfileCellModel.self).subscribe(onNext: { item in
             print(item)
-        }).disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
         
         authorizeButton.rx.tap.bind { [weak self] in
             self?.coordinator?.showPopupView()
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
+        
+        logoutBarButton.rx.tap.bind { [weak self] in
+            self?.logout()
+        }
+        .disposed(by: disposeBag)
         
         let input = ProfileViewModel.Input()
         let output = viewModel.transform(input: input)
@@ -119,6 +146,25 @@ final class ProfileViewController: ScrollViewController {
                 cell.profile = item
             }
             .disposed(by: disposeBag)
+    }
+    
+    func notificationObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: .loginSuccess, object: nil)
+    }
+    
+    @objc private func loginSuccess() {
+        authorizeButton.isHidden = true
+        usernameLabel.isHidden = false
+        usernameLabel.text = UserService.shared.user?.username
+        navigationItem.rightBarButtonItem = logoutBarButton
+    }
+    
+    private func logout() {
+        UserService.shared.user = nil
+        authorizeButton.isHidden = false
+        usernameLabel.isHidden = true
+        usernameLabel.text = nil
+        navigationItem.rightBarButtonItem = nil
     }
 }
 

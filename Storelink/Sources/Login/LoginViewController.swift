@@ -8,23 +8,25 @@
 
 import UIKit
 import InputMask
+import RxSwift
+import RxCocoa
 
 final class LoginViewController: InitialViewController {
     
-    private enum Constants {
-        static let phoneFormat = "+7 ([000])-[000]-[00]-[00]"
-    }
+    private let viewModel: LoginViewModel
+    var coordinator: LoginFlow?
     
-    private lazy var phoneMask: MaskedTextFieldDelegate = {
-        let mask = MaskedTextFieldDelegate(primaryFormat: Constants.phoneFormat)
-        mask.delegate = self
-        return mask
+    private let closeBarButtonItem: UIBarButtonItem = {
+        let barButton = UIBarButtonItem()
+        barButton.image = Assets.close.image
+        barButton.tintColor = .black
+        return barButton
     }()
     
-    private lazy var phoneNumberTextField: BaseTextField = {
+    private lazy var usernameTextField: BaseTextField = {
         let textField = BaseTextField()
-        textField.placeholder = Strings.phoneNumber
-        textField.delegate = phoneMask
+        textField.placeholder = "Username"
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -34,6 +36,7 @@ final class LoginViewController: InitialViewController {
         textField.isSecureTextEntry = true
         textField.rightView = passwordRightButton
         textField.rightViewMode = .always
+        textField.autocorrectionType = .no
         return textField
     }()
     
@@ -45,20 +48,31 @@ final class LoginViewController: InitialViewController {
         return button
     }()
     
-    var coordinator: LoginFlow?
-
+    init(viewModel: LoginViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = Strings.login
     }
     
+    override func setNavigationLeftBarButton() {
+        super.setNavigationLeftBarButton()
+        navigationItem.rightBarButtonItem = closeBarButtonItem
+    }
+    
     override func setupUI() {
-        [phoneNumberTextField, passwordTextField, loginButton].forEach {
+        [usernameTextField, passwordTextField, loginButton].forEach {
             view.addSubview($0)
         }
         
-        phoneNumberTextField.snp.makeConstraints {
+        usernameTextField.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
@@ -66,7 +80,7 @@ final class LoginViewController: InitialViewController {
         }
         
         passwordTextField.snp.makeConstraints {
-            $0.top.equalTo(phoneNumberTextField.snp.bottom).offset(20)
+            $0.top.equalTo(usernameTextField.snp.bottom).offset(20)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(50)
@@ -81,13 +95,41 @@ final class LoginViewController: InitialViewController {
     }
     
     override func bind() {
-        loginButton.rx.tap.bind { [weak self] in
+        viewModel.loading
+            .asObservable()
+            .bind { [weak self] loading in
+                loading ? self?.startLoader() : self?.stopLoader()
+            }
+            .disposed(by: disposeBag)
+        
+        closeBarButtonItem.rx.tap.bind { [weak self] in
             self?.dismiss(animated: true, completion: nil)
-        }.disposed(by: disposeBag)
+        }
+        .disposed(by: disposeBag)
         
         passwordRightButton.rx.tap.bind { [weak self] in
             self?.passwordTextField.isSecureTextEntry.toggle()
             (self?.passwordTextField.isSecureTextEntry ?? true) ? self?.passwordRightButton.setImage(Assets.eye.image, for: .normal) : self?.passwordRightButton.setImage(Assets.eyeInvisible.image, for: .normal)
         }.disposed(by: disposeBag)
+        
+        let input = LoginViewModel.Input(
+            userName: usernameTextField.rx.text.asObservable().filterNil(),
+            password: passwordTextField.rx.text.asObservable().filterNil(),
+            loginButtonTrigger: loginButton.rx.tap.asObservable())
+        let output = viewModel.transform(input: input)
+        
+        output.showAlert.subscribe(onNext: { [weak self] message in
+            let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self?.navigationController?.present(alert, animated: true, completion: nil)
+        })
+        .disposed(by: disposeBag)
+        
+        output.loginTrigger
+            .subscribe(onNext: { [weak self] in
+                NotificationCenter.default.post(name: .loginSuccess, object: nil)
+                self?.dismiss(animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
 }

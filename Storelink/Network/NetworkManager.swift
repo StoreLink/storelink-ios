@@ -12,11 +12,14 @@ import Moya
 protocol NetworkManagerProtocol {
     func getStorages() -> Single<[StorageItem]>
     func postStorage(request: StorageItemRequest) -> Single<Void>
+    func postRegistration(username: String, email: String, password: String) -> Single<RequestMessage>
+    func postAuth(username: String, password: String) -> Single<User>
 }
 
 final class NetworkManager: NetworkManagerProtocol {
     
     static let shared = NetworkManager()
+    
     private let provider = MoyaProvider<APIService>(plugins: [NetworkLoggerPlugin()])
     
     private init() {}
@@ -35,10 +38,19 @@ final class NetworkManager: NetworkManagerProtocol {
             .map { _ in }
     }
     
-    func postRegistration(request: UserRequest) -> Single<RequestMessage> {
+    func postRegistration(username: String, email: String, password: String) -> Single<RequestMessage> {
+        let request = RegistrationRequest(username: username.lowercased(), email: email.lowercased(), password: password)
         return provider.rx
             .request(.postRegistration(request: request))
             .filterSuccessfulStatusCodes()
             .map(RequestMessage.self)
+    }
+    
+    func postAuth(username: String, password: String) -> Single<User> {
+        let request = LoginRequest(username: username.lowercased(), password: password)
+        return provider.rx
+            .request(.postAuth(request: request))
+            .filterSuccessfulStatusCodes()
+            .map(User.self)
     }
 }

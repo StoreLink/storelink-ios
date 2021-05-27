@@ -11,6 +11,15 @@ import RxSwift
 
 class InitialViewController: UIViewController {
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        view.addSubview(indicator)
+        indicator.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
+        return indicator
+    }()
+    
     let disposeBag = DisposeBag()
     
     init() {
@@ -34,6 +43,15 @@ class InitialViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setNavigationLeftBarButton()
+    }
+    
+    func startLoader() {
+        view.bringSubviewToFront(activityIndicator)
+        activityIndicator.startAnimating()
+    }
+    
+    func stopLoader() {
+        activityIndicator.stopAnimating()
     }
     
     func setNavigationLeftBarButton() {

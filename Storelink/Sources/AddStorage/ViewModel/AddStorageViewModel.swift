@@ -46,6 +46,7 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
                 
                 let request = StorageItemRequest(name: name, description: description, price: price, size: size, availableTime: availableTime, location: nil, image: "https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?s=1024x768")
                 self?.postRequest(request: request)
+                print(storageType)
             })
             .disposed(by: disposeBag)
         

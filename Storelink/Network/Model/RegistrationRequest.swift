@@ -1,14 +1,14 @@
 //
-//  UserRequest.swift
+//  RegistrationRequest.swift
 //  Storelink
 //
-//  Created by Акан Акиш on 23.05.2021.
+//  Created by Акан Акиш on 26.05.2021.
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
 import Foundation
 
-struct UserRequest: Encodable {
+struct RegistrationRequest: Encodable {
     let username: String
     let email: String
     let password: String
