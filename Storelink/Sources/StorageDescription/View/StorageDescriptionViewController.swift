@@ -232,6 +232,7 @@ final class StorageDescriptionViewController: ScrollViewController {
     private func setData() {
         setImages()
         imageSliderView.heroID = String(viewModel.storageItem.id)
+        titleLabel.text = viewModel.storageItem.name
         descriptionLabel.text = viewModel.storageItem.description
         
         parametersView.addParameter(parameter: "Type", value: "hangar")

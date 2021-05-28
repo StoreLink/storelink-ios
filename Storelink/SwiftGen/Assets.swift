@@ -33,6 +33,7 @@ internal enum Assets {
   internal static let heartOutline = ImageAsset(name: "heart_outline")
   internal static let item = ImageAsset(name: "item")
   internal static let location = ImageAsset(name: "location")
+  internal static let logo = ImageAsset(name: "logo")
   internal static let map = ImageAsset(name: "map")
   internal static let size = ImageAsset(name: "size")
   internal static let storage = ImageAsset(name: "storage")

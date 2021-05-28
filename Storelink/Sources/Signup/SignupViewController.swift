@@ -20,10 +20,18 @@ final class SignupViewController: InitialViewController {
         return barButton
     }()
     
+    private let logoImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = Assets.logo.image
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     private let welcomeLabel: UILabel = {
         let label = UILabel()
         label.text = "Welcome to Storelink!"
         label.font = UIFont.systemFont(ofSize: 22, weight: .medium)
+        label.textAlignment = .center
         label.numberOfLines = 0
         return label
     }()
@@ -103,18 +111,24 @@ final class SignupViewController: InitialViewController {
     }
     
     override func setupUI() {
-        [welcomeLabel, usernameTextField, emailTextField, passwordTextField, passwordValidationLabel, repeatPasswordTextField, actionButton].forEach {
+        [logoImageView, welcomeLabel, usernameTextField, emailTextField, passwordTextField, passwordValidationLabel, repeatPasswordTextField, actionButton].forEach {
             view.addSubview($0)
         }
         
-        welcomeLabel.snp.makeConstraints {
+        logoImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            $0.centerX.equalToSuperview()
+            $0.size.equalTo(200)
+        }
+        
+        welcomeLabel.snp.makeConstraints {
+            $0.top.equalTo(logoImageView.snp.bottom).offset(5)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
         
         usernameTextField.snp.makeConstraints {
-            $0.top.equalTo(welcomeLabel.snp.bottom).offset(20)
+            $0.top.equalTo(welcomeLabel.snp.bottom).offset(25)
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
             $0.height.equalTo(50)
