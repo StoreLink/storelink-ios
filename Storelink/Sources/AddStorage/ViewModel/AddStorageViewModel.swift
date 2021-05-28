@@ -19,6 +19,8 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
         let priceValue: Observable<String>
         let sizeValue: Observable<String>
         let storageTypeValue: Observable<String>
+        let imageValue: Observable<String>
+        let coordinateValue: Observable<Coordinate>
         let actionButtonTrigger: Observable<Void>
     }
     
@@ -30,8 +32,10 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
     private let descriptionValue: BehaviorRelay<String?> = .init(value: nil)
     private let availableTimeValue: BehaviorRelay<String?> = .init(value: nil)
     private let priceValue: BehaviorRelay<Int?> = .init(value: nil)
-    private let sizeValue: BehaviorRelay<Int?> = .init(value: nil)
+    private let sizeValue: BehaviorRelay<Double?> = .init(value: nil)
     private let storageTypeValue: BehaviorRelay<String?> = .init(value: nil)
+    private let imageValue: BehaviorRelay<String?> = .init(value: nil)
+    private let coordinate: BehaviorRelay<Coordinate?> = .init(value: nil)
     private let outStorageAdded: PublishRelay<Void> = .init()
     
     func transform(input: Input) -> Output {
@@ -42,11 +46,12 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
                     let availableTime = self?.availableTimeValue.value,
                     let price = self?.priceValue.value,
                     let size = self?.sizeValue.value,
+                    let coordinate = self?.coordinate.value,
+                    let image = self?.imageValue.value,
                     let storageType = self?.storageTypeValue.value else { return }
                 
-                let request = StorageItemRequest(name: name, description: description, price: price, size: size, availableTime: availableTime, location: nil, image: "https://pix10.agoda.net/hotelImages/124/1246280/1246280_16061017110043391702.jpg?s=1024x768")
+                let request = StorageItemRequest(name: name, description: description, availableTime: availableTime, price: price, size: size, longitude: coordinate.longitude, latitude: coordinate.latitude, image: image)
                 self?.postRequest(request: request)
-                print(storageType)
             })
             .disposed(by: disposeBag)
         
@@ -68,7 +73,7 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
             .disposed(by: disposeBag)
         
         input.sizeValue
-            .map { Int($0) }
+            .map { Double($0) }
             .bind(to: sizeValue)
             .disposed(by: disposeBag)
         
@@ -76,16 +81,25 @@ final class AddStorageViewModel: ViewModel, ViewModelType {
             .bind(to: storageTypeValue)
             .disposed(by: disposeBag)
         
+        input.imageValue
+            .bind(to: imageValue)
+            .disposed(by: disposeBag)
+        
+        input.coordinateValue
+            .bind(to: coordinate)
+            .disposed(by: disposeBag)
+        
         return Output(storageAdded: outStorageAdded.asObservable())
     }
     
     func postRequest(request: StorageItemRequest) {
         NetworkManager.shared.postStorage(request: request)
-        .subscribe(onSuccess: { [weak self] in
-            self?.outStorageAdded.accept(())
-        }, onError: { error in
-            print("error")
-        })
-        .disposed(by: disposeBag)
+            .trackActivity(loading)
+            .subscribe { [weak self] in
+                self?.outStorageAdded.accept(())
+            } onError: { error in
+                print(error)
+            }
+            .disposed(by: disposeBag)
     }
 }

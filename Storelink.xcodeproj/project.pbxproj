@@ -51,6 +51,11 @@
 		D7783A372649CEF40094AE1C /* StorageLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */; };
 		D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A3B264A489D0094AE1C /* StoragesView.swift */; };
 		D7783A41264A49010094AE1C /* ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7783A40264A49010094AE1C /* ItemsView.swift */; };
+		D78398B72660524E00F1788E /* AddItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78398B62660524E00F1788E /* AddItemViewController.swift */; };
+		D78398BC2660575400F1788E /* ItemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78398BB2660575400F1788E /* ItemRequest.swift */; };
+		D78398C12660575F00F1788E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78398C02660575F00F1788E /* Item.swift */; };
+		D78398C626605D5800F1788E /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78398C526605D5800F1788E /* ItemTableViewCell.swift */; };
+		D78398CC26606E4300F1788E /* SelectItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78398CB26606E4300F1788E /* SelectItemViewController.swift */; };
 		D78AFF90264E3664009096A6 /* MapCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78AFF8F264E3664009096A6 /* MapCollectionViewCell.swift */; };
 		D78AFF94264E96C5009096A6 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78AFF93264E96C5009096A6 /* UIView+Extension.swift */; };
 		D792C61526466F9E00D4D0D7 /* SelectLocationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */; };
@@ -65,6 +70,10 @@
 		D7BC2574265ACC0D008E8C99 /* RequestMassage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BC2573265ACC0D008E8C99 /* RequestMassage.swift */; };
 		D7CEC97525E433750051D0CF /* StorageDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */; };
 		D7CEC97D25E43C480051D0CF /* StorageDescriptionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CEC97C25E43C480051D0CF /* StorageDescriptionViewModel.swift */; };
+		D7D6F9BF265FB54A0010E6DE /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6F9BE265FB54A0010E6DE /* FilterViewController.swift */; };
+		D7D6F9FD2660286E0010E6DE /* PhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6F9FC2660286E0010E6DE /* PhotoCollectionView.swift */; };
+		D7D6FA022660294D0010E6DE /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA012660294D0010E6DE /* PhotoCollectionViewCell.swift */; };
+		D7D6FA0726603A130010E6DE /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6FA0626603A130010E6DE /* ImageSaver.swift */; };
 		D7DD9931262DF5E200BD603A /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9930262DF5E200BD603A /* UIAlertController+Extension.swift */; };
 		D7DD9935262E02E900BD603A /* AddStorageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9934262E02E900BD603A /* AddStorageViewModel.swift */; };
 		D7DD9937262E1D8700BD603A /* Observable+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DD9936262E1D8700BD603A /* Observable+Operators.swift */; };
@@ -156,6 +165,11 @@
 		D7783A362649CEF40094AE1C /* StorageLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageLocationViewController.swift; sourceTree = "<group>"; };
 		D7783A3B264A489D0094AE1C /* StoragesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoragesView.swift; sourceTree = "<group>"; };
 		D7783A40264A49010094AE1C /* ItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsView.swift; sourceTree = "<group>"; };
+		D78398B62660524E00F1788E /* AddItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemViewController.swift; sourceTree = "<group>"; };
+		D78398BB2660575400F1788E /* ItemRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRequest.swift; sourceTree = "<group>"; };
+		D78398C02660575F00F1788E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		D78398C526605D5800F1788E /* ItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
+		D78398CB26606E4300F1788E /* SelectItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectItemViewController.swift; sourceTree = "<group>"; };
 		D78AFF8F264E3664009096A6 /* MapCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCollectionViewCell.swift; sourceTree = "<group>"; };
 		D78AFF93264E96C5009096A6 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLocationMapViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +184,10 @@
 		D7BC2573265ACC0D008E8C99 /* RequestMassage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMassage.swift; sourceTree = "<group>"; };
 		D7CEC97425E433750051D0CF /* StorageDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDescriptionViewController.swift; sourceTree = "<group>"; };
 		D7CEC97C25E43C480051D0CF /* StorageDescriptionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDescriptionViewModel.swift; sourceTree = "<group>"; };
+		D7D6F9BE265FB54A0010E6DE /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		D7D6F9FC2660286E0010E6DE /* PhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionView.swift; sourceTree = "<group>"; };
+		D7D6FA012660294D0010E6DE /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		D7D6FA0626603A130010E6DE /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		D7DD9930262DF5E200BD603A /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		D7DD9934262E02E900BD603A /* AddStorageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddStorageViewModel.swift; sourceTree = "<group>"; };
 		D7DD9936262E1D8700BD603A /* Observable+Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Operators.swift"; sourceTree = "<group>"; };
@@ -327,6 +345,7 @@
 				D7DD9936262E1D8700BD603A /* Observable+Operators.swift */,
 				D78AFF93264E96C5009096A6 /* UIView+Extension.swift */,
 				D719111C265F66DE00A18DF4 /* Notification+Extension.swift */,
+				D7D6FA0626603A130010E6DE /* ImageSaver.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -464,15 +483,61 @@
 			path = AddStorage;
 			sourceTree = "<group>";
 		};
+		D78398A7266051C400F1788E /* AddItem */ = {
+			isa = PBXGroup;
+			children = (
+				D78398A8266051E000F1788E /* Model */,
+				D78398A9266051EA00F1788E /* ViewModel */,
+				D78398AA2660520000F1788E /* View */,
+			);
+			path = AddItem;
+			sourceTree = "<group>";
+		};
+		D78398A8266051E000F1788E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D78398BB2660575400F1788E /* ItemRequest.swift */,
+				D78398C02660575F00F1788E /* Item.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D78398A9266051EA00F1788E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		D78398AA2660520000F1788E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D78398B62660524E00F1788E /* AddItemViewController.swift */,
+				D78398C526605D5800F1788E /* ItemTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D78398CA26606E1600F1788E /* SelectItem */ = {
+			isa = PBXGroup;
+			children = (
+				D78398CB26606E4300F1788E /* SelectItemViewController.swift */,
+			);
+			path = SelectItem;
+			sourceTree = "<group>";
+		};
 		D7949A8D25619B6200035D59 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				D7AF66EE25E6AFEC0088522F /* Map */,
 				D72F41BE25DA9E54008282A4 /* Main */,
 				D7CEC97025E432880051D0CF /* StorageDescription */,
+				D7D6F9BD265FB5240010E6DE /* Filter */,
+				D78398CA26606E1600F1788E /* SelectItem */,
 				D72F41D625DABE50008282A4 /* Storage */,
 				D72F41D725DABE6A008282A4 /* Add */,
 				D7513883262C4ECC00EB1B84 /* AddStorage */,
+				D78398A7266051C400F1788E /* AddItem */,
 				D72F41DE25DABFDA008282A4 /* CalculatePrice */,
 				D74642F6256BAF1E00E618B4 /* Profile */,
 				D70CEA5125723DBA00E01911 /* Login */,
@@ -557,11 +622,21 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		D7D6F9BD265FB5240010E6DE /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				D7D6F9BE265FB54A0010E6DE /* FilterViewController.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
 		D7DD9938262E52AF00BD603A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				D7513884262C4F0400EB1B84 /* AddStorageViewController.swift */,
 				D792C61426466F9E00D4D0D7 /* SelectLocationMapViewController.swift */,
+				D7D6F9FC2660286E0010E6DE /* PhotoCollectionView.swift */,
+				D7D6FA012660294D0010E6DE /* PhotoCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -954,7 +1029,9 @@
 				D72F41AD25D9708B008282A4 /* TabBarCoordinator.swift in Sources */,
 				D7BC2574265ACC0D008E8C99 /* RequestMassage.swift in Sources */,
 				D751387C262B8EE000EB1B84 /* UIApplication+Extension.swift in Sources */,
+				D78398C12660575F00F1788E /* Item.swift in Sources */,
 				D7F9A578260BC42D00D3520E /* ParametersView.swift in Sources */,
+				D7D6F9FD2660286E0010E6DE /* PhotoCollectionView.swift in Sources */,
 				D72F41C025DABA07008282A4 /* MainViewController.swift in Sources */,
 				D79DCC3425C28BFA00DE6DCD /* BaseButton.swift in Sources */,
 				D72F41E025DABFFE008282A4 /* StorageViewController.swift in Sources */,
@@ -982,6 +1059,8 @@
 				D72F419C25D92C50008282A4 /* AppCoordinator.swift in Sources */,
 				D7E5B8E725601604003D37B9 /* MainTabBarController.swift in Sources */,
 				D7CEC97525E433750051D0CF /* StorageDescriptionViewController.swift in Sources */,
+				D78398C626605D5800F1788E /* ItemTableViewCell.swift in Sources */,
+				D7D6FA022660294D0010E6DE /* PhotoCollectionViewCell.swift in Sources */,
 				D7783A41264A49010094AE1C /* ItemsView.swift in Sources */,
 				D72F41ED25DAC021008282A4 /* MessagesViewController.swift in Sources */,
 				D72F41B225DA9191008282A4 /* ProfileCoordinator.swift in Sources */,
@@ -989,16 +1068,20 @@
 				D792C61526466F9E00D4D0D7 /* SelectLocationMapViewController.swift in Sources */,
 				D71910E6265D83DE00A18DF4 /* LoginRequest.swift in Sources */,
 				D7DD993C262E52DC00BD603A /* StorageItemRequest.swift in Sources */,
+				D7D6FA0726603A130010E6DE /* ImageSaver.swift in Sources */,
 				D72F420925DC44D3008282A4 /* SignupCoordinator.swift in Sources */,
 				D751387E262C1C6E00EB1B84 /* AddTableViewCell.swift in Sources */,
 				D7F66E1325DE94FC00D5D569 /* StorageItem.swift in Sources */,
 				D7F66E1325DE94FC00D5D569 /* StorageItem.swift in Sources */,
+				D7D6F9BF265FB54A0010E6DE /* FilterViewController.swift in Sources */,
 				D70CEA5C257299F500E01911 /* BaseTextField.swift in Sources */,
 				D7456EFE25C9006500F591B5 /* TextFieldEffects.swift in Sources */,
 				D727318825FDE95B00DC3CF9 /* LabelWithLeftImageView.swift in Sources */,
 				D7783A3C264A489D0094AE1C /* StoragesView.swift in Sources */,
 				D72F41CF25DABDE6008282A4 /* CalculatePriceCoordinator.swift in Sources */,
 				D7191115265EED9500A18DF4 /* User.swift in Sources */,
+				D78398CC26606E4300F1788E /* SelectItemViewController.swift in Sources */,
+				D78398B72660524E00F1788E /* AddItemViewController.swift in Sources */,
 				D7F9A581260C3FD200D3520E /* StringUtils.swift in Sources */,
 				D7191104265D86EF00A18DF4 /* RegistrationRequest.swift in Sources */,
 				D7513882262C20AD00EB1B84 /* AddItem.swift in Sources */,
@@ -1013,6 +1096,7 @@
 				D7464303256E6DE800E618B4 /* PresentationController.swift in Sources */,
 				D7F9A566260BB39A00D3520E /* DividerView.swift in Sources */,
 				D7464301256CE3F600E618B4 /* ProfileTableViewCell.swift in Sources */,
+				D78398BC2660575400F1788E /* ItemRequest.swift in Sources */,
 				D727318125FAA91800DC3CF9 /* CustomNavigationBarButton.swift in Sources */,
 				D78AFF94264E96C5009096A6 /* UIView+Extension.swift in Sources */,
 				D718FF7D2513C74D007D0E30 /* IniitialViewController.swift in Sources */,

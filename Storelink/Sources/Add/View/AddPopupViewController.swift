@@ -124,9 +124,17 @@ final class AddPopupViewController: InitialViewController {
         tableView.rx.modelSelected(AddItem.self).subscribe(onNext: { [weak self] item in
             switch item.title {
             case "Storage":
-                self?.coordinator?.showAddStorageView()
+                if UserService.shared.user != nil {
+                    self?.coordinator?.showAddStorageView()
+                } else {
+                    self?.showAlert(message: "Please login to manage storages")
+                }
             case "Item":
-                self?.coordinator?.showAddItemView()
+                if UserService.shared.user != nil {
+                    self?.coordinator?.showAddItemView()
+                } else {
+                    self?.showAlert(message: "Please login to manage items")
+                }
             default:
                 break
             }
@@ -154,5 +162,14 @@ final class AddPopupViewController: InitialViewController {
                 }
             }
         }
+    }
+    
+    func showAlert(message: String) {
+        let alertController = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alertController.pruneNegativeWidthConstraints()
+        self.present(alertController, animated: true, completion: nil)
     }
 }

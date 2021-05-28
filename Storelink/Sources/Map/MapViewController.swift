@@ -103,6 +103,15 @@ final class MapViewController: InitialViewController {
                 cell.storageItem = model
             }
             .disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(StorageItem.self).subscribe(onNext: { [weak self] item in
+            let viewModel = StorageDescriptionViewModel(storageItem: item)
+            let viewController = StorageDescriptionViewController(viewModel: viewModel)
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            self?.present(navigationController, animated: true, completion: nil)
+        })
+        .disposed(by: disposeBag)
     }
     
     func setupLocationManager() {
@@ -119,8 +128,7 @@ final class MapViewController: InitialViewController {
     
     func setMarkers(storages: [StorageItem]) {
         storages.forEach {
-            $0
-            mapView.addMarker(withLatitude: 43.235126, longitude: 76.909736)
+            mapView.addMarker(withLatitude: $0.latitude, longitude: $0.longitude)
         }
     }
 

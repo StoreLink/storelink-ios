@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (5.4.2)
+  - BSImagePicker (3.3.1)
   - GoogleMaps (4.1.0):
     - GoogleMaps/Maps (= 4.1.0)
   - GoogleMaps/Base (4.1.0)
@@ -35,6 +36,7 @@ PODS:
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
+  - BSImagePicker
   - GoogleMaps
   - GooglePlaces
   - Hero
@@ -52,6 +54,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - BSImagePicker
     - GoogleMaps
     - GooglePlaces
     - Hero
@@ -69,6 +72,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: bfbc4c2fe5909b1d94fb4ef2277c6b3727ef5dae
+  BSImagePicker: 0fe04b574d4d6b81093785d2af6c26227efc8428
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
   Hero: 052b9b9bab68fc4e30cc04e5936eaf0de97b59d3
@@ -84,6 +88,6 @@ SPEC CHECKSUMS:
   SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 694bb5fda4fb37109913c9d04f6ca8546fe3bd2e
+PODFILE CHECKSUM: 8a35761ecd5dd6292d10f6d139337fe023dd3cf1
 
 COCOAPODS: 1.10.1

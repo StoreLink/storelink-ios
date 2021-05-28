@@ -30,3 +30,17 @@ class UserService {
     
     var user: User?
 }
+
+class StorageService {
+    
+    static let shared = StorageService()
+    
+    var storages: [StorageItem]?
+}
+
+class ItemService {
+    
+    static let shared = ItemService()
+    
+    var items: [Item]?
+}

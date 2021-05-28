@@ -7,8 +7,27 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class StoragesView: UIView {
+    
+    private enum Constants {
+        static let cellIdentifier = "cellId"
+    }
+    
+    private let disposeBag: DisposeBag = .init()
+    let dataSource: BehaviorRelay<[StorageItem]> = .init(value: [])
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: Constants.cellIdentifier)
+        tableView.isHidden = true
+        return tableView
+    }()
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -37,6 +56,7 @@ final class StoragesView: UIView {
     init() {
         super.init(frame: .zero)
         setupView()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -50,6 +70,30 @@ final class StoragesView: UIView {
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
+        
+        addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.bottom.equalToSuperview()
+            $0.left.equalToSuperview().offset(25)
+            $0.right.equalToSuperview().offset(-25)
+        }
     }
-
+    
+    func bind() {
+        dataSource
+            .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: MainTableViewCell.self)) { _, model, cell in
+                cell.storageItem = model
+            }
+            .disposed(by: disposeBag)
+    }
+    
+    func showStorages() {
+        tableView.isHidden = false
+        contentStackView.isHidden = true
+    }
+    
+    func hideStorages() {
+        tableView.isHidden = true
+        contentStackView.isHidden = false
+    }
 }

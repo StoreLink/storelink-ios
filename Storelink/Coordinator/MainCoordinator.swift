@@ -12,6 +12,8 @@ protocol MainFlow: class {
     func showStorageDescriptionView(storageItem: StorageItem)
     func showStorageLocationView(latitude: Double, longitude: Double)
     func showMapView(storages: [StorageItem])
+    func showFilterView()
+    func showItemSelectionView()
     func closeMapView()
 }
 
@@ -47,6 +49,19 @@ class MainCoordinator: Coordinator, MainFlow {
         viewController.coordinator = self
         viewController.modalPresentationStyle = .fullScreen
         navigationController?.present(viewController, animated: true, completion: nil)
+    }
+    
+    func showFilterView() {
+        let viewController = FilterViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
+    }
+    
+    func showItemSelectionView() {
+        let viewController = SelectItemViewController()
+        let navigationController = UINavigationController(rootViewController: viewController)
+        navigationController.modalPresentationStyle = .fullScreen
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
     
     func closeMapView() {

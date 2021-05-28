@@ -33,6 +33,36 @@ final class StorageViewController: InitialViewController {
         title = Strings.storage
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NetworkManager.shared.getStorages()
+            .subscribe(onSuccess: { [weak self] storages in
+                StorageService.shared.storages = storages
+                
+                if let storages = StorageService.shared.storages, storages.count > 0 {
+                    self?.storagesView.showStorages()
+                    self?.storagesView.dataSource.accept(storages)
+                } else {
+                    self?.storagesView.hideStorages()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        NetworkManager.shared.getItems()
+            .subscribe(onSuccess: { [weak self] items in
+                ItemService.shared.items = items
+                
+                if let items = ItemService.shared.items, items.count > 0 {
+                    self?.itemsView.showStorages()
+                    self?.itemsView.dataSource.accept(items)
+                } else {
+                    self?.itemsView.hideStorages()
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
     override func setupUI() {
         self.navigationItem.titleView = segmentControl
         
@@ -63,7 +93,7 @@ final class StorageViewController: InitialViewController {
             default:
                 break
             }
-        }).disposed(by: disposeBag)
+        })
+        .disposed(by: disposeBag)
     }
-
 }

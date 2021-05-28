@@ -1,32 +1,26 @@
 //
-//  StorageItemRequest.swift
+//  ItemRequest.swift
 //  Storelink
 //
-//  Created by Акан Акиш on 20.04.2021.
+//  Created by Акан Акиш on 28.05.2021.
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
 import Foundation
 
-struct StorageItemRequest: Encodable {
+struct ItemRequest: Encodable {
     let name: String
     let description: String
-    let availableTime: String
-    let price: Int
-    let size: Double
-    let longitude: Double
-    let latitude: Double
+    let count: Int
     let image: String
+    let size: Int
     
     enum CodingKeys: String, CodingKey {
-        case name = "storageName"
-        case description = "storageDescription"
-        case availableTime = "storageAvailableTime"
-        case price = "storagePrice"
-        case size = "storageSize"
-        case longitude = "storageLongitude"
-        case latitude = "storageLatitude"
-        case image = "storageImage"
+        case name = "itemName"
+        case description = "itemDescription"
+        case count = "itemCount"
+        case image = "itemImage"
+        case size = "itemSize"
     }
     
     // To encode object

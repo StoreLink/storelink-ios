@@ -61,6 +61,13 @@ final class MainViewController: InitialViewController {
     }
     
     override func bind() {
+        viewModel.loading
+            .asObservable()
+            .bind { [weak self] loading in
+                loading ? self?.startLoader() : self?.stopLoader()
+            }
+            .disposed(by: disposeBag)
+        
         dataSource
             .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: MainTableViewCell.self)) { _, model, cell in
                 cell.storageItem = model
@@ -78,7 +85,14 @@ final class MainViewController: InitialViewController {
         }
         .disposed(by: disposeBag)
         
-        let input = MainViewModel.Input(loadDataTrigger: refreshControl.rx.controlEvent(.valueChanged).asObservable())
+        filterBarButtonItem.rx.tap.bind { [weak self] in
+            self?.coordinator?.showFilterView()
+        }
+        .disposed(by: disposeBag)
+        
+        let loadDataTrigger = Observable.merge(refreshControl.rx.controlEvent(.valueChanged).asObservable(), Observable.just(Void()))
+        
+        let input = MainViewModel.Input(loadDataTrigger: loadDataTrigger)
         let output = viewModel.transform(input: input)
         
         output.storageItems

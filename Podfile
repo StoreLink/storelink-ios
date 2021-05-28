@@ -19,6 +19,7 @@ target 'Storelink' do
   pod 'GoogleMaps'   # https://github.com/googlemaps/maps-sdk-for-ios-samples  
   pod 'GooglePlaces'
   pod 'Moya/RxSwift', '~> 14.0'  # https://github.com/Moya/Moya
+  pod 'BSImagePicker'  # https://github.com/mikaoj/BSImagePicker
 
 
   # target 'StorelinkTests' do

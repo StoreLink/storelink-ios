@@ -11,7 +11,9 @@ import Moya
 
 protocol NetworkManagerProtocol {
     func getStorages() -> Single<[StorageItem]>
+    func getItems() -> Single<[Item]>
     func postStorage(request: StorageItemRequest) -> Single<Void>
+    func postItem(request: ItemRequest) -> Single<Void>
     func postRegistration(username: String, email: String, password: String) -> Single<RequestMessage>
     func postAuth(username: String, password: String) -> Single<User>
 }
@@ -31,9 +33,23 @@ final class NetworkManager: NetworkManagerProtocol {
             .map([StorageItem].self)
     }
     
+    func getItems() -> Single<[Item]> {
+        return provider.rx
+            .request(.getItems)
+            .filterSuccessfulStatusCodes()
+            .map([Item].self)
+    }
+    
     func postStorage(request: StorageItemRequest) -> Single<Void> {
         return provider.rx
             .request(.postStorage(request: request))
+            .filterSuccessfulStatusCodes()
+            .map { _ in }
+    }
+    
+    func postItem(request: ItemRequest) -> Single<Void> {
+        return provider.rx
+            .request(.postItem(request: request))
             .filterSuccessfulStatusCodes()
             .map { _ in }
     }

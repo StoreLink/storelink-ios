@@ -85,8 +85,6 @@ final class StorageDescriptionViewController: ScrollViewController {
         let view = MapView()
         view.mapDelegate = self
         view.cornerRadius = 10
-        view.setCameraPosition(withLatitude: 43.235126, longitude: 76.909736)
-        view.setSingleMarker(withLatitude: 43.235126, longitude: 76.909736)
         view.disableGestures()
         view.heroID = "map"
         return view
@@ -218,18 +216,32 @@ final class StorageDescriptionViewController: ScrollViewController {
     
     override func bind() {
         backButton.rx.tap.bind { [weak self] in
-            self?.navigationController?.popViewController(animated: true)
+            if let viewControllers = self?.navigationController?.viewControllers, viewControllers.count > 1 {
+                self?.navigationController?.popViewController(animated: true)
+            } else {
+                self?.dismiss(animated: true, completion: nil)
+            }
         }.disposed(by: disposeBag)
+        
+        actionButton.rx.tap.bind { [weak self] in
+            self?.coordinator?.showItemSelectionView()
+        }
+        .disposed(by: disposeBag)
     }
     
     private func setData() {
         setImages()
         imageSliderView.heroID = String(viewModel.storageItem.id)
-        descriptionLabel.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-        parametersView.addParameter(parameter: "Type", value: "storage")
+        descriptionLabel.text = viewModel.storageItem.description
+        
+        parametersView.addParameter(parameter: "Type", value: "hangar")
         parametersView.addParameter(parameter: "Size", value: StringUtils.textWithSymbol(text: String(viewModel.storageItem.size), symbol: GlobalConstants.m))
         parametersView.addParameter(parameter: "Available time", value: viewModel.storageItem.availableTime)
+        
+        mapView.setCameraPosition(withLatitude: viewModel.storageItem.latitude, longitude: viewModel.storageItem.longitude)
+        mapView.setSingleMarker(withLatitude: viewModel.storageItem.latitude, longitude: viewModel.storageItem.longitude)
         locationWithImageView.text = "Almaty, Kazakhstan"
+        
         usernameLabel.text = "Firstname Lastname"
         userStatusLabel.text = "Owner"
         priceLabel.text = StringUtils.textWithSymbol(text: String(viewModel.storageItem.price), symbol: GlobalConstants.tgm)
@@ -261,15 +273,20 @@ final class StorageDescriptionViewController: ScrollViewController {
     }
     
     private func setImages() {
-        var sdWebImageSource: [SDWebImageSource] = []
+//        var sdWebImageSource: [SDWebImageSource] = []
 //        guard let images = viewModel.storageItem.images else { return }
 //        for imageStringUrl in image {
 //            sdWebImageSource.append(SDWebImageSource(urlString: imageStringUrl)!)
 //        }
         
-        guard let image = viewModel.storageItem.image else { return }
-        sdWebImageSource.append(SDWebImageSource(urlString: image)!)
-        imageSliderView.setImageInputs(sdWebImageSource)
+//        guard let image = viewModel.storageItem.image else { return }
+//        sdWebImageSource.append(SDWebImageSource(urlString: image)!)
+//        imageSliderView.setImageInputs(sdWebImageSource)
+        if let image = ImageSaver.loadImageFromDiskWith(fileName: viewModel.storageItem.image ?? "") {
+            var imageSource: [ImageSource] = []
+            imageSource.append(ImageSource(image: image))
+            imageSliderView.setImageInputs(imageSource)
+        }
     }
     
     @objc func didTapImage() {
@@ -460,6 +477,6 @@ extension StorageDescriptionViewController: UIScrollViewDelegate {
 extension StorageDescriptionViewController: MapViewDelegate {
     
     func didTapMapView() {
-        coordinator?.showStorageLocationView(latitude: 43.235126, longitude: 76.909736)
+        coordinator?.showStorageLocationView(latitude: viewModel.storageItem.latitude, longitude: viewModel.storageItem.longitude)
     }
 }

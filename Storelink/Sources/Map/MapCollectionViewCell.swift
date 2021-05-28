@@ -12,8 +12,13 @@ class MapCollectionViewCell: UICollectionViewCell {
     
     var storageItem: StorageItem? {
         didSet {
-            if let imageURL = URL(string: storageItem?.image ?? "") {
-                imageView.sd_setImage(with: imageURL)
+//            if let imageURL = URL(string: storageItem?.image ?? "") {
+//                imageView.sd_setImage(with: imageURL)
+//            } else {
+//                imageView.image = nil
+//            }
+            if let image = ImageSaver.loadImageFromDiskWith(fileName: storageItem?.image ?? "") {
+                imageView.image = image
             } else {
                 imageView.image = nil
             }

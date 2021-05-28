@@ -13,19 +13,24 @@ final class MainTableViewCell: UITableViewCell {
     
     var storageItem: StorageItem? {
         didSet {
-            if let imageURL = URL(string: storageItem?.image ?? "") {
-                storageImageView.sd_setImage(with: imageURL)
+//            if let imageURL = URL(string: storageItem?.image ?? "") {
+//                storageImageView.sd_setImage(with: imageURL)
+//            } else {
+//                storageImageView.image = nil
+//            }
+            if let image = ImageSaver.loadImageFromDiskWith(fileName: storageItem?.image ?? "") {
+                storageImageView.image = image
             } else {
                 storageImageView.image = nil
             }
             storageImageView.heroID = String(storageItem?.id ?? 0)
-            typeLabel.text = storageItem?.type
+            typeLabel.text = "HANGAR"
+            locationLabel.text = "Almaty, Kazakhstan"
             titleLabel.text = storageItem?.name
             priceLabel.text = StringUtils.textWithSymbol(text: String(storageItem?.price ?? 0), symbol: GlobalConstants.tgm)
-            locationLabel.text = storageItem?.location
             sizeLabel.text = StringUtils.textWithSymbol(text: String(storageItem?.size ?? 0), symbol: GlobalConstants.m)
             timeLabel.text = storageItem?.availableTime
-            publishDateLabel.text = storageItem?.createdDate
+            publishDateLabel.text = "Today " + String(storageItem?.createdDate.suffix(9) ?? "")
         }
     }
     

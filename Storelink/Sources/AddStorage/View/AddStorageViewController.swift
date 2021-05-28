@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import Photos
+import BSImagePicker
 import RxSwift
 import RxCocoa
+
+typealias Coordinate = (longitude: Double, latitude: Double)
 
 final class AddStorageViewController: ScrollViewController {
     
@@ -18,7 +22,11 @@ final class AddStorageViewController: ScrollViewController {
     private let availableTimeValue: BehaviorRelay<String?> = .init(value: nil)
     private let priceValue: BehaviorRelay<String?> = .init(value: nil)
     private let sizeValue: BehaviorRelay<String?> = .init(value: nil)
+    private let coordinateValue: BehaviorRelay<Coordinate?> = .init(value: nil)
     private let storageTypeValue: BehaviorRelay<String?> = .init(value: nil)
+    private let imageTypeValue: BehaviorRelay<String?> = .init(value: nil)
+    private var photoAssets = [PHAsset]()
+    private var photoArray = [UIImage]()
     
     private let closeBarButtonItem: UIBarButtonItem = {
         let barButton = UIBarButtonItem()
@@ -87,6 +95,35 @@ final class AddStorageViewController: ScrollViewController {
         button.borderWidth = 1
         button.cornerRadius = 4
         return button
+    }()
+    
+    let photoTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Photo"
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        return label
+    }()
+    
+    let addPhotoButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = Colors.teal.color
+        let plusButton = UIImage(systemName: "plus")?.withRenderingMode(.alwaysTemplate)
+        button.tintColor = .white
+        button.setImage(plusButton, for: .normal)
+        return button
+    }()
+    
+    lazy var photoCollectionView: PhotoCollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 1
+        let collectionView = PhotoCollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .systemGray5
+        collectionView.photoDelegate = self
+        return collectionView
     }()
     
     private let mapTitleLabel: UILabel = {
@@ -181,13 +218,38 @@ final class AddStorageViewController: ScrollViewController {
         }
         
         addSpaceView(withSpacing: 15)
+        let containerView = UIStackView(arrangedSubviews: [photoTitleLabel, addPhotoButton])
+        containerView.spacing = 5
+        containerView.axis = .horizontal
+        containerView.alignment = .center
+        containerView.distribution = .fillProportionally
+        addView(view: containerView)
+        containerView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+        }
+        
+        addPhotoButton.snp.makeConstraints {
+            $0.size.equalTo(24)
+        }
+        addPhotoButton.layer.cornerRadius = 12
+        
+        addSpaceView(withSpacing: 10)
+        addView(view: photoCollectionView)
+        photoCollectionView.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(20)
+            $0.right.equalToSuperview().offset(-20)
+            $0.height.equalTo(70)
+        }
+        
+        addSpaceView(withSpacing: 15)
         addView(view: mapTitleLabel)
         mapTitleLabel.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
         
-        addSpaceView(withSpacing: 5)
+        addSpaceView(withSpacing: 10)
         addView(view: mapView)
         mapView.snp.makeConstraints {
             $0.left.equalTo(20)
@@ -211,6 +273,13 @@ final class AddStorageViewController: ScrollViewController {
     }
     
     override func bind() {
+        viewModel.loading
+            .asObservable()
+            .bind { [weak self] loading in
+                loading ? self?.startLoader() : self?.stopLoader()
+            }
+            .disposed(by: disposeBag)
+        
         closeBarButtonItem.rx.tap.bind { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
@@ -218,6 +287,11 @@ final class AddStorageViewController: ScrollViewController {
         
         storageTypeButton.rx.tap.bind { [weak self] in
             self?.showActionSheet()
+        }
+        .disposed(by: disposeBag)
+        
+        addPhotoButton.rx.tap.bind { [weak self] in
+            self?.presentImagePicker()
         }
         .disposed(by: disposeBag)
         
@@ -264,6 +338,8 @@ final class AddStorageViewController: ScrollViewController {
                                               priceValue: priceValue.asObservable().filterNil(),
                                               sizeValue: sizeValue.asObservable().filterNil(),
                                               storageTypeValue: storageTypeValue.asObservable().filterNil(),
+                                              imageValue: imageTypeValue.asObservable().filterNil(),
+                                              coordinateValue: coordinateValue.asObservable().filterNil(),
                                               actionButtonTrigger: actionButtonTrigger)
         let output = viewModel.transform(input: input)
         
@@ -345,6 +421,45 @@ final class AddStorageViewController: ScrollViewController {
         alertController.pruneNegativeWidthConstraints()
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    private func presentImagePicker() {
+        let imagePicker = ImagePickerController()
+        
+        presentImagePicker(imagePicker, select: { _ in
+            // User selected an asset. Do something with it. Perhaps begin processing/upload?
+        }, deselect: { (_) in
+            // User deselected an asset. Cancel whatever you did when asset was selected.
+        }, cancel: { (_) in
+            // User canceled selection.
+        }, finish: { (assets) in
+            for i in 0..<assets.count {
+                self.photoAssets.append(assets[i])
+            }
+            self.convertAssetsToImages()
+            self.photoCollectionView.setImages(images: self.photoArray)
+        })
+    }
+    
+    private func convertAssetsToImages() {
+        if photoAssets.count == 0 {
+            return
+        }
+        
+        for i in 0..<photoAssets.count {
+            let options = PHImageRequestOptions()
+            options.isSynchronous = true
+            PHImageManager.default().requestImage(for: photoAssets[i], targetSize: PHImageManagerMaximumSize, contentMode: .aspectFit, options: options) { image, _ in
+                
+                if let data = image?.jpegData(compressionQuality: 0.8), let pressedImage = UIImage(data: data) {
+                    self.photoArray.append(pressedImage)
+                    let uuid = UUID().uuidString
+                    ImageSaver.saveImage(imageName: uuid, image: pressedImage)
+                    self.imageTypeValue.accept(uuid)
+                }
+            }
+        }
+        self.photoAssets.removeAll()
+    }
 
 }
 
@@ -356,6 +471,14 @@ extension AddStorageViewController: MapViewDelegate {
         viewController.updateLocation = { [weak self] latitude, longitude in
             self?.mapView.setCameraPosition(withLatitude: latitude, longitude: longitude)
             self?.mapView.setSingleMarker(withLatitude: latitude, longitude: longitude)
+            self?.coordinateValue.accept(Coordinate(longitude: longitude, latitude: latitude))
         }
+    }
+}
+
+// Photo delegate
+extension AddStorageViewController: PhotoDelegate {
+    func deletePhoto(at index: Int) {
+        photoArray.remove(at: index)
     }
 }

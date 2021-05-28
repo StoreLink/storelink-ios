@@ -87,7 +87,14 @@ class TabBarCoordinator: Coordinator, TabBarFlow {
     }
     
     func showAddItemView() {
-        
+        let topViewController = UIApplication.topViewController()
+        topViewController?.dismiss(animated: true, completion: {
+            let topView = UIApplication.topViewController()
+            let viewController = AddItemViewController()
+            let navigationController = UINavigationController(rootViewController: viewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            topView?.present(navigationController, animated: true, completion: nil)
+        })
     }
 
 }

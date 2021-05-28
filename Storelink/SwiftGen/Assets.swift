@@ -24,6 +24,7 @@ internal enum Assets {
   internal static let back = ImageAsset(name: "back")
   internal static let clock = ImageAsset(name: "clock")
   internal static let close = ImageAsset(name: "close")
+  internal static let count = ImageAsset(name: "count")
   internal static let downArrow = ImageAsset(name: "down_arrow")
   internal static let eye = ImageAsset(name: "eye")
   internal static let eyeInvisible = ImageAsset(name: "eye_invisible")
