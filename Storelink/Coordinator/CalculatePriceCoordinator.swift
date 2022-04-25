@@ -8,25 +8,21 @@
 
 import UIKit
 
-protocol MessagesFlow: class {
-    
-}
+protocol MessagesFlow: class {}
 
 class CalculatePriceCoordinator: Coordinator, MessagesFlow {
-    
     weak var navigationController: UINavigationController?
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let viewController = CalculatePriceViewController()
         viewController.coordinator = self
-        
+
         navigationController?.pushViewController(viewController, animated: false)
     }
-    
+
     // MARK: - Flow Methods
-    
 }

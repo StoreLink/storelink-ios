@@ -13,12 +13,11 @@ import RxSwift
 protocol ViewModelType {
     associatedtype Input
     associatedtype Output
-    
+
     func transform(input: Input) -> Output
 }
 
 class ViewModel: NSObject {
-    
     let disposeBag = DisposeBag()
     let loading = ActivityIndicator()
 }

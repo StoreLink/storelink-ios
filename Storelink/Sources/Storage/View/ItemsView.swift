@@ -6,19 +6,18 @@
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class ItemsView: UIView {
-    
     private enum Constants {
         static let cellIdentifier = "cellId"
     }
-    
+
     private let disposeBag: DisposeBag = .init()
     let dataSource: BehaviorRelay<[Item]> = .init(value: [])
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
@@ -27,14 +26,14 @@ final class ItemsView: UIView {
         tableView.isHidden = true
         return tableView
     }()
-    
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Assets.coloredBox.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     private let textLabel: UILabel = {
         let label = UILabel()
         label.text = "You don't have added item"
@@ -43,7 +42,7 @@ final class ItemsView: UIView {
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         return label
     }()
-    
+
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [imageView, textLabel])
         stackView.axis = .vertical
@@ -57,11 +56,12 @@ final class ItemsView: UIView {
         setupView()
         bind()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupView() {
         addSubview(contentStackView)
         contentStackView.snp.makeConstraints {
@@ -69,7 +69,7 @@ final class ItemsView: UIView {
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
-        
+
         addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
@@ -77,7 +77,7 @@ final class ItemsView: UIView {
             $0.right.equalToSuperview().offset(-25)
         }
     }
-    
+
     func bind() {
         dataSource
             .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: ItemTableViewCell.self)) { _, model, cell in
@@ -85,12 +85,12 @@ final class ItemsView: UIView {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func showStorages() {
         tableView.isHidden = false
         contentStackView.isHidden = true
     }
-    
+
     func hideStorages() {
         tableView.isHidden = true
         contentStackView.isHidden = false

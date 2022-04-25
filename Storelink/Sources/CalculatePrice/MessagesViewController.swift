@@ -9,7 +9,6 @@
 import UIKit
 
 final class CalculatePriceViewController: InitialViewController {
-    
     var coordinator: MessagesFlow?
 
     override func viewDidLoad() {
@@ -17,5 +16,4 @@ final class CalculatePriceViewController: InitialViewController {
 
         title = Strings.calculator
     }
-
 }

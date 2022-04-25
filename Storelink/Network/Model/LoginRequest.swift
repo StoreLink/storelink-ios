@@ -11,7 +11,7 @@ import Foundation
 struct LoginRequest: Encodable {
     let username: String
     let password: String
-    
+
     // To encode object
     var parameters: [String: Any] {
         do {

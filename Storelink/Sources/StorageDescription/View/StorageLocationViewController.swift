@@ -9,40 +9,40 @@
 import UIKit
 
 class StorageLocationViewController: InitialViewController {
-    
     private let latitude: Double
     private let longitude: Double
-    
+
     private lazy var mapView: MapView = {
         let mapView = MapView(labelIsHidden: true)
         mapView.heroID = "map"
         return mapView
     }()
-    
+
     private let doneButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = "Done"
         return button
     }()
-    
+
     init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
     }
-    
-    required convenience init?(coder aDecoder: NSCoder) {
+
+    @available(*, unavailable)
+    required convenience init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
     }
-    
+
     override func setupUI() {
         setNavigationRightBarButtonItem()
         mapView.setCameraPosition(withLatitude: latitude, longitude: longitude)
@@ -53,15 +53,14 @@ class StorageLocationViewController: InitialViewController {
             $0.left.right.bottom.equalToSuperview()
         }
     }
-    
+
     override func bind() {
         doneButton.rx.tap.bind { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         }.disposed(by: disposeBag)
     }
-    
+
     func setNavigationRightBarButtonItem() {
         navigationItem.rightBarButtonItem = doneButton
     }
-
 }

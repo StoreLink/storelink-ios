@@ -8,18 +8,15 @@
 
 import UIKit
 
-protocol LoginFlow: class {
-    
-}
+protocol LoginFlow: class {}
 
 class LoginCoordinator: Coordinator, LoginFlow {
-    
     weak var navigationController: UINavigationController?
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let viewModel = LoginViewModel()
         let viewController = LoginViewController(viewModel: viewModel)
@@ -30,7 +27,6 @@ class LoginCoordinator: Coordinator, LoginFlow {
             self?.navigationController = viewController.navigationController
         })
     }
-    
+
     // MARK: - Flow Methods
-    
 }

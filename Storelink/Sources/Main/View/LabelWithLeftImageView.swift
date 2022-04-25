@@ -9,31 +9,30 @@
 import UIKit
 
 final class LabelWithLeftImageView: UIView {
-    
-    var text: String? = nil {
+    var text: String? {
         didSet {
             titleLabel.text = text
         }
     }
-    
+
     var titleColor: UIColor = .black {
         didSet {
             titleLabel.textColor = titleColor
         }
     }
-    
+
     var titleFont: UIFont = .systemFont(ofSize: 15) {
         didSet {
             titleLabel.font = titleFont
         }
     }
-    
-    var image: UIImage? = nil {
+
+    var image: UIImage? {
         didSet {
             imageView.image = image
         }
     }
-    
+
     var imageSize: CGFloat = 20 {
         didSet {
             imageView.snp.makeConstraints {
@@ -41,26 +40,26 @@ final class LabelWithLeftImageView: UIView {
             }
         }
     }
-    
+
     var spacing: CGFloat = 5 {
         didSet {
             contentStackView.spacing = spacing
         }
     }
-    
+
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     let titleLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.textAlignment = .left
         return label
     }()
-    
+
     lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [imageView, titleLabel])
         stackView.axis = .horizontal
@@ -73,16 +72,16 @@ final class LabelWithLeftImageView: UIView {
         super.init(frame: .zero)
         setupViews()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupViews() {
         addSubview(contentStackView)
         contentStackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
-    
 }

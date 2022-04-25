@@ -6,24 +6,23 @@
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
-import UIKit
-import ImageSlideshow
 import GoogleMaps
+import ImageSlideshow
 import SDWebImage
+import UIKit
 
 final class StorageDescriptionViewController: ScrollViewController {
-    
     enum Constants {
         static let phoneImageSFPath = "phone.fill"
         static let messageImageSFPath = "message.fill"
     }
-    
+
     // MARK: - Properties
-    
+
     var coordinator: MainCoordinator?
-    
+
     private let viewModel: StorageDescriptionViewModel
-    
+
     private lazy var imageSliderView: ImageSlideshow = {
         let imageSlider = ImageSlideshow()
         imageSlider.activityIndicator = DefaultActivityIndicator()
@@ -33,10 +32,10 @@ final class StorageDescriptionViewController: ScrollViewController {
         imageSlider.addGestureRecognizer(gestureRecognizer)
         return imageSlider
     }()
-    
+
     private let backButton: BackButton = .init()
     private let likeButton: LikeButton = .init()
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Title"
@@ -45,7 +44,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.numberOfLines = 0
         return label
     }()
-    
+
     private let descriptionTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Description"
@@ -53,7 +52,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.textAlignment = .left
         return label
     }()
-    
+
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
@@ -62,7 +61,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.numberOfLines = 0
         return label
     }()
-    
+
     private let parametersTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Parameters"
@@ -70,9 +69,9 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.textAlignment = .left
         return label
     }()
-    
+
     private let parametersView = ParametersView()
-    
+
     private let mapTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Location"
@@ -80,7 +79,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.textAlignment = .left
         return label
     }()
-    
+
     private lazy var mapView: MapView = {
         let view = MapView()
         view.mapDelegate = self
@@ -89,7 +88,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         view.heroID = "map"
         return view
     }()
-    
+
     private let locationWithImageView: LabelWithLeftImageView = {
         let label = LabelWithLeftImageView()
         label.image = Assets.location.image
@@ -99,7 +98,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         label.spacing = 5
         return label
     }()
-    
+
     private let userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Assets.person.image
@@ -109,20 +108,20 @@ final class StorageDescriptionViewController: ScrollViewController {
         imageView.layer.cornerRadius = 10
         return imageView
     }()
-    
+
     private let usernameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         return label
     }()
-    
+
     private let userStatusLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12, weight: .medium)
         label.textColor = .gray
         return label
     }()
-    
+
     private let messageButton: BaseButton = {
         let button = BaseButton()
         button.buttonColor = Colors.teal.color.withAlphaComponent(0.3)
@@ -132,7 +131,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         button.tintColor = Colors.teal.color
         return button
     }()
-    
+
     private let callButton: BaseButton = {
         let button = BaseButton()
         button.buttonColor = Colors.teal.color.withAlphaComponent(0.3)
@@ -141,7 +140,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         button.layer.cornerRadius = 10
         return button
     }()
-    
+
     private let bottomView: UIView = {
         let view = UIView()
         let blurEffect = UIBlurEffect(style: .prominent)
@@ -152,59 +151,60 @@ final class StorageDescriptionViewController: ScrollViewController {
         view.addSubview(blurEffectView)
         return view
     }()
-    
+
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.textAlignment = .left
         return label
     }()
-    
+
     private let actionButton: MainButton = .init(title: "Add items")
-    
+
     init(viewModel: StorageDescriptionViewModel) {
         self.viewModel = viewModel
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - View controller lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         _scrollView.delegate = self
         // disable hero delegate to enable default UIKit back gesture
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
-    
+
     override func setNavigationLeftBarButton() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: likeButton)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        tabBarController?.tabBar.isHidden = true
         hideNavigationBar()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tabBarController?.tabBar.isHidden = false
-        
+        tabBarController?.tabBar.isHidden = false
+
         showNavigationBar()
     }
-    
+
     // MARK: - Methods
-    
+
     override func setupUI() {
         super.setupUI()
         _scrollView.contentInsetAdjustmentBehavior = .never
         setData()
-        
+
         setupImageView()
         setupTitle()
         setupParameters()
@@ -213,7 +213,7 @@ final class StorageDescriptionViewController: ScrollViewController {
         setupBottomView()
         addSpaceView(withSpacing: 150)
     }
-    
+
     override func bind() {
         backButton.rx.tap.bind { [weak self] in
             if let viewControllers = self?.navigationController?.viewControllers, viewControllers.count > 1 {
@@ -222,64 +222,64 @@ final class StorageDescriptionViewController: ScrollViewController {
                 self?.dismiss(animated: true, completion: nil)
             }
         }.disposed(by: disposeBag)
-        
+
         actionButton.rx.tap.bind { [weak self] in
             self?.coordinator?.showItemSelectionView()
         }
         .disposed(by: disposeBag)
     }
-    
+
     private func setData() {
         setImages()
         imageSliderView.heroID = String(viewModel.storageItem.id)
         titleLabel.text = viewModel.storageItem.name
         descriptionLabel.text = viewModel.storageItem.description
-        
+
         parametersView.addParameter(parameter: "Type", value: "hangar")
         parametersView.addParameter(parameter: "Size", value: StringUtils.textWithSymbol(text: String(viewModel.storageItem.size), symbol: GlobalConstants.m))
         parametersView.addParameter(parameter: "Available time", value: viewModel.storageItem.availableTime)
-        
+
         mapView.setCameraPosition(withLatitude: viewModel.storageItem.latitude, longitude: viewModel.storageItem.longitude)
         mapView.setSingleMarker(withLatitude: viewModel.storageItem.latitude, longitude: viewModel.storageItem.longitude)
         locationWithImageView.text = "Almaty, Kazakhstan"
-        
+
         usernameLabel.text = "Firstname Lastname"
         userStatusLabel.text = "Owner"
         priceLabel.text = StringUtils.textWithSymbol(text: String(viewModel.storageItem.price), symbol: GlobalConstants.tgm)
     }
-    
+
     private func hideNavigationBar() {
         // change status bar style
         UIApplication.shared.statusBarStyle = .lightContent
-        
+
         // Make the navigation bar background clear
         navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.isTranslucent = true
-        
+
         backButton.showShadows()
         likeButton.showShadows()
     }
-    
+
     private func showNavigationBar() {
         // change status bar style
         UIApplication.shared.statusBarStyle = .darkContent
-        
+
         // Restore the navigation bar to default
         navigationController?.navigationBar.setBackgroundImage(nil, for: .default)
         navigationController?.navigationBar.shadowImage = nil
-        
+
         backButton.hideShadows()
         likeButton.hideShadows()
     }
-    
+
     private func setImages() {
 //        var sdWebImageSource: [SDWebImageSource] = []
 //        guard let images = viewModel.storageItem.images else { return }
 //        for imageStringUrl in image {
 //            sdWebImageSource.append(SDWebImageSource(urlString: imageStringUrl)!)
 //        }
-        
+
 //        guard let image = viewModel.storageItem.image else { return }
 //        sdWebImageSource.append(SDWebImageSource(urlString: image)!)
 //        imageSliderView.setImageInputs(sdWebImageSource)
@@ -289,18 +289,18 @@ final class StorageDescriptionViewController: ScrollViewController {
             imageSliderView.setImageInputs(imageSource)
         }
     }
-    
+
     @objc func didTapImage() {
         let fullScreenController = imageSliderView.presentFullScreenController(from: self)
         fullScreenController.slideshow.activityIndicator = DefaultActivityIndicator(style: UIActivityIndicatorView.Style.medium, color: nil)
     }
-
 }
 
 // MARK: - UI functions
+
 private extension StorageDescriptionViewController {
-    
     // MARK: - ImageView setup
+
     func setupImageView() {
         addView(view: imageSliderView)
         imageSliderView.snp.makeConstraints {
@@ -308,8 +308,9 @@ private extension StorageDescriptionViewController {
             $0.height.equalTo(350)
         }
     }
-    
+
     // MARK: - Title and description setup
+
     func setupTitle() {
         addSpaceView(withSpacing: 15)
         addView(view: titleLabel)
@@ -324,7 +325,7 @@ private extension StorageDescriptionViewController {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
-        
+
         addSpaceView(withSpacing: 10)
         addView(view: descriptionLabel)
         descriptionLabel.snp.makeConstraints {
@@ -333,15 +334,16 @@ private extension StorageDescriptionViewController {
         }
         addDivider()
     }
-    
+
     // MARK: - ParametersView setup
+
     func setupParameters() {
         addView(view: parametersTitleLabel)
         parametersTitleLabel.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
-        
+
         addSpaceView(withSpacing: 10)
         addView(view: parametersView)
         parametersView.snp.makeConstraints {
@@ -350,15 +352,16 @@ private extension StorageDescriptionViewController {
         }
         addDivider()
     }
-    
+
     // MARK: - map setup
+
     func setupMap() {
         addView(view: mapTitleLabel)
         mapTitleLabel.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
-        
+
         addSpaceView(withSpacing: 10)
         addView(view: mapView)
         mapView.snp.makeConstraints {
@@ -366,7 +369,7 @@ private extension StorageDescriptionViewController {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
-        
+
         addSpaceView(withSpacing: 10)
         addView(view: locationWithImageView)
         locationWithImageView.snp.makeConstraints {
@@ -375,8 +378,9 @@ private extension StorageDescriptionViewController {
         }
         addDivider()
     }
-    
+
     // MARK: - profile setup
+
     func setupProfileView() {
         let contentView = UIView()
         addView(view: contentView)
@@ -385,13 +389,13 @@ private extension StorageDescriptionViewController {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
         }
-        
+
         contentView.addSubview(userImageView)
         userImageView.snp.makeConstraints {
             $0.size.equalTo(50)
             $0.top.left.bottom.equalToSuperview()
         }
-        
+
         let stackView = UIStackView(arrangedSubviews: [usernameLabel, userStatusLabel])
         stackView.axis = .vertical
         stackView.spacing = 3
@@ -400,14 +404,14 @@ private extension StorageDescriptionViewController {
             $0.centerY.equalToSuperview()
             $0.left.equalTo(userImageView.snp.right).offset(10)
         }
-        
+
         contentView.addSubview(callButton)
         callButton.snp.makeConstraints {
             $0.right.equalToSuperview()
             $0.centerY.equalToSuperview()
             $0.size.equalTo(40)
         }
-        
+
         contentView.addSubview(messageButton)
         messageButton.snp.makeConstraints {
             $0.right.equalTo(callButton.snp.left).offset(-10)
@@ -415,22 +419,23 @@ private extension StorageDescriptionViewController {
             $0.size.equalTo(40)
         }
     }
-    
+
     // MARK: bottomView setup
+
     func setupBottomView() {
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints {
             $0.height.equalTo(60 + (UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? 0))
             $0.left.right.bottom.equalToSuperview()
         }
-        
+
         let divider = DividerView()
         view.addSubview(divider)
         divider.snp.makeConstraints {
             $0.left.right.equalToSuperview()
             $0.bottom.equalTo(bottomView.snp.top)
         }
-        
+
         bottomView.addSubview(actionButton)
         actionButton.snp.makeConstraints {
             $0.width.equalTo(200)
@@ -447,14 +452,15 @@ private extension StorageDescriptionViewController {
             $0.right.equalTo(actionButton.snp.left).offset(-25)
         }
     }
-    
+
     // MARK: - add divider function
+
     func addDivider() {
         let view = DividerView()
         addSpaceView(withSpacing: 15)
         addView(view: view)
         addSpaceView(withSpacing: 15)
-        
+
         view.snp.makeConstraints {
             $0.left.equalToSuperview().offset(20)
             $0.right.equalToSuperview().offset(-20)
@@ -463,6 +469,7 @@ private extension StorageDescriptionViewController {
 }
 
 // MARK: - ScrollView delegate
+
 extension StorageDescriptionViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let navBarHeight = (view.window?.windowScene?.statusBarManager?.statusBarFrame.size.height ?? 0) + (navigationController?.navigationBar.frame.height ?? 0.0)
@@ -475,8 +482,8 @@ extension StorageDescriptionViewController: UIScrollViewDelegate {
 }
 
 // MARK: - MapViewDelegate
+
 extension StorageDescriptionViewController: MapViewDelegate {
-    
     func didTapMapView() {
         coordinator?.showStorageLocationView(latitude: viewModel.storageItem.latitude, longitude: viewModel.storageItem.longitude)
     }

@@ -18,12 +18,11 @@ enum APIService {
 }
 
 extension APIService: TargetType {
-    
     // Localhost url
     var baseURL: URL {
         return URL(string: "http://localhost:8080")!
     }
-    
+
     // Path of each operation that will be appended to base URL
     var path: String {
         switch self {
@@ -41,7 +40,7 @@ extension APIService: TargetType {
             return "/auth/signin"
         }
     }
-    
+
     // Specify which method our calls should use
     var method: Method {
         switch self {
@@ -55,23 +54,23 @@ extension APIService: TargetType {
             return .post
         }
     }
-    
+
     // Request parameters
     var parameters: [String: Any]? {
         switch self {
-        case .postStorage(let request):
+        case let .postStorage(request):
             return request.parameters
-        case .postItem(let request):
+        case let .postItem(request):
             return request.parameters
-        case .postRegistration(let request):
+        case let .postRegistration(request):
             return request.parameters
-        case .postAuth(let request):
+        case let .postAuth(request):
             return request.parameters
         default:
             return [:]
         }
     }
-    
+
     // Type of encoding
     var parameterEncoding: ParameterEncoding {
         switch self {
@@ -82,7 +81,7 @@ extension APIService: TargetType {
             return JSONEncoding.default
         }
     }
-    
+
     // Specify body parameters, objects, files etc.
     // Plain request is a request without a body.
     var task: Task {
@@ -91,15 +90,15 @@ extension APIService: TargetType {
         }
         return .requestPlain
     }
-    
-     // Headers that service requires. 
+
+    // Headers that service requires.
     var headers: [String: String]? {
         switch self {
         default:
             return ["Content-type": "application/json"]
         }
     }
-    
+
     // Sample return mock data to test
     var sampleData: Data {
         return Data()

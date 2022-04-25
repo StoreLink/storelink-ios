@@ -6,9 +6,9 @@
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
-import UIKit
 import GoogleMaps
 import GooglePlaces
+import UIKit
 
 protocol Coordinator {
     func start()
@@ -23,21 +23,21 @@ extension Coordinator {
 
 final class AppCoordinator: Coordinator {
     private let window: UIWindow
-    
+
     init(window: UIWindow) {
         self.window = window
     }
-    
+
     func start() {
         enableGoogleMaps()
         let tabBarNavigationController = UINavigationController()
         window.rootViewController = tabBarNavigationController
         window.makeKeyAndVisible()
-        
+
         let tabBarCoordinator = TabBarCoordinator(navigationController: tabBarNavigationController)
         coordinate(to: tabBarCoordinator)
     }
-    
+
     private func enableGoogleMaps() {
         GMSServices.provideAPIKey(GlobalConstants.googleMapsAPIKey)
         GMSPlacesClient.provideAPIKey(GlobalConstants.googleMapsAPIKey)

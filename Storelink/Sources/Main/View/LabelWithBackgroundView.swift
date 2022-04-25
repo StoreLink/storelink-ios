@@ -9,8 +9,7 @@
 import UIKit
 
 class LabelWithBackgroundView: UIView {
-    
-    var text: String? = nil {
+    var text: String? {
         didSet {
             label.text = text?.uppercased()
         }
@@ -28,7 +27,7 @@ class LabelWithBackgroundView: UIView {
         view.addSubview(blurEffectView)
         return view
     }()
-    
+
     let label: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 10, weight: .semibold)
@@ -36,31 +35,31 @@ class LabelWithBackgroundView: UIView {
         label.textAlignment = .center
         return label
     }()
-    
+
     init() {
         super.init(frame: .zero)
         setupViews()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupViews() {
         [backgroundView, label].forEach {
             addSubview($0)
         }
-        
+
         label.snp.makeConstraints {
             $0.top.equalToSuperview().offset(5)
             $0.left.equalToSuperview().offset(7)
             $0.right.equalToSuperview().offset(-7)
             $0.bottom.equalToSuperview().offset(-5)
         }
-        
+
         backgroundView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
-
 }

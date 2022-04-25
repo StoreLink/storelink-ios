@@ -14,7 +14,7 @@ struct ItemRequest: Encodable {
     let count: Int
     let image: String
     let size: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case name = "itemName"
         case description = "itemDescription"
@@ -22,7 +22,7 @@ struct ItemRequest: Encodable {
         case image = "itemImage"
         case size = "itemSize"
     }
-    
+
     // To encode object
     var parameters: [String: Any] {
         do {

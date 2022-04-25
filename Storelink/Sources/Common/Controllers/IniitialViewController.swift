@@ -6,11 +6,10 @@
 //  Copyright © 2020 Акан Акиш. All rights reserved.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 class InitialViewController: UIViewController {
-    
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
         view.addSubview(indicator)
@@ -19,44 +18,44 @@ class InitialViewController: UIViewController {
         }
         return indicator
     }()
-    
+
     let disposeBag = DisposeBag()
-    
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
-    
-    required convenience init?(coder aDecoder: NSCoder) {
+
+    required convenience init?(coder _: NSCoder) {
         self.init()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        
+
         setupUI()
         bind()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         setNavigationLeftBarButton()
     }
-    
+
     func startLoader() {
         view.bringSubviewToFront(activityIndicator)
         activityIndicator.startAnimating()
     }
-    
+
     func stopLoader() {
         activityIndicator.stopAnimating()
     }
-    
+
     func setNavigationLeftBarButton() {
-        if let count = self.navigationController?.viewControllers.count, count <= 1 {
-            self.navigationItem.leftBarButtonItem = nil
+        if let count = navigationController?.viewControllers.count, count <= 1 {
+            navigationItem.leftBarButtonItem = nil
         } else {
             let leftBarButtonItem: UIBarButtonItem = {
                 let barButtonItem = UIBarButtonItem()
@@ -70,13 +69,12 @@ class InitialViewController: UIViewController {
             navigationItem.leftBarButtonItem = leftBarButtonItem
         }
     }
-    
-    @objc private func backAction() {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    func setupUI() {}
-    
-    func bind() {}
 
+    @objc private func backAction() {
+        navigationController?.popViewController(animated: true)
+    }
+
+    func setupUI() {}
+
+    func bind() {}
 }

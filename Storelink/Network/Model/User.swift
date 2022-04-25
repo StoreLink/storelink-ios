@@ -18,29 +18,26 @@ struct User: Decodable {
 extension User {
     enum CodingKeys: String, CodingKey {
         case id = "userId"
-        case username = "username"
-        case email = "email"
-        case accessToken = "accessToken"
+        case username
+        case email
+        case accessToken
     }
 }
 
 class UserService {
-    
     static let shared = UserService()
-    
+
     var user: User?
 }
 
 class StorageService {
-    
     static let shared = StorageService()
-    
+
     var storages: [StorageItem]?
 }
 
 class ItemService {
-    
     static let shared = ItemService()
-    
+
     var items: [Item]?
 }

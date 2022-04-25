@@ -9,13 +9,12 @@
 import UIKit
 
 final class BackButton: UIButton {
-    
     var color: UIColor = .white {
         didSet {
             backgroundColor = color
         }
     }
-    
+
     override var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? color.shade(.dark) : color
@@ -26,26 +25,27 @@ final class BackButton: UIButton {
         super.init(frame: .zero)
         setupView()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupView() {
         setImage(Assets.back.image, for: .normal)
         backgroundColor = color
         layer.cornerRadius = 10
         setupShadow()
-        
+
         snp.makeConstraints {
             $0.size.equalTo(35)
         }
-        
+
         imageView?.snp.makeConstraints {
             $0.size.equalTo(20)
         }
     }
-    
+
     func setupShadow() {
         layer.masksToBounds = false
         layer.shadowOffset = .zero
@@ -55,12 +55,12 @@ final class BackButton: UIButton {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
     }
-    
+
     func hideShadows() {
         color = .clear
         layer.shadowOpacity = 0
     }
-    
+
     func showShadows() {
         color = .white
         layer.shadowOpacity = 0.5

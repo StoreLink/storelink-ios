@@ -8,31 +8,31 @@
 
 import UIKit
 
-protocol ProfileFlow: class {
+protocol ProfileFlow: AnyObject {
     func showPopupView()
     func showLoginView()
     func showSignupView()
 }
 
 class ProfileCoordinator: Coordinator, ProfileFlow {
-    
     weak var navigationController: UINavigationController?
-    
+
     private var transitioningDelegate: PopupTransitionDelegate?
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let viewModel = ProfileViewModel()
         let viewController = ProfileViewController(viewModel: viewModel)
         viewController.coordinator = self
-        
+
         navigationController?.pushViewController(viewController, animated: false)
     }
-    
+
     // MARK: - Flow Methods
+
     func showPopupView() {
         let authorizationPopupView = ProfilePopupViewController()
         authorizationPopupView.coordinator = self
@@ -41,13 +41,13 @@ class ProfileCoordinator: Coordinator, ProfileFlow {
         authorizationPopupView.transitioningDelegate = transitioningDelegate
         navigationController?.present(authorizationPopupView, animated: true, completion: nil)
     }
-    
+
     func showLoginView() {
         navigationController?.dismiss(animated: true, completion: nil)
         let loginCoordinator = LoginCoordinator(navigationController: navigationController!)
         coordinate(to: loginCoordinator)
     }
-    
+
     func showSignupView() {
         navigationController?.dismiss(animated: true, completion: nil)
         let signupCoordinator = SignupCoordinator(navigationController: navigationController!)

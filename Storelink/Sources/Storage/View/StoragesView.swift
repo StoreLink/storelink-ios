@@ -6,19 +6,18 @@
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
-import UIKit
-import RxSwift
 import RxCocoa
+import RxSwift
+import UIKit
 
 final class StoragesView: UIView {
-    
     private enum Constants {
         static let cellIdentifier = "cellId"
     }
-    
+
     private let disposeBag: DisposeBag = .init()
     let dataSource: BehaviorRelay<[StorageItem]> = .init(value: [])
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -28,14 +27,14 @@ final class StoragesView: UIView {
         tableView.isHidden = true
         return tableView
     }()
-    
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Assets.coloredStorage.image
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+
     private let textLabel: UILabel = {
         let label = UILabel()
         label.text = "You don't have added storage"
@@ -44,7 +43,7 @@ final class StoragesView: UIView {
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
-    
+
     private lazy var contentStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [imageView, textLabel])
         stackView.axis = .vertical
@@ -58,11 +57,12 @@ final class StoragesView: UIView {
         setupView()
         bind()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupView() {
         addSubview(contentStackView)
         contentStackView.snp.makeConstraints {
@@ -70,7 +70,7 @@ final class StoragesView: UIView {
             $0.left.equalToSuperview().offset(40)
             $0.right.equalToSuperview().offset(-40)
         }
-        
+
         addSubview(tableView)
         tableView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
@@ -78,7 +78,7 @@ final class StoragesView: UIView {
             $0.right.equalToSuperview().offset(-25)
         }
     }
-    
+
     func bind() {
         dataSource
             .bind(to: tableView.rx.items(cellIdentifier: Constants.cellIdentifier, cellType: MainTableViewCell.self)) { _, model, cell in
@@ -86,12 +86,12 @@ final class StoragesView: UIView {
             }
             .disposed(by: disposeBag)
     }
-    
+
     func showStorages() {
         tableView.isHidden = false
         contentStackView.isHidden = true
     }
-    
+
     func hideStorages() {
         tableView.isHidden = true
         contentStackView.isHidden = false

@@ -9,32 +9,30 @@
 import UIKit
 
 final class MainTabBarController: UITabBarController {
-    
     var coordinator: TabBarFlow?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.delegate = self
+
+        delegate = self
         tabBar.tintColor = Colors.teal.color
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         if let items = tabBar.items {
             for item in items {
                 item.setTitleTextAttributes([.foregroundColor: UIColor.black], for: .selected)
             }
         }
-        
     }
 }
 
 // MARK: UITabbar Delegate
-extension MainTabBarController: UITabBarControllerDelegate {
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 
+extension MainTabBarController: UITabBarControllerDelegate {
+    func tabBarController(_: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         if viewController.isKind(of: AddPopupViewController.self) {
             coordinator?.showAddPopupView()
             return false

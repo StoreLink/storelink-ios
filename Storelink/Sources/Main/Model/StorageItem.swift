@@ -19,7 +19,7 @@ struct StorageItem: Decodable {
     let longitude: Double
     let latitude: Double
     let createdDate: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "storageId"
         case name = "storageName"
@@ -30,6 +30,6 @@ struct StorageItem: Decodable {
         case size = "storageSize"
         case longitude = "storageLongitude"
         case latitude = "storageLatitude"
-        case createdDate = "createdDate"
+        case createdDate
     }
 }

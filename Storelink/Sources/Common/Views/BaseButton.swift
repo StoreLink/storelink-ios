@@ -9,72 +9,72 @@
 import UIKit
 
 open class BaseButton: UIButton {
-    
-    open override var isHighlighted: Bool {
+    override open var isHighlighted: Bool {
         didSet {
             backgroundColor = isHighlighted ? buttonColor?.shade(.dark) : buttonColor
         }
     }
-    
+
     public var title: String? {
         didSet {
-            self.setTitle(title, for: .normal)
+            setTitle(title, for: .normal)
         }
     }
-    
+
     public var titleColor: UIColor? {
         didSet {
-            self.setTitleColor(titleColor, for: .normal)
+            setTitleColor(titleColor, for: .normal)
         }
     }
-    
+
     public var titleFont: UIFont? {
         didSet {
-            self.titleLabel?.font = titleFont
+            titleLabel?.font = titleFont
         }
     }
-    
+
     public var buttonColor: UIColor? {
         didSet {
-            self.backgroundColor = buttonColor
+            backgroundColor = buttonColor
         }
     }
-    
-    public var borderColor: UIColor = UIColor.clear {
+
+    public var borderColor: UIColor = .clear {
         didSet {
             layer.borderColor = borderColor.cgColor
         }
     }
-    
+
     public var borderWidth: CGFloat = 0 {
         didSet {
             layer.borderWidth = borderWidth
         }
     }
-    
+
     public var cornerRadius: CGFloat = 0 {
         didSet {
             layer.cornerRadius = cornerRadius
         }
     }
-    
-    public var shadowColor: UIColor = UIColor.clear {
+
+    public var shadowColor: UIColor = .clear {
         didSet {
             layer.shadowColor = shadowColor.cgColor
         }
     }
-    
+
     public var shadowRadius: CGFloat = 0 {
         didSet {
             layer.shadowRadius = shadowRadius
         }
     }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
-    
-    required public init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }

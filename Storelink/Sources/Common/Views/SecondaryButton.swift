@@ -9,24 +9,24 @@
 import UIKit
 
 final class SecondaryButton: BaseButton {
-    
     override var isHighlighted: Bool {
         didSet {
-            self.titleColor = isHighlighted ? Colors.darkTeal.color : Colors.teal.color
-            self.borderColor = isHighlighted ? Colors.darkTeal.color : Colors.teal.color
+            titleColor = isHighlighted ? Colors.darkTeal.color : Colors.teal.color
+            borderColor = isHighlighted ? Colors.darkTeal.color : Colors.teal.color
         }
     }
-    
+
     init(title: String) {
         super.init(frame: .zero)
         self.title = title
         setupUI()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupUI() {
         titleColor = Colors.teal.color
         titleFont = UIFont.systemFont(ofSize: 16, weight: .bold)

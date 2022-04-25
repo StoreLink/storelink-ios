@@ -6,11 +6,10 @@
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
-import UIKit
 import SDWebImage
+import UIKit
 
 final class MainTableViewCell: UITableViewCell {
-    
     var storageItem: StorageItem? {
         didSet {
 //            if let imageURL = URL(string: storageItem?.image ?? "") {
@@ -33,7 +32,7 @@ final class MainTableViewCell: UITableViewCell {
             publishDateLabel.text = "Today " + String(storageItem?.createdDate.suffix(9) ?? "")
         }
     }
-    
+
     private let roundedView: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
@@ -48,7 +47,7 @@ final class MainTableViewCell: UITableViewCell {
 //        view.layer.rasterizationScale = UIScreen.main.scale
         return view
     }()
-    
+
     private let storageImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -57,12 +56,12 @@ final class MainTableViewCell: UITableViewCell {
         imageView.clipsToBounds = true
         return imageView
     }()
-    
+
     private let typeLabel: LabelWithBackgroundView = {
         let label = LabelWithBackgroundView()
         return label
     }()
-    
+
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
@@ -70,14 +69,14 @@ final class MainTableViewCell: UITableViewCell {
         label.numberOfLines = 1
         return label
     }()
-    
+
     private let priceLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .medium)
         label.textAlignment = .right
         return label
     }()
-    
+
     private let locationLabel: LabelWithLeftImageView = {
         let label = LabelWithLeftImageView()
         label.image = Assets.location.image
@@ -86,7 +85,7 @@ final class MainTableViewCell: UITableViewCell {
         label.spacing = 3
         return label
     }()
-    
+
     private let sizeLabel: LabelWithLeftImageView = {
         let label = LabelWithLeftImageView()
         label.image = Assets.size.image
@@ -94,7 +93,7 @@ final class MainTableViewCell: UITableViewCell {
         label.spacing = 5
         return label
     }()
-    
+
     private let timeLabel: LabelWithLeftImageView = {
         let label = LabelWithLeftImageView()
         label.image = Assets.clock.image
@@ -102,7 +101,7 @@ final class MainTableViewCell: UITableViewCell {
         label.spacing = 5
         return label
     }()
-    
+
     private let publishDateLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
@@ -110,76 +109,76 @@ final class MainTableViewCell: UITableViewCell {
         label.textColor = .gray
         return label
     }()
-    
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
-        
     }
-    
-    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+
+    override func setHighlighted(_ highlighted: Bool, animated _: Bool) {
         roundedView.backgroundColor = highlighted ? UIColor.lightGray.withAlphaComponent(0.3) : .clear
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupUI() {
         backgroundColor = .clear
         selectionStyle = .none
         contentView.addSubview(roundedView)
-        
+
         roundedView.snp.makeConstraints {
             $0.top.equalToSuperview().offset(10)
             $0.left.right.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-10)
         }
-        
+
         [storageImageView, titleLabel, priceLabel, locationLabel, sizeLabel, timeLabel, publishDateLabel].forEach {
             roundedView.addSubview($0)
         }
-        
+
         storageImageView.snp.makeConstraints {
             $0.top.equalToSuperview()
             $0.left.right.equalToSuperview()
             $0.height.equalTo(200)
         }
-        
+
         storageImageView.addSubview(typeLabel)
         typeLabel.snp.makeConstraints {
             $0.left.equalToSuperview().offset(10)
             $0.bottom.equalToSuperview().offset(-10)
         }
-        
+
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(storageImageView.snp.bottom).offset(10)
             $0.left.equalToSuperview()
         }
-        
+
         priceLabel.snp.makeConstraints {
             $0.centerY.equalTo(titleLabel.snp.centerY)
             $0.left.greaterThanOrEqualTo(titleLabel.snp.right).offset(5)
             $0.right.equalToSuperview()
         }
-        
+
         locationLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(4)
             $0.left.equalToSuperview()
             $0.height.equalTo(15)
         }
-        
+
         sizeLabel.snp.makeConstraints {
             $0.top.equalTo(locationLabel.snp.bottom).offset(8)
             $0.left.equalToSuperview()
             $0.bottom.equalToSuperview().offset(-10)
         }
-        
+
         timeLabel.snp.makeConstraints {
             $0.centerY.equalTo(sizeLabel.snp.centerY)
             $0.left.equalTo(sizeLabel.snp.right).offset(15)
         }
-        
+
         publishDateLabel.snp.makeConstraints {
             $0.centerY.equalTo(sizeLabel.snp.centerY)
             $0.left.greaterThanOrEqualTo(timeLabel.snp.right)

@@ -16,7 +16,7 @@ struct Item: Decodable {
     let size: Int
     let count: Int
     let createdDate: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "itemId"
         case name = "itemName"
@@ -24,6 +24,6 @@ struct Item: Decodable {
         case image = "itemImage"
         case count = "itemCount"
         case size = "itemSize"
-        case createdDate = "createdDate"
+        case createdDate
     }
 }

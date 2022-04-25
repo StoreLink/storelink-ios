@@ -17,7 +17,7 @@ struct StorageItemRequest: Encodable {
     let longitude: Double
     let latitude: Double
     let image: String
-    
+
     enum CodingKeys: String, CodingKey {
         case name = "storageName"
         case description = "storageDescription"
@@ -28,7 +28,7 @@ struct StorageItemRequest: Encodable {
         case latitude = "storageLatitude"
         case image = "storageImage"
     }
-    
+
     // To encode object
     var parameters: [String: Any] {
         do {

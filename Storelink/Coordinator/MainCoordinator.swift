@@ -23,47 +23,48 @@ class MainCoordinator: Coordinator, MainFlow {
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let viewModel = MainViewModel()
         let viewController = MainViewController(viewModel: viewModel)
         viewController.coordinator = self
         navigationController?.pushViewController(viewController, animated: false)
     }
-    
+
     // MARK: - Flow Methods
+
     func showStorageDescriptionView(storageItem: StorageItem) {
         let viewModel = StorageDescriptionViewModel(storageItem: storageItem)
         let viewController = StorageDescriptionViewController(viewModel: viewModel)
         viewController.coordinator = self
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     func showStorageLocationView(latitude: Double, longitude: Double) {
         let viewController = StorageLocationViewController(latitude: latitude, longitude: longitude)
         navigationController?.pushViewController(viewController, animated: true)
     }
-    
+
     func showMapView(storages: [StorageItem]) {
         let viewController = MapViewController(storages: storages)
         viewController.coordinator = self
         viewController.modalPresentationStyle = .fullScreen
         navigationController?.present(viewController, animated: true, completion: nil)
     }
-    
+
     func showFilterView() {
         let viewController = FilterViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
-    
+
     func showItemSelectionView() {
         let viewController = SelectItemViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.modalPresentationStyle = .fullScreen
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
-    
+
     func closeMapView() {
         navigationController?.dismiss(animated: true, completion: nil)
     }

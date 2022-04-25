@@ -10,7 +10,7 @@ import UIKit
 
 class PhotoCollectionViewCell: UICollectionViewCell {
     var imageView = UIImageView()
-    
+
     let deleteButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor.systemRed
@@ -20,27 +20,28 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         button.layer.cornerRadius = 8
         return button
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func configure(with image: UIImage) {
         imageView.image = image
     }
-    
+
     func setupView() {
         contentView.addSubview(imageView)
         contentView.addSubview(deleteButton)
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
-        
+
         deleteButton.snp.makeConstraints {
             $0.right.equalToSuperview().offset(-5)
             $0.bottom.equalToSuperview().offset(-5)

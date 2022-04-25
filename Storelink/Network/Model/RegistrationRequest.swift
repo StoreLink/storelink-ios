@@ -12,7 +12,7 @@ struct RegistrationRequest: Encodable {
     let username: String
     let email: String
     let password: String
-    
+
     // To encode object
     var parameters: [String: Any] {
         do {

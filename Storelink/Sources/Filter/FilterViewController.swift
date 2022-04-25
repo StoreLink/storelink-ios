@@ -9,9 +9,8 @@
 import UIKit
 
 class FilterViewController: InitialViewController {
-    
     var coordinator: MainFlow?
-    
+
     private let doneBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem()
         button.title = "Done"
@@ -23,21 +22,18 @@ class FilterViewController: InitialViewController {
 
         title = "Filters"
     }
-    
+
     override func setNavigationLeftBarButton() {
         super.setNavigationLeftBarButton()
         navigationItem.rightBarButtonItem = doneBarButtonItem
     }
-    
-    override func setupUI() {
-        
-    }
-    
+
+    override func setupUI() {}
+
     override func bind() {
         doneBarButtonItem.rx.tap.bind { [weak self] in
             self?.dismiss(animated: true, completion: nil)
         }
         .disposed(by: disposeBag)
     }
-
 }

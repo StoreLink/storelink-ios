@@ -9,17 +9,17 @@
 import UIKit
 
 final class MainButton: BaseButton {
-    
     init(title: String) {
         super.init(frame: .zero)
         self.title = title
         setupUI()
     }
-    
-    required public init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    public required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupUI() {
         titleColor = .white
         titleFont = UIFont.systemFont(ofSize: 16, weight: .bold)

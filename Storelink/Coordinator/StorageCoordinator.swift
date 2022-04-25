@@ -8,25 +8,21 @@
 
 import UIKit
 
-protocol StorageFlow: class {
-    
-}
+protocol StorageFlow: class {}
 
 class StorageCoordinator: Coordinator, StorageFlow {
-    
     weak var navigationController: UINavigationController?
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let viewController = StorageViewController()
         viewController.coordinator = self
-        
+
         navigationController?.pushViewController(viewController, animated: false)
     }
-    
+
     // MARK: - Flow Methods
-    
 }

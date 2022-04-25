@@ -6,8 +6,8 @@
 //  Copyright © 2021 Акан Акиш. All rights reserved.
 //
 
-import UIKit
 import Foundation
+import UIKit
 
 struct RGBA {
     let red: CGFloat
@@ -21,7 +21,6 @@ struct RGBA {
 }
 
 extension UIColor {
-
     public enum Shade {
         private static let darkScalingFactor: Double = 0.75
         private static let darkerScalingFactor: Double = 0.5
@@ -30,7 +29,7 @@ extension UIColor {
         private static let lightScalingFactor: Double = 1.25
         private static let lighterScalingFactor: Double = 1.5
         private static let lightestScalingFactor: Double = 1.75
-        private static let whiteScalingFactor: Double = Double.greatestFiniteMagnitude
+        private static let whiteScalingFactor: Double = .greatestFiniteMagnitude
         case darkness(Double)
         case dark
         case darker
@@ -45,7 +44,7 @@ extension UIColor {
 
         fileprivate var scale: Double {
             switch self {
-            case .darkness(let scalingFactor):
+            case let .darkness(scalingFactor):
                 return scalingFactor
             case .dark:
                 return Shade.darkScalingFactor
@@ -55,7 +54,7 @@ extension UIColor {
                 return Shade.darkestScalingFactor
             case .black:
                 return Shade.blackScalingFactor
-            case .lightness(let scalingFactor):
+            case let .lightness(scalingFactor):
                 return scalingFactor
             case .light:
                 return Shade.lightScalingFactor
@@ -73,7 +72,7 @@ extension UIColor {
         private static let lightScalingFactor: Double = 1.25
         private static let lighterScalingFactor: Double = 1.5
         private static let lightestScalingFactor: Double = 1.75
-        private static let whiteScalingFactor: Double = Double.greatestFiniteMagnitude
+        private static let whiteScalingFactor: Double = .greatestFiniteMagnitude
 
         case lightness(scalingFactor: Double)
         case light
@@ -83,7 +82,7 @@ extension UIColor {
 
         fileprivate var scale: Double {
             switch self {
-            case .lightness(let scalingFactor):
+            case let .lightness(scalingFactor):
                 return scalingFactor
             case .light:
                 return Lightness.lightScalingFactor
@@ -106,7 +105,7 @@ extension UIColor {
 
     /// Scales RGB components by the given multiplier.
     private func scaleRGBComponents(_ components: RGBA, by scalingFactor: Double) -> RGBA {
-        let multiplier: CGFloat = CGFloat(scalingFactor)
+        let multiplier = CGFloat(scalingFactor)
         return RGBA(red: components.red * multiplier,
                     green: components.green * multiplier,
                     blue: components.blue * multiplier,

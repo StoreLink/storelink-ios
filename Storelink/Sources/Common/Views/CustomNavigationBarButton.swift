@@ -9,10 +9,9 @@
 import UIKit
 
 class CustomNavigationBarButton: UIButton {
-    
     override var isHighlighted: Bool {
         didSet {
-            self.backgroundColor = isHighlighted ? UIColor.white.shade(.dark) : .white
+            backgroundColor = isHighlighted ? UIColor.white.shade(.dark) : .white
         }
     }
 
@@ -20,19 +19,19 @@ class CustomNavigationBarButton: UIButton {
         super.init(frame: .zero)
         setupUI(with: image)
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupUI(with image: UIImage) {
         setImage(image, for: .normal)
         backgroundColor = .white
         layer.cornerRadius = 20
-        
+
         snp.makeConstraints {
             $0.size.equalTo(40)
         }
     }
-    
 }

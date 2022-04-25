@@ -9,23 +9,17 @@
 import Foundation
 
 final class StorageDescriptionViewModel: ViewModel, ViewModelType {
-    
-    struct Input {
-        
-    }
-    
-    struct Output {
-        
-    }
-    
+    struct Input {}
+
+    struct Output {}
+
     let storageItem: StorageItem
-    
+
     init(storageItem: StorageItem) {
         self.storageItem = storageItem
     }
-    
-    func transform(input: Input) -> Output {
-        
+
+    func transform(input _: Input) -> Output {
         return Output()
     }
 }

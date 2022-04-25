@@ -13,13 +13,12 @@ protocol SignupFlow: class {
 }
 
 class SignupCoordinator: Coordinator, SignupFlow {
-    
     weak var navigationController: UINavigationController?
-    
+
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let viewModel = SignupViewModel()
         let viewController = SignupViewController(viewModel: viewModel)
@@ -30,8 +29,9 @@ class SignupCoordinator: Coordinator, SignupFlow {
             self?.navigationController = viewController.navigationController
         })
     }
-    
+
     // MARK: - Flow Methods
+
     func showLoginView() {
         let viewModel = LoginViewModel()
         let controller = LoginViewController(viewModel: viewModel)

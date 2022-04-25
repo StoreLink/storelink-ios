@@ -9,13 +9,12 @@
 import UIKit
 
 final class LikeButton: UIButton {
-    
     var color: UIColor = .white {
         didSet {
             backgroundColor = color
         }
     }
-    
+
     public var isLiked: Bool = false {
         didSet {
             isLiked ? setImage(Assets.heart.image, for: .normal) : setImage(Assets.heartOutline.image, for: .normal)
@@ -32,27 +31,28 @@ final class LikeButton: UIButton {
         super.init(frame: .zero)
         setupView()
     }
-    
-    required init?(coder: NSCoder) {
+
+    @available(*, unavailable)
+    required init?(coder _: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func setupView() {
         setImage(Assets.heartOutline.image, for: .normal)
         addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         backgroundColor = color
         layer.cornerRadius = 10
         setupShadow()
-        
+
         snp.makeConstraints {
             $0.size.equalTo(35)
         }
-        
+
         imageView?.snp.makeConstraints {
             $0.size.equalTo(20)
         }
     }
-    
+
     func setupShadow() {
         layer.masksToBounds = false
         layer.shadowOffset = .zero
@@ -62,19 +62,18 @@ final class LikeButton: UIButton {
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.main.scale
     }
-    
+
     func hideShadows() {
         color = .clear
         layer.shadowOpacity = 0
     }
-    
+
     func showShadows() {
         color = .white
         layer.shadowOpacity = 0.5
     }
-    
+
     @objc func likeButtonTapped() {
         isLiked.toggle()
     }
-
 }

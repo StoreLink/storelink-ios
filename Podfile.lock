@@ -22,10 +22,10 @@ PODS:
   - Moya/RxSwift (14.0.0):
     - Moya/Core
     - RxSwift (~> 5.0)
-  - RxCocoa (5.1.1):
+  - RxCocoa (5.1.3):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.1.1):
+  - RxRelay (5.1.3):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
   - SDWebImage (5.10.4):
@@ -80,8 +80,8 @@ SPEC CHECKSUMS:
   InputMask: f340bdc905a4c4f377e44d865f129f752ac2383d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
-  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
-  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
@@ -90,4 +90,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 8a35761ecd5dd6292d10f6d139337fe023dd3cf1
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
